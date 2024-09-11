@@ -31,7 +31,10 @@
         <livewire:phoenix.dashboard.components.social componentWidth="{{ $width }} p-1"/>
         @break
     @case('event_component')
-        <livewire:phoenix.dashboard.components.events componentWidth="{{ $width }} p-1" :settings="$component['data']"/>
+        <livewire:phoenix.dashboard.components.events componentWidth="{{ $width }} p-1" type="event_component" :settings="$component['data']"/>
+        @break
+    @case('event_single_component')
+        <livewire:phoenix.dashboard.components.events componentWidth="{{ $width }} p-1" type="event_single_component" :settings="$component['data']"/>
         @break
     @case('flight_map_component')
                 <livewire:phoenix.flight-center.flight-map-js componentWidth="{{ $width }}" :settings="$component['data']"
