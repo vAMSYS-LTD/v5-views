@@ -40,28 +40,24 @@
                 <div id="{{ $tabKey }}" class="@if($tabKey !== $activeTab) hidden @endif" role="tabpanel" aria-labelledby="bar-with-underline-item-{{ $index + 1 }}">
                     <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-x-2 gap-y-2">
                         @if($tabKey == 'other')
-                            <div class="card">
+                            <div class="card flex flex-col h-full">
                                 <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
                                     <div>Your Username</div>
                                 </div>
-                                <div class="px-4">
-                                    <div class="flex justify-between">
-                                        <div class="grow overflow-hidden">
-                                            <div class="flex w-full justify-around gap-2">
-                                                <h3 class="text-lg my-2">
-                                                    {{ $pilot->username }}
-                                                </h3>
-                                            </div>
-                                        </div>
+                                <div class="flex-1 flex items-center justify-center px-4">
+                                    <div class="flex w-full justify-around gap-2">
+                                        <h3 class="text-lg my-2">
+                                            {{ $pilot->username }}
+                                        </h3>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card flex flex-col h-full">
                                 <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
                                     <div>Registration</div>
                                 </div>
-                                <div class="px-4">
+                                <div class="flex-1 flex items-center justify-center px-4">
                                     <div class="flex justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
@@ -74,11 +70,11 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card flex flex-col h-full">
                                 <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
                                     <div>Rank</div>
                                 </div>
-                                <div class="px-4">
+                                <div class="flex-1 flex items-center justify-center px-4">
                                     <div class="flex justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
@@ -91,11 +87,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card flex flex-col h-full">
                                 <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
                                     <div>Airports Visited</div>
                                 </div>
-                                <div class="px-4">
+                                <div class="flex-1 flex items-center justify-center px-4">
                                     <div class="flex justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
@@ -107,11 +103,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div class="card flex flex-col h-full">
                                 <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
                                     <div>Location / Hub</div>
                                 </div>
-                                <div class="px-4">
+                                <div class="flex-1 flex items-center justify-center px-4">
                                     <div class="flex justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
@@ -132,11 +128,11 @@
                                 </div>
                             </div>
 
-                            <div class="card">
+                            <div class="card flex flex-col h-full">
                                 <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
                                     <div>Settings / Preferences</div>
                                 </div>
-                                <div class="px-4">
+                                <div class="flex-1 flex items-center justify-center px-4">
                                     <div class="flex justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
