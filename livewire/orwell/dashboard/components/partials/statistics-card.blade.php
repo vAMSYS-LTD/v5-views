@@ -6,7 +6,7 @@
         </span>
     </div>
     <div class="flex-1 flex items-center justify-center px-4">
-        <div class="flex justify-between">
+        <div class="flex grow justify-between">
             <div class="grow overflow-hidden">
                 <div class="flex w-full justify-around gap-2">
                     @foreach ($values as $value)
