@@ -159,7 +159,7 @@
             }
 
             window.mapController.getBookFlightMapData($wire);
-            window.mapController.registerButtonActionsForBookFlightMap();
+            window.mapController.registerButtonActionsForBookFlightMap($wire);
             window.dispatchEvent(new Event('resize'));
             document.getElementById('sidebar-close').addEventListener('click', () => {
                 window.mapController.closeSidebar()
