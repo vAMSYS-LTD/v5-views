@@ -1,4 +1,4 @@
-<div wire:ignore class="{{ $componentWidth }}">
+<div wire:ignore class="{{ $componentWidth }}" style="{{ $events->count() > 0 ? '' : 'display: contents'}}">
 @if($events->count() > 0)
         <div class="relative swiper event-image-swiper rounded w-full shadow">
             <div class="swiper-wrapper">
@@ -10,7 +10,7 @@
                     @endif
                         <img
                             src="{{ $event->event_image }}" alt="{{ $event->name }}"
-                            class="block w-full rounded-md" />
+                            class="block w-full rounded" />
                 </a>
                 @endforeach
             </div>

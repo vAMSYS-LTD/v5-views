@@ -1,4 +1,4 @@
-<div class="{{ $componentWidth }}">
+<div class="{{ $componentWidth }}" style="{{ count($socialIcons) > 0 ? '' : 'display: contents'}}">
     @if(count($socialIcons) > 0)
         <div class="flex flex-wrap gap-2 place-items-center card px-4 py-4">
             @foreach($socialIcons as $icon)
