@@ -75,7 +75,7 @@
                                     <div>Rank</div>
                                 </div>
                                 <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex justify-between">
+                                    <div class="flex grow justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
                                                 <h3 class="text-lg my-2">
@@ -92,7 +92,7 @@
                                     <div>Airports Visited</div>
                                 </div>
                                 <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex justify-between">
+                                    <div class="flex grow justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
                                                 <h3 class="text-lg my-2">
@@ -108,7 +108,7 @@
                                     <div>Location / Hub</div>
                                 </div>
                                 <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex justify-between">
+                                    <div class="flex grow justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
                                                 @if($pilot->airport)
@@ -133,7 +133,7 @@
                                     <div>Settings / Preferences</div>
                                 </div>
                                 <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex justify-between">
+                                    <div class="flex grow justify-between">
                                         <div class="grow overflow-hidden">
                                             <div class="flex w-full justify-around gap-2">
                                                 <livewire:phoenix.dashboard.components.settings-action-component :data="$data" />
