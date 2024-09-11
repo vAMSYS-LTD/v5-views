@@ -1,4 +1,4 @@
-<div>
+<div class="space-y-2">
     <livewire:global.system.system-alerts/>
     @livewire('global.system.pirep-alerts')
 
