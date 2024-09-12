@@ -1,6 +1,6 @@
 <div>
     <div class="grid lg:grid-cols-3 grid-cols-1 gap-4 mb-4">
-        <div class="card">
+        <div class="card h-full">
             <div class="card-header flex justify-between items-center">
                 <h4 class="card-title">Actions</h4>
                 <div>
@@ -69,6 +69,11 @@
                             {{ $this->invalidatePirepAction }}
                         </div>
                     </div>
+                    <div class="flex flex-col text-center">
+                        <div>
+                            {{ $this->replyNeededPirepAction }}
+                        </div>
+                    </div>
                 @endif
                 <div class="flex flex-col text-center">
                     <a class="w-full cursor-pointer btn btn-info hover:no-underline"
@@ -88,7 +93,7 @@
             </div>
 
             <div class="card w-full overflow-auto">
-                <div class="px-6 pb-6 pt-2 h-[328px]">
+                <div class="px-6 pb-6 pt-2 h-[356px]">
                     <div class="space-y-2 divide-y pb-6">
                         @foreach($notes as $note)
                             <div class="flex flex-col">
@@ -130,7 +135,7 @@
             </div>
 
             <div class="card w-full overflow-auto">
-                <div class="px-6 pb-6 pt-2 h-[328px]">
+                <div class="px-6 pb-6 pt-2 h-[356px]">
                     <div class="space-y-2 divide-y pb-6">
                         @foreach($comments as $comment)
                             <div class="flex flex-col">
@@ -142,6 +147,12 @@
                                             System
                                         @endif
                                     </div>
+                                    @if($comment->pilot_id != $this->pirep->pilot_id)
+                                        <div wire:click="deletePirepComment({{ $comment->id }})"
+                                             class="ml-2 hover:underline cursor-pointer">
+                                            Delete Comment
+                                        </div>
+                                    @endif
                                     <div>
                                         {{ $comment->created_at->format('jS M y H:i\z') }}
                                     </div>

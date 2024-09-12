@@ -3,7 +3,7 @@
         <livewire:orwell.pireps.components.pirep-staff-actions :$pirep />
     @endif
 
-    <div class="w-full">
+    <div class="w-full space-y-2">
         <livewire:orwell.pireps.components.pirep-map :$pirep/>
 
         <livewire:orwell.pireps.components.alert-component :$pirep />

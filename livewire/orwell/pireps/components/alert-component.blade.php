@@ -7,7 +7,7 @@
     </a>
     @endif
 
-    @if($pirep->status == 'failed')
+    @if($pirep->status == 'failed' && $pirep->need_reply == false)
     <div class="alert alert-warning" role="alert">
         <span class="font-bold">Pending Staff Review</span> - You do not need to take any action.
     </div>
