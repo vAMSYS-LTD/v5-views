@@ -39,6 +39,7 @@
 </head>
 
 <body>
+<script>0</script>
 <div class="flex wrapper">
 {{--    @include('components.layouts.partials.sidebar')--}}
     <div class="page-content">
@@ -53,7 +54,7 @@
 
     </div>
 </div>
-<livewire:global.socket-actions />
+{{--<livewire:global.socket-actions />--}}
 
 @include('components.layouts.partials.scripts')
 </body>
