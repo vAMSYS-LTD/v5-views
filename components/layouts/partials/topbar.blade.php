@@ -249,7 +249,7 @@
                 {{--            </a>--}}
 
                 <!-- item-->
-                <a href="{{ route('general.select') }}" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                <a href="{{ route('general.select') }}" wire:navigate class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                     <i class="ri-lock-password-line text-lg align-middle"></i>
                     <span>Select Virtual Airline</span>
                 </a>
