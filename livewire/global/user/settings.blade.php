@@ -19,6 +19,7 @@
             <div id="fill-and-justify-1" role="tabpanel" aria-labelledby="fill-and-justify-item-1" class="flex flex-col space-y-4">
                 <livewire:global.user.settings.components.general-settings-component :user="$user" />
                 <livewire:global.user.settings.components.social-settings-component :user="$user" />
+                <livewire:global.user.settings.components.two-factor-settings-component :$user />
                 <livewire:global.user.settings.components.password-settings-component :user="$user" />
             </div>
 
