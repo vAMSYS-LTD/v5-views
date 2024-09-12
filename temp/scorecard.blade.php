@@ -75,7 +75,7 @@
 </head>
 <body>
 
-<h1>v5 Migration Preparadness <br/>
+<h1>v5 Migration Preparedness <br/>
 Report Card for {{ $airlineName }}</h1>
 
 <!-- Global Summary Table -->
