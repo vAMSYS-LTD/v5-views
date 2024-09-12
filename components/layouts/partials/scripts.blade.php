@@ -21,7 +21,7 @@
 @livewire('notifications')
 @livewireScriptConfig
 <!-- App Js -->
-@vite(['resources/assets/js/app.js', 'resources/assets/js/maps.js', 'resources/assets/js/swiper.js'])
+@vite(['resources/assets/js/app.js', 'resources/assets/js/maps.js', 'resources/assets/js/swiper.js', 'resources/js/echo.js'])
 <script src="/assets/js/simplebar.js"></script>
 <script src="/assets/js/frostui.js"></script>
 <script src="/assets/js/config.js"></script>
