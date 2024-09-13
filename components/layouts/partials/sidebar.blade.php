@@ -23,7 +23,14 @@
                         <span class="menu-text"> Dashboard </span>
                     </a>
                 </li>
-
+                <li class="menu-item">
+                    <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $this->airline->identifier, 'pilotUsername' => $this->pilot->username]) }}" wire:navigate class="menu-link">
+                    <span class="menu-icon">
+                        <x-icon name="light.user-pilot"/>
+                    </span>
+                        <span class="menu-text"> Your Profile </span>
+                    </a>
+                </li>
                 <li class="menu-item">
                     <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                     <span class="menu-icon">

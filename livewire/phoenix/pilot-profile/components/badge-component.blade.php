@@ -1,27 +1,13 @@
-<div>
+<div style="{{ count($badges) > 0 ? '' : 'display: contents'}}">
     @if($badges->count() > 0)
-        <div class="panel mt-4">
-            <div class="mb-5 items-center dark:text-white-light">
-                <div class="text-lg font-semibold">{{ $badgesName }}</div>
+        <div class="card">
+            <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
+                <h4 class="card-title">{{ $badgesName }}</h4>
             </div>
-{{--            @foreach($badges->chunk(8) as $chunk)--}}
-{{--                <div class="flex justify-around">--}}
-{{--                    @foreach($chunk as $badge)--}}
-{{--                        <div class="flex flex-col text-center mb-2">--}}
-{{--                            <div>--}}
-{{--                                <img src="{{ Storage::disk('do_spaces')->url($badge->image) }}" alt="{{ $badge->name }}" class="w-full h-full object-cover" />--}}
-{{--                            </div>--}}
-{{--                            <div>--}}
-{{--                                {{ $badge->pivot->created_at->format('M j, y') }}--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
-{{--            @endforeach--}}
-
-                <div class="flex flex-wrap justify-around">
+            <div class="px-6 pb-6 pt-2 h-96 overflow-auto">
+                <div class="flex flex-wrap justify-around space-y-2">
                     @foreach($badges as $badge)
-                    <div class="text-center mb-2">
+                        <div class="text-center">
                             <div>
                                 <img src="{{ Storage::disk('do_spaces')->url($badge->image) }}" alt="{{ $badge->name }}" class="w-full h-full object-cover" />
                             </div>
@@ -31,7 +17,7 @@
                         </div>
                     @endforeach
                 </div>
-
+            </div>
         </div>
     @endif
 </div>

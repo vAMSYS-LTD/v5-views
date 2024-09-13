@@ -1,45 +1,47 @@
-<div>
-    <div class="panel p-0 mb-5" x-data="{ tab: '{{ $settings->profile_show_pireps?'pireps':'bookings' }}'}">
-        <!-- buttons -->
-        <div>
-            <ul class="flex flex-wrap mt-3 mb-5 border-b border-white-light dark:border-[#191e3a]">
-                @if($settings->profile_show_pireps)
-                    <li>
-                        <a href="javascript:"
-                           class="p-5 py-3 -mb-[1px] flex items-center hover:border-b border-transparent hover:!border-secondary hover:text-secondary"
-                           :class="{'border-b !border-secondary text-secondary' : tab === 'pireps'}"
-                           @click="tab = 'pireps'">
-                            PIREPs</a>
-                    </li>
-                @endif
-                @if($settings->profile_show_bookings)
-                    <li>
-                        <a href="javascript:"
-                           class="p-5 py-3 -mb-[1px] flex items-center hover:border-b border-transparent hover:!border-secondary hover:text-secondary"
-                           :class="{'border-b !border-secondary text-secondary' : tab === 'bookings'}"
-                           @click="tab = 'bookings'">
-                            Bookings</a>
-                    </li>
-                @endif
-            </ul>
-        </div>
+@php
+    use Carbon\Carbon;
+    use Illuminate\Support\Str;
+    $tabs = ['pirep',  'comments', 'booking',];
 
-        <!-- description -->
-        <div class="flex-1 text-sm ">
-            @if($settings->profile_show_pireps)
-                <template x-if="tab === 'pireps'">
-                    <div>
+    $tabNames = [
+        'pirep' => 'PIREPs',
+        'comments' => 'PIREP Comments',
+        'booking' => 'Bookings'
+    ];
+
+    $activeTab = 'pirep'; // Default active tab
+@endphp
+
+<div class="w-full">
+    <div data-fc-type="tab">
+        <nav class="relative z-0 flex flex-col sm:flex-row border rounded-md overflow-hidden dark:border-gray-600 tablist" aria-label="Tabs" role="tablist">
+            @foreach ($tabs as $index => $tabKey)
+                <button
+                    data-fc-target="#{{ $tabKey }}"
+                    type="button"
+                    class="fc-tab-active:border-b-primary fc-tab-active:text-gray-900 dark:fc-tab-active:text-white relative min-w-0 flex-1 bg-white first:border-l-0 border-l border-b-2 py-2 px-4 text-gray-500 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 dark:bg-gray-800 dark:border-l-gray-700 dark:border-b-gray-700 dark:hover:bg-gray-700 dark:hover:text-gray-400
+                @if($tabKey === $activeTab) active @endif"
+                    id="bar-with-underline-item-{{ $index + 1 }}"
+                    aria-controls="{{ $tabKey }}"
+                    role="tab"
+                >
+                    {{ $tabNames[$tabKey] }}
+                </button>
+            @endforeach
+        </nav>
+
+        <div class="mt-2">
+            @foreach ($tabs as $index => $tabKey)
+                <div id="{{ $tabKey }}" class="@if($tabKey !== $activeTab) hidden @endif" role="tabpanel" aria-labelledby="bar-with-underline-item-{{ $index + 1 }}">
+                    @if($tabKey == 'pirep')
                         <livewire:phoenix.pilot-profile.components.pirep-table :$profilePilotId />
-                    </div>
-                </template>
-            @endif
-            @if($settings->profile_show_bookings)
-                <template x-if="tab === 'bookings'">
-                    <div>
+                    @elseif($tabKey == 'booking')
                         <livewire:phoenix.pilot-profile.components.booking-table :$profilePilotId />
-                    </div>
-                </template>
-            @endif
+                    @elseif($tabKey == 'comments')
+                        <livewire:phoenix.pilot-profile.components.pirep-comments-table :$profilePilotId />
+                    @endif
+                </div>
+            @endforeach
         </div>
     </div>
 </div>
