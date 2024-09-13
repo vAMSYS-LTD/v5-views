@@ -17,7 +17,8 @@
 @endphp
 
 <div data-fc-type="tab">
-    <nav class="relative z-0 flex flex-col sm:flex-row border rounded-md overflow-hidden dark:border-gray-600 tablist" aria-label="Tabs" role="tablist">
+    <nav class="relative z-0 flex flex-col sm:flex-row border rounded-md overflow-hidden dark:border-gray-600 tablist"
+         aria-label="Tabs" role="tablist">
         @foreach ($tabs as $index => $tabKey)
             <button
                 data-fc-target="#{{ $tabKey }}"
@@ -35,7 +36,8 @@
 
     <div class="mt-2">
         @foreach ($tabs as $index => $tabKey)
-            <div id="{{ $tabKey }}" class="@if($tabKey !== $activeTab) hidden @endif" role="tabpanel" aria-labelledby="bar-with-underline-item-{{ $index + 1 }}">
+            <div id="{{ $tabKey }}" class="@if($tabKey !== $activeTab) hidden @endif" role="tabpanel"
+                 aria-labelledby="bar-with-underline-item-{{ $index + 1 }}">
                 <div class="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-x-4 gap-y-2">
                     <livewire:orwell.dashboard.components.partials.statistics-card
                         :title="'Pilots'"
@@ -118,3 +120,4 @@
         @endforeach
     </div>
 </div>
+
