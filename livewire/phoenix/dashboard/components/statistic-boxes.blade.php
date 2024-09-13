@@ -40,108 +40,84 @@
                 <div id="{{ $tabKey }}" class="@if($tabKey !== $activeTab) hidden @endif" role="tabpanel" aria-labelledby="bar-with-underline-item-{{ $index + 1 }}">
                     <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-x-2 gap-y-2">
                         @if($tabKey == 'other')
-                            <div class="card flex flex-col h-full">
-                                <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
-                                    <div>Your Username</div>
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Your Username
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ $pilot->username }}
+                                    </h3>
                                 </div>
-                                <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex w-full justify-around gap-2">
-                                        <h3 class="text-lg my-2">
-                                            {{ $pilot->username }}
+                                {{-- Content --}}
+                            </x-filament::section>
+
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Registration
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ fullFriendlyDateTimeYear($pilot->created_at) }}
+                                    </h3>
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Rank
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ $pilot->preferredRank->name  }}
+                                    </h3>
+                                    <img class="max-h-10 -m-2" src="{{ $pilot->preferredRank->display_image }}" alt="{{ $pilot->rank->name }}">
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Airports Visited
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ number_format($uniqueAirports)  }}
+                                    </h3>
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Location / Hub
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    @if($pilot->airport)
+                                        <h3 class="text-lg" @mouseenter="$popovers('{{ $pilot->airport->name }}')"
+                                            data-trigger="mouseenter">
+                                            {{ $pilot->airport->identifier  }}
                                         </h3>
-                                    </div>
+                                    @else
+                                        <h3 class="text-lg">
+                                            None
+                                        </h3>
+                                    @endif
+                                    <livewire:global.pilot.set-hub-action/>
                                 </div>
-                            </div>
+                                {{-- Content --}}
+                            </x-filament::section>
 
-                            <div class="card flex flex-col h-full">
-                                <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
-                                    <div>Registration</div>
+                            <x-filament::section :compact="true">
+                                <x-slot name="heading">
+                                    Settings / Preferences
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <livewire:phoenix.dashboard.components.settings-action-component :data="$data" />
                                 </div>
-                                <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex justify-between">
-                                        <div class="grow overflow-hidden">
-                                            <div class="flex w-full justify-around gap-2">
-                                                <h3 class="text-lg my-2">
-                                                    {{ fullFriendlyDateTimeYear($pilot->created_at) }}
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card flex flex-col h-full">
-                                <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
-                                    <div>Rank</div>
-                                </div>
-                                <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex grow justify-between">
-                                        <div class="grow overflow-hidden">
-                                            <div class="flex w-full justify-around gap-2">
-                                                <h3 class="text-lg my-2">
-                                                    {{ $pilot->preferredRank->name  }}
-                                                </h3>
-                                                <img class="max-h-10 mx-auto" src="{{ $pilot->preferredRank->display_image }}" alt="{{ $pilot->rank->name }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card flex flex-col h-full">
-                                <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
-                                    <div>Airports Visited</div>
-                                </div>
-                                <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex grow justify-between">
-                                        <div class="grow overflow-hidden">
-                                            <div class="flex w-full justify-around gap-2">
-                                                <h3 class="text-lg my-2">
-                                                    {{ number_format($uniqueAirports)  }}
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card flex flex-col h-full">
-                                <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
-                                    <div>Location / Hub</div>
-                                </div>
-                                <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex grow justify-between">
-                                        <div class="grow overflow-hidden">
-                                            <div class="flex w-full justify-around gap-2">
-                                                @if($pilot->airport)
-                                                    <h3 class="text-lg my-2" @mouseenter="$popovers('{{ $pilot->airport->name }}')"
-                                                        data-trigger="mouseenter">
-                                                        {{ $pilot->airport->identifier  }}
-                                                    </h3>
-                                                @else
-                                                    <h3 class="text-lg my-2">
-                                                        None
-                                                    </h3>
-                                                @endif
-                                                    <livewire:global.pilot.set-hub-action/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="card flex flex-col h-full">
-                                <div class="card-header flex justify-between items-center !border-b-0 !pb-0">
-                                    <div>Settings / Preferences</div>
-                                </div>
-                                <div class="flex-1 flex items-center justify-center px-4">
-                                    <div class="flex grow justify-between">
-                                        <div class="grow overflow-hidden">
-                                            <div class="flex w-full justify-around gap-2">
-                                                <livewire:phoenix.dashboard.components.settings-action-component :data="$data" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                {{-- Content --}}
+                            </x-filament::section>
                         @else
                             <livewire:orwell.dashboard.components.partials.statistics-card
                                 :title="'PIREPs'"
