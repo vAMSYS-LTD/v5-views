@@ -27,10 +27,10 @@
         <div class="font-semibold mt-2">
             Points: {{ $pirep->points }}
         </div>
-        @if($pirep->bonus_points)
+        @if($pirep->pirep_data->bonus_scores)
             <div class="flex flex-row justify-start mt-4">
                 <div class="my-auto font-semibold tracking-wide">
-                    @foreach($pirep->bonus_points as $score)
+                    @foreach($pirep->pirep_data->bonus_scores as $score)
                         @if($score->points > 0)
                             <div class="text-success">+ {{ $score->points }}</div>
                         @elseif($score->points == 0)
@@ -41,7 +41,7 @@
                     @endforeach
                 </div>
                 <div class="my-auto ml-4">
-                    @foreach($pirep->bonus_points as $score)
+                    @foreach($pirep->pirep_data->bonus_scores as $score)
                         <div>{{ $score->name }}</div>
                     @endforeach
                 </div>

@@ -185,7 +185,11 @@
                         <div class="col-span-1 sm:text-center">
                             <p class="text-gray-400">Credited Flight Time</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->flight_length / 3600), ($this->pirep->flight_length / 60 % 60)) }}</h5>
+                                @if($airline->include_taxi_time)
+                                    <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->block_length / 3600), ($this->pirep->block_length / 60 % 60)) }}</h5>
+                                @else
+                                    <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->flight_length / 3600), ($this->pirep->flight_length / 60 % 60)) }}</h5>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -206,7 +210,7 @@
                         <div class="col-span-1 sm:text-center">
                             <p class="text-gray-400">Block Time</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->off_blocks_time->diff($this->pirep->on_blocks_time)->format('%H:%I') }}</h5>
+                                <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->block_length / 3600), ($this->pirep->block_length / 60 % 60)) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -227,7 +231,7 @@
                         <div class="col-span-1 sm:text-center">
                             <p class="text-gray-400">Airborne Time</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->landing_time->diff($this->pirep->departure_time)->format('%H:%I') }}</h5>
+                                <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->flight_length / 3600), ($this->pirep->flight_length / 60 % 60)) }}</h5>
                             </div>
                         </div>
                     </div>
