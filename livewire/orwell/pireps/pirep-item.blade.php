@@ -11,7 +11,7 @@
         <div class="grid xl:grid-cols-3 gap-6">
             <div class="xl:col-span-2">
                 <livewire:orwell.pireps.components.pirep-data-component :$pirep />
-                @if($pirep->pegasus_log)
+                @if($pirep->log)
                     <livewire:orwell.pireps.components.data-log-component :$pirep />
                 @endif
             </div>

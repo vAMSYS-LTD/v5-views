@@ -9,7 +9,7 @@
     <div class="w-full overflow-auto">
         <div class="px-6 pb-6 pt-2 h-[328px]">
             <div class="space-y-2 pb-6">
-                @foreach($this->pirep->pegasus_log as $line)
+                @foreach($this->pirep->log as $line)
                     <div class="flex flex-row">
                         @if($line->type == "landing_report_item" || $line->type == "landing_report_title")
                             <div class="text-justify">

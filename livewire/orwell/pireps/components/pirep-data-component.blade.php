@@ -265,7 +265,8 @@
                         <div class="col-span-1">
                             <p class="text-gray-400">Company Average</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[0]->value }}</h5>
+{{--                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[0]->value }}</h5>--}}
+                                <h5 class="font-medium">TBD</h5>
                             </div>
                         </div>
                     </div>
@@ -280,7 +281,8 @@
                         <div class="col-span-1 sm:text-center">
                             <p class="text-gray-400">Company Average</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[1]->value }}</h5>
+{{--                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[1]->value }}</h5>--}}
+                                <h5 class="font-medium">TBD</h5>
                             </div>
                         </div>
                     </div>
