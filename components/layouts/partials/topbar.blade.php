@@ -54,6 +54,14 @@
             <div class="relative ms-auto">
                 <div class="alert alert-info">VA Under Trial due to end {{ $airline->trialEndsAt()->toDateString() }}</div>
             </div>
+        @elseif(isset($airline) && $airline->billable && $airline->subscription()->ends_at && isset($airlineStaff))
+            <div class="relative ms-auto">
+                <div class="alert alert-info">Your vAMSYS subscription will end on {{ $airline->subscription()->ends_at }}.</div>
+            </div>
+        @elseif(isset($airline) && $airline->billable && !$airline->hasPaymentMethod() && isset($airlineStaff))
+                <div class="relative ms-auto">
+                    <div class="alert alert-warning">Subscription has no payment method attached. VA Owner needs to address this.</div>
+                </div>
         @elseif(isset($airline) && $airline->billable && !$airline->subscribed() && isset($airlineStaff))
             <div class="relative ms-auto">
                 <div class="alert alert-warning">Subscription Missing or Overdue. VA Owner needs to address this.</div>
