@@ -17,9 +17,9 @@
                 </button>
                 <li class="menu-item">
                     <a href="{{ route('phoenix.dashboard') }}" wire:navigate class="menu-link">
-                    <span class="menu-icon">
-                        <x-icon name="light.house"/>
-                    </span>
+                        <span class="menu-icon">
+                            <x-icon name="light.house"/>
+                        </span>
                         <span class="menu-text"> Dashboard </span>
                     </a>
                 </li>

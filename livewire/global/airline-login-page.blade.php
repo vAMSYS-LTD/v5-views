@@ -61,7 +61,7 @@
                         <div>
                             <label class="flex cursor-pointer items-center">
                                 <input type="checkbox" name="remember" class="bg-white form-checkbox dark:bg-black"/>
-                                <span class="text-white-dark">Remember Me</span>
+                                <span class="text-white-dark ml-2">Remember Me</span>
                             </label>
                         </div>
 
@@ -69,6 +69,10 @@
 
                         <button wire:loading.attr="disabled" type="submit" class="btn btn-primary !mt-6 w-full border-0 uppercase shadow-[0_10px_20px_-10px_rgba(67,97,238,0.44)]"> Sign in </button>
                     </form>
+                </div>
+                <div class="mt-4 text-center dark:text-white">
+                    Don't have an account ?
+                    <a href="{{ route('general.register', ['slug' => $slug]) }}" class="transition hover:text-primary">Register</a>
                 </div>
             </div>
         </div>

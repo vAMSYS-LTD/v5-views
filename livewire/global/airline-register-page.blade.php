@@ -27,12 +27,16 @@
                         @endif
                         @if(Auth::user())
                             <div class="text-base font-bold dark:text-white">Good News! You have a vAMSYS Account already.</div>
+                            @if($rulesLink)
                             <div class="mt-4">
                                 <label class="flex cursor-pointer items-center">
                                     <input type="checkbox" name="agree" class="bg-white form-checkbox dark:bg-black"/>
-                                    <span class="dark:text-white">I have read and agree to the rules</span>
+                                    <span class="dark:text-white ml-2">
+                                        <a href="{{ $rulesLink }}" target="_blank">I have read and agree to the rules</a>
+                                    </span>
                                 </label>
                             </div>
+                            @endif
                         @else
                             <p class="text-base font-bold leading-normal dark:text-white">Enter your details to create your pilot account</p>
                             <div class="mt-4 space-y-5">
@@ -92,11 +96,16 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="flex cursor-pointer items-center">
-                                        <input type="checkbox" name="agree" required
-                                               class="bg-white form-checkbox dark:bg-black"/>
-                                        <span class="text-white-dark">I have read and agree to the rules</span>
-                                    </label>
+                                    @if($rulesLink)
+                                        <div class="mt-4">
+                                            <label class="flex cursor-pointer items-center">
+                                                <input type="checkbox" name="agree" class="bg-white form-checkbox dark:bg-black"/>
+                                                <span class="dark:text-white ml-2">
+                                        <a href="{{ $rulesLink }}" target="_blank">I have read and agree to the rules</a>
+                                    </span>
+                                            </label>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="items-center">
                                     <x-turnstile />
@@ -108,7 +117,7 @@
                     </form>
                     <div class="mt-4 text-center dark:text-white">
                         Already have an account ?
-                        <a href="{{ route('login') }}" class="transition hover:text-primary">Log In</a>
+                        <a href="{{ route('general.login', ['slug' => $slug]) }}" class="transition hover:text-primary">Log In</a>
                     </div>
                 </div>
             </div>
