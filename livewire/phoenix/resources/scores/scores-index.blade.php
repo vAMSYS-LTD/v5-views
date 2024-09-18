@@ -1,4 +1,4 @@
-<div>
+<div class="flex flex-col space-y-4">
     <div class="card">
         <div class="card-header flex justify-between items-center">
             <h4 class="card-title">General Information</h4>
