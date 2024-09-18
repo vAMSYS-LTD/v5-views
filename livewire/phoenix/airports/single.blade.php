@@ -9,7 +9,7 @@
             </div>
         </div>
     </div>
-    @if($information || $briefing || $standGroups->count() > 0 || $sceneryCount = \App\Models\Airport\Scenery::query()->whereAirlineId($this->airline->id)->whereAirportId($this->airport->id)->count() > 0)
+    @if($information || $briefing || $standGroups->count() > 0 || $showScenery)
     <div class="grid gap-4 content-start">
         @if($briefing)
             <div class="card tiptap-editor">
@@ -55,7 +55,7 @@
                     </div>
                 </div>
         @endif
-        @if($sceneryCount)
+        @if($showScenery)
             <div>
                 {{ $this->table }}
             </div>
