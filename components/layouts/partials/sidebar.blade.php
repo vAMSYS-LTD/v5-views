@@ -168,11 +168,11 @@
                             </li>
                         @endif
                         @if($acarsPage)
-                                <li class="menu-item">
-                                    <a href="{{ route('phoenix.pages.custom', ['url' => $acarsPage->url]) }}" class="menu-link" wire:navigate>
-                                        <span class="menu-text">{{ $acarsPage->title }}</span>
-                                    </a>
-                                </li>
+                            <li class="menu-item">
+                                <a href="{{ route('phoenix.pages.custom', ['url' => $acarsPage->url]) }}" class="menu-link" wire:navigate>
+                                    <span class="menu-text">{{ $acarsPage->title }}</span>
+                                </a>
+                            </li>
                         @endif
 
 
@@ -225,13 +225,6 @@
                             <li class="menu-item">
                                 <a href="{{ route('phoenix.community.badges') }}" wire:navigate class="menu-link">
                                     <span class="menu-text">{{ $airline->badge_name }}</span>
-                                </a>
-                            </li>
-                        @endif
-                        @if($acarsPage)
-                            <li class="menu-item">
-                                <a href="{{ route('phoenix.pages.custom', ['url' => $acarsPage->url]) }}" class="menu-link" wire:navigate>
-                                    <span class="menu-text">{{ $acarsPage->title }}</span>
                                 </a>
                             </li>
                         @endif
