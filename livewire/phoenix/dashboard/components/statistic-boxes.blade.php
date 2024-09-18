@@ -72,7 +72,7 @@
                                     <h3 class="text-lg">
                                         {{ $pilot->preferredRank->name  }}
                                     </h3>
-                                    <img class="max-h-10 -m-2" src="{{ $pilot->preferredRank->display_image }}" alt="{{ $pilot->rank->name }}">
+                                    <img class="max-h-10 -m-2" src="{{ $pilot->preferredRank->display_image }}" alt="{{ $pilot->preferredRank->name }}">
                                 </div>
                                 {{-- Content --}}
                             </x-filament::section>
