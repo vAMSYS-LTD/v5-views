@@ -703,13 +703,13 @@
                                     </a>
                                 </li>
                             @endif
-{{--                            @if($airlineStaff->can_see_acars_settings || $airlineStaff->vamsys_staff)--}}
-{{--                                <li class="menu-item">--}}
-{{--                                    <a href="{{ route('orwell.settings.api') }}" class="menu-link" wire:navigate>--}}
-{{--                                        <span class="menu-text">API</span>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            @endif--}}
+                            @if($airlineStaff->can_see_api_settings || $airlineStaff->vamsys_staff)
+                                <li class="menu-item">
+                                    <a href="{{ route('orwell.settings.api') }}" class="menu-link" wire:navigate>
+                                        <span class="menu-text">API</span>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                 @endif
