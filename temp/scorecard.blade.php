@@ -107,7 +107,7 @@ Report Card for {{ $airlineName }}</h1>
         You are urged to not delay any further and complete the migration steps outlined in <a href="https://docs.vamsys.dev/migration/checklist" target="_blank">Documentation.</a>
     </div>
     <div style="font: bold; text-align: center">
-        v5 is slated to launch on 24th September and if you do not complete the migration, your VA will not work as intended.
+        v5 is slated to launch on 26th September and if you do not complete the migration, your VA will not work as intended.
     </div>
 @endif
 
