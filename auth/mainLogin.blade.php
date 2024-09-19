@@ -20,6 +20,11 @@
                                     {{ $errors->first() }}
                                 </div>
                             @endif
+                            @if (session('status'))
+                                <div class="bg-success/10 text-success border border-success/20 text-sm rounded-md py-3 px-5">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
 
                             <div class="mb-6 space-y-2">
                                 <label for="emailaddress" class="font-semibold text-gray-500">Email address</label>
@@ -27,10 +32,10 @@
                             </div>
 
                             <div class="mb-6 space-y-2">
-{{--                                <div class="flex justify-between items-center mb-2">--}}
-{{--                                    <label for="password" class="font-semibold text-gray-500">Password</label>--}}
-{{--                                    <a href="auth-recoverpw.html" class="text-muted text-xs underline decoration-dashed underline-offset-4">Forgot your password?</a>--}}
-{{--                                </div>--}}
+                                <div class="flex justify-between items-center mb-2">
+                                    <label for="password" class="font-semibold text-gray-500">Password</label>
+                                    <a href="{{ route('password.request') }}" class="text-muted text-xs underline decoration-dashed underline-offset-4">Forgot your password?</a>
+                                </div>
 
                                 <div class="flex items-center">
                                     <input type="password" name="password" id="password" class="form-input rounded-e-none" placeholder="Enter your password">
@@ -51,7 +56,6 @@
                         </form>
                     </div>
                 </div>
-                <!-- end card -->
             </div>
         </div>
     </div>
