@@ -7,6 +7,9 @@
         <button data-fc-target="#bar-with-underline-2" type="button" class="fc-tab-active:border-b-primary fc-tab-active:text-gray-900 dark:fc-tab-active:text-white relative min-w-0 flex-1 bg-white first:border-l-0 border-l border-b-2 py-2 px-2 text-gray-500 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 dark:bg-gray-800 dark:border-l-gray-700 dark:border-b-gray-700 dark:hover:bg-gray-700 dark:hover:text-gray-400" id="bar-with-underline-item-2" aria-controls="bar-with-underline-2" role="tab">
             Support
         </button> <!-- button-end -->
+        <button data-fc-target="#bar-with-underline-3" type="button" class="fc-tab-active:border-b-primary fc-tab-active:text-gray-900 dark:fc-tab-active:text-white relative min-w-0 flex-1 bg-white first:border-l-0 border-l border-b-2 py-2 px-2 text-gray-500 hover:text-gray-700 text-sm font-medium text-center overflow-hidden hover:bg-gray-50 focus:z-10 dark:bg-gray-800 dark:border-l-gray-700 dark:border-b-gray-700 dark:hover:bg-gray-700 dark:hover:text-gray-400" id="bar-with-underline-item-2" aria-controls="bar-with-underline-3" role="tab">
+            JSON Data
+        </button> <!-- button-end -->
     </nav> <!-- nav-end -->
 
     <div class="mt-0 dark:mt-2">
@@ -67,6 +70,18 @@
                     <x-icon name="duotone.messages-question" class="w-4 h-4"/>
                     <span class="text-sm">Helpdesk</span>
                 </a>
+            </div>
+        </div>
+
+        <div class="card rounded-none rounded-b-md dark:rounded-md p-4 flex flex-col sm:flex-row justify-between hidden" id="bar-with-underline-3" role="tabpanel" aria-labelledby="bar-with-underline-item-3">
+            <div>
+                <h5 class="text-sm mb-1.5">Airline Statistics JSON</h5>
+                <p class="text-sm"><a href="{{ route('api.airline.statistics', ['airline' => $airline->public_key]) }}" target="_blank">Available Here</a></p>
+            </div>
+
+            <div>
+                <h5 class="text-sm mb-1.5">Flight Map and Live Flights JSON</h5>
+                <p class="text-sm">To be retired on 22nd Nov 2024. <a href="{{ route('api.airline.statistics.flight', ['airline' => $airline->public_key]) }}" target="_blank">Available Here</a></p>
             </div>
         </div>
     </div>
