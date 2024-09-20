@@ -28,29 +28,25 @@
                     @endif
                 </div>
                 @if(in_array($pirep->status, ['failed', 'accepted', 'complete', 'rejected', 'invalidated']))
-                @if($pirep->pirep_data && $pirep->landing_rate == null && $pirep->pirep_data->touchdowns)
+                @if($pirep->pirep_data && isset($pirep->pirep_data->touchdowns) && count($pirep->pirep_data->touchdowns) > 1 && !isset($pirep->pirep_data->landing_selected))
                     <div class="flex">
                         <div class=" text-xs w-full text-center">
                             Multiple touchdowns detected. Please select one which will apply and PIREP will be scored
                             against.
                         </div>
                     </div>
-                    <div class="flex">
-                        <div class="space-y-5">
-                            <div>
-                                @foreach($pirep->pirep_data->touchdowns as $touchdown)
-                                    <label class="flex items-center cursor-pointer">
-                                        <input wire:model.live="landingRate" type="radio" name="landing_rate"
-                                               value="{{ $touchdown->rate }}" class="form-radio" />
-                                        <span class="text-white-dark">{{ $touchdown->rate }} FPM. Gear: {{ $touchdown->gear }}. Pitch: {{ $touchdown->pitch }}. Roll: {{ $touchdown->roll }}. {{ $touchdown->speed }} kts.</span>
-                                    </label>
-                                @endforeach
-                            </div>
-                        </div>
+                    <div class="flex flex-col space-y-2">
+                        @foreach($pirep->pirep_data->touchdowns as $touchdown)
+                            <label class="flex items-center cursor-pointer">
+                                <input wire:model.live="landingRate" type="radio" name="landing_rate"
+                                       value="{{ $touchdown->rate }}" class="form-radio" />
+                                <span class="text-white-dark ml-2">{{ $touchdown->rate }} FPM. Gear: {{ $touchdown->gear }}. Pitch: {{ $touchdown->pitch }}. Roll: {{ $touchdown->roll }}. {{ $touchdown->speed }} kts.</span>
+                            </label>
+                        @endforeach
                     </div>
                     @if($landingRate)
                         <div class="flex flex-col text-center">
-                            <div class="w-full cursor-pointer btn btn-info-noshadow" wire:click="submitLandingRate">
+                            <div wire:click="submitLandingRate" wire:loading.attr="disabled" class="w-full cursor-pointer btn btn-info hover:no-underline">
                                 <span>Submit Landing Rate & Rescore</span>
                             </div>
                         </div>
