@@ -1,4 +1,4 @@
-<div class="card mb-4">
+<div class="card">
     <div class="card-header flex justify-between items-center">
         <h4 class="card-title">Points</h4>
     </div>
@@ -27,7 +27,7 @@
         <div class="font-semibold mt-2">
             Points: {{ $pirep->points }}
         </div>
-        @if($pirep->pirep_data->bonus_scores)
+        @if(isset($pirep->pirep_data->bonus_scores))
             <div class="flex flex-row justify-start mt-4">
                 <div class="my-auto font-semibold tracking-wide">
                     @foreach($pirep->pirep_data->bonus_scores as $score)

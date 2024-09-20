@@ -10,18 +10,24 @@
 
             <div class="px-6 pb-6 pt-2 space-y-2">
                 <div class="flex">
-                    @if($pirep->status != 'failed')
+                    @if(in_array($pirep->status, ['failed', 'accepted', 'complete', 'rejected', 'invalidated']))
+                        @if($pirep->status != 'failed')
+                            <div class=" text-xs w-full text-center">
+                                This PIREP has already been reviewed and has the status of {{ $pirep->status }}.
+                            </div>
+                        @endif
+                        @if($pirep->need_reply)
+                            <div class=" text-xs w-full text-center">
+                                PIREP is waiting for a reply from the Pilot.
+                            </div>
+                        @endif
+                    @else
                         <div class=" text-xs w-full text-center">
-                            This PIREP has already been reviewed and has the status of {{ $pirep->status }}.
-                        </div>
-                    @endif
-                    @if($pirep->need_reply)
-                        <div class=" text-xs w-full text-center">
-                            PIREP is waiting for a reply from the Pilot.
+                            This PIREP is being processed.
                         </div>
                     @endif
                 </div>
-
+                @if(in_array($pirep->status, ['failed', 'accepted', 'complete', 'rejected', 'invalidated']))
                 @if($pirep->pirep_data && $pirep->landing_rate == null && $pirep->pirep_data->touchdowns)
                     <div class="flex">
                         <div class=" text-xs w-full text-center">
@@ -75,6 +81,7 @@
                         </div>
                     </div>
                 @endif
+                @endif
                 <div class="flex flex-col text-center">
                     <a class="w-full cursor-pointer btn btn-info hover:no-underline"
                        href="{{ route('orwell.pireps.list', ['tableFilters[username_filter][username]' => $pirep->pilot->username]) }}"
@@ -116,7 +123,7 @@
                                         {{ $note->type }}
                                     </div>
                                     <div class="grow">
-                                        {{ $note->message }}
+                                        {!! nl2br($note->message) !!}
                                     </div>
                                 </div>
                             </div>

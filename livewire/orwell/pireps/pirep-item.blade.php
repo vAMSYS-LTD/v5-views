@@ -1,5 +1,5 @@
 <div>
-    @if($pirep->type == null && $pilotView == false)
+    @if($pirep->type != 'external transfer' && $pilotView == false)
         <livewire:orwell.pireps.components.pirep-staff-actions :$pirep />
     @endif
 
@@ -8,17 +8,17 @@
 
         <livewire:orwell.pireps.components.alert-component :$pirep />
 
-        <div class="grid xl:grid-cols-3 gap-6">
-            <div class="xl:col-span-2">
+        <div class="grid xl:grid-cols-3 gap-2">
+            <div class="xl:col-span-2 flex flex-col space-y-2">
                 <livewire:orwell.pireps.components.pirep-data-component :$pirep />
                 @if($pirep->log)
                     <livewire:orwell.pireps.components.data-log-component :$pirep />
                 @endif
             </div>
 
-            <div class="col-span-1">
+            <div class="col-span-1 flex flex-col space-y-2">
                 @if($pilotView)
-                    <div class="card mb-4">
+                    <div class="card">
                         <div class="card-header flex justify-between items-center">
                             <h4 class="card-title">PIREP Comments</h4>
                             <div>
@@ -56,7 +56,6 @@
                             </div>
                         </div>
                     </div>
-
                 @endif
                 <livewire:orwell.pireps.components.point-component :$pirep />
                 <livewire:orwell.pireps.components.route-component :$pirep />

@@ -1,5 +1,5 @@
-<div>
-    <div class="card mb-4">
+<div class="flex flex-col space-y-2">
+    <div class="card">
         <div class="card-header flex justify-between items-center">
             <h4 class="card-title">PIREP #{{ $this->pirep->id }} Details</h4>
             <div>
@@ -138,7 +138,7 @@
         </div>
     </div>
     @if($pirep->pirep_data)
-        <div class="card mb-4">
+        <div class="card">
             <div class="card-header flex justify-between items-center">
                 <h4 class="card-title">Flight Details</h4>
                 <div>

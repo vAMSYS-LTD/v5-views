@@ -1,4 +1,4 @@
-<div class="card mb-4">
+<div class="card">
     <div class="card-header flex justify-between items-center">
         <h4 class="card-title">Route</h4>
         <div>
