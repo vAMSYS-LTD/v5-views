@@ -270,7 +270,7 @@
                             <p class="text-gray-400">Company Average</p>
                             <div class="gap-3">
 {{--                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[0]->value }}</h5>--}}
-                                <h5 class="font-medium">TBD</h5>
+                                <h5 class="font-medium">{{ sprintf('%02d:%02d:%02d', ($this->taxiOutAvg / 3600 ), ($this->taxiOutAvg / 60 % 60), $this->taxiOutAvg % 60) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
                             <p class="text-gray-400">Company Average</p>
                             <div class="gap-3">
 {{--                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[1]->value }}</h5>--}}
-                                <h5 class="font-medium">TBD</h5>
+                                <h5 class="font-medium">{{ sprintf('%02d:%02d:%02d', ($this->taxiInAvg / 3600 ), ($this->taxiInAvg / 60 % 60), $this->taxiInAvg % 60) }}</h5>
                             </div>
                         </div>
                     </div>
