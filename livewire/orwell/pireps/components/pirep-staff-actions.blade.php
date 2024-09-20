@@ -166,7 +166,7 @@
                                 </div>
                                 <div class="flex">
                                     <div class="grow">
-                                        {{ $comment->comment }}
+                                        {!! nl2br($comment->comment) !!}
                                     </div>
                                 </div>
                             </div>
