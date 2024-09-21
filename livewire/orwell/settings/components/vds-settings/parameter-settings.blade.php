@@ -1,4 +1,4 @@
-<div>
+<div class="flex flex-col space-y-4">
     @if($hasProtected)
         <div class="large-alert alert-info">
             <span class="ltr:pr-2 rtl:pl-2">
