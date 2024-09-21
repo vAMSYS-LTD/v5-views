@@ -186,6 +186,7 @@
 
                 <div class="px-6 py-2 space-y-2">
                     <div class="grid sm:grid-cols-3 gap-3">
+                        @if(!$this->airline->disable_stands)
                         <div class="col-span-1">
                             <p class="text-gray-400">Departure Stand</p>
                             <div class="gap-3 mt-1">
@@ -194,12 +195,20 @@
                                 </h5>
                             </div>
                         </div>
+                            <a href="{{ route('phoenix.resources.airport', ['airport' => $this->booking->route->departure_id]) }}"
+                               class="col-span-2" target="_blank">
+                                <div class="my-auto btn btn-sm btn-info-outline w-full">
+                                    {{ $this->booking->route->departureAirportAll->identifier.' Information' }}
+                                </div>
+                            </a>
+                        @else
                         <a href="{{ route('phoenix.resources.airport', ['airport' => $this->booking->route->departure_id]) }}"
-                           class="col-span-2" target="_blank">
+                           class="col-span-3" target="_blank">
                             <div class="my-auto btn btn-sm btn-info-outline w-full">
                                 {{ $this->booking->route->departureAirportAll->identifier.' Information' }}
                             </div>
                         </a>
+                        @endif
                     </div>
                     <div class="grid sm:grid-cols-1 gap-3">
                         <div class="col-span-1">
@@ -227,20 +236,29 @@
 
                 <div class="px-6 py-2 space-y-2">
                     <div class="grid sm:grid-cols-3 gap-3">
+                        @if(!$this->airline->disable_stands)
                         <div class="col-span-1">
-                            <p class="text-gray-400">Departure Stand</p>
+                            <p class="text-gray-400">Arrival Stand</p>
                             <div class="gap-3 mt-1">
                                 <h5 class="font-medium">
                                     {{ $this->booking->arrivalStand?->name ?? 'Any' }}
                                 </h5>
                             </div>
                         </div>
+                            <a href="{{ route('phoenix.resources.airport', ['airport' => $this->booking->route->arrival_id]) }}"
+                               class="col-span-2" target="_blank">
+                                <div class="my-auto btn btn-sm btn-info-outline w-full">
+                                    {{ $this->booking->route->arrivalAirportAll->identifier.' Information' }}
+                                </div>
+                            </a>
+                        @else
                         <a href="{{ route('phoenix.resources.airport', ['airport' => $this->booking->route->arrival_id]) }}"
-                           class="col-span-2" target="_blank">
+                           class="col-span-3" target="_blank">
                             <div class="my-auto btn btn-sm btn-info-outline w-full">
                                 {{ $this->booking->route->arrivalAirportAll->identifier.' Information' }}
                             </div>
                         </a>
+                            @endif
                     </div>
                     <div class="grid sm:grid-cols-1 gap-3">
                         <div class="col-span-1">
