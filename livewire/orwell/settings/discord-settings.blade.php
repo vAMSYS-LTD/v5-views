@@ -1,49 +1,48 @@
-<div>
-    <div>
-        <div class="card">
-            <div class="flex items-center justify-between py-2 dark:text-white-light">
-                <h5 class="font-semibold text-md">What is vAMSYS Discord Bot and what does it do?</h5>
-            </div>
-            WIP
+<div class="flex flex-col space-y-4">
+    <div class="card">
+        <div class="card-header flex justify-between items-center">
+            <h4 class="card-title">What is vAMSYS Discord Bot and what does it do?</h4>
+        </div>
+        <div class="px-6 py-2 space-y-2">
+            Work In Progress; Documentation to follow soon.
         </div>
     </div>
+
+    <x-alerts.danger title="Not Ready For Use" content="You are welcome to invite the Discord Bot to your server - but it is too early to start using it for role assignment. You can, however, set up notifications - they will not work fully until after v5 launch."/>
+
+
     @if(!$this->botPresent)
-        <div class="mt-4">
-            <div class="card">
-                <div class="flex items-center justify-between py-2 dark:text-white-light">
-                    <h5 class="font-semibold text-md">Inviting vAMSYS Bot to your Discord Server</h5>
-                </div>
-                <div>
-                    For our Discord functionality to work, your Discord server must have vAMSYS Robot.
-                </div>
-                <div>
-                    It is a privileged user and should have access to your channels.
-                </div>
-                <div class="flex flex-row space-x-4 mt-4">
-                    <div class="flex-1">
+        <div class="card">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">Inviting vAMSYS Bot to your Discord Server</h4>
+            </div>
+            <div class="px-6 py-2 space-y-2">
+                <div class="grid md:grid-cols-3 gap-2">
+                    <div class="flex flex-col h-full justify-between">
                         <h5 class="font-bold mb-2">Step 1</h5>
                         <div>
-                            Add our Bot to your Discord Server
+                            Add our Bot to your Discord Server. Should be done by Discord Owner.
                         </div>
                         <div class="">
-                            <a href="https://discord.com/api/oauth2/authorize?client_id=257495037619863552&permissions=8&scope=bot" target="_blank" class="btn btn-primary mt-2 w-full"><i class="fab fa-discord mr-2"></i> Invite Bot</a>
+                            <a href="https://discord.com/api/oauth2/authorize?client_id=1284445849878921277&permissions=8&scope=bot" target="_blank" class="btn btn-primary mt-2 w-full"><i class="fab fa-discord mr-2"></i> Invite Bot</a>
                         </div>
                     </div>
-                    <div class="flex-1">
+
+                    <div class="flex flex-col h-full justify-between">
                         <h5 class="font-bold mb-2">Step 2</h5>
                         <div>
-                            In one of your Discod Channels type this command:
+                            In any Discord Channel, invoke <span class="border border-2 p-1">/setup</span> command and enter this token:
                         </div>
                         <div class="mt-2 relative flex items-center border p-2 rounded text-dark bg-dark-light border-dark dark:bg-dark-dark-light dark:text-white-light dark:border-white-light/20">
-                        <span class="ltr:pr-2 rtl:pl-2">
-                            /setup {{ $settings->setup_token }}
-                        </span>
+                            <span class="ltr:pr-2 rtl:pl-2">
+                                {{ $settings->setup_token }}
+                            </span>
                         </div>
                     </div>
-                    <div class="flex-1">
+                    <div class="flex flex-col h-full justify-between">
                         <h5 class="font-bold mb-2">Step 3</h5>
                         <div>
-                            Click this button to check connection
+                            Click this button to check connection.
                         </div>
                         <div class="">
                             <button wire:click="verifyConnection(true)" type="button" class="btn btn-primary mt-2 w-full">Check Connection</button>
@@ -54,12 +53,14 @@
         </div>
     @else
         <button type="submit" wire:loading.attr="disabled" wire:click="verifyConnection(true)" class="mt-4 btn btn-primary w-full">
-            Refresh Channels
+            Refresh Channels & Roles
         </button>
     @endif
 
-    <form wire:submit="create" class="card mt-4">
+    <form wire:submit="create">
+
         {{ $this->form }}
+
 
         <button wire:loading.attr="disabled"  type="submit" class="mt-4 btn btn-success w-full">
             Save
