@@ -32,12 +32,12 @@
                             @else
                                 <div class="mb-6 space-y-2">
                                     <label for="first_name" class="font-semibold text-gray-500">First Name</label>
-                                    <input class="form-input" type="email" id="first_name" name="first_name" required="" placeholder="Enter your First Name">
+                                    <input class="form-input" type="text" id="first_name" name="first_name" required="" placeholder="Enter your First Name">
                                 </div>
 
                                 <div class="mb-6 space-y-2">
                                     <label for="last_name" class="font-semibold text-gray-500">Last Name</label>
-                                    <input class="form-input" type="email" id="first_name" name="last_name" required="" placeholder="Enter your Last Name">
+                                    <input class="form-input" type="text" id="first_name" name="last_name" required="" placeholder="Enter your Last Name">
                                 </div>
 
                                 <div class="mb-6 space-y-2">
