@@ -1,6 +1,15 @@
 <div>
 {{--    <script defer src="/assets/js/apexcharts.js"></script>--}}
     <div class="flex flex-col space-y-2">
+
+        @if($migration)
+            @if(!$migration->summary->week1_complete && !$migration->summary->week2_complete && !$migration->summary->week3_complete && !$migration->summary->week4_complete)
+                <a href="https://docs.vamsys.dev/migration/checklist" target="_blank">
+                    <x-alerts.danger class="mb-4" title="You have not completed v5 Migration" content="As announced and displayed on your Orwell dashboard since 26th August, v5 vAMSYS launched on the 26th September and v3 is no longer accessible. You can still set up your VA for V5 by following this guide."/>
+                </a>
+            @endunless
+        @endif
+
         <livewire:orwell.dashboard.components.statistic-boxes />
 
         {{--        <div class="grid gap-4 mb-4 xl:grid-cols-1"> --}}
