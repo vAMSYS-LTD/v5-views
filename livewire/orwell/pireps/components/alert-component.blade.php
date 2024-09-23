@@ -15,7 +15,7 @@
 
     @if($pirep->need_reply)
     <div class="alert alert-error" role="alert">
-        <span class="font-bold">Reply Required</span> - Please check PIREP Comments - your reply is required.
+        <span class="font-bold">Reply Required</span> - Please check PIREP AutoReject reasons - your reply is required.
     </div>
     @endif
 </div>

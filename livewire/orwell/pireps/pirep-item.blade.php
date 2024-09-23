@@ -17,12 +17,19 @@
             </div>
 
             <div class="col-span-1 flex flex-col space-y-2">
+                @if(isset($pirep->pirep_data->autoreject))
+                    <livewire:orwell.pireps.components.reject-component :$pirep />
+                @endif
                 @if($pilotView)
                     <div class="card">
                         <div class="card-header flex justify-between items-center">
                             <h4 class="card-title">PIREP Comments</h4>
                             <div>
-                                {{ $this->addCommentAction }}
+                                @if(isset($pirep->pirep_data->autoreject) && isset($pirep->pirep_data->diversions) && collect($pirep->pirep_data->autoreject)->where('diversion', '=', true)->count() > 0)
+                                    {{ $this->addDiversionAction }}
+                                @else
+                                    {{ $this->addCommentAction }}
+                                @endif
                             </div>
                         </div>
 
@@ -47,7 +54,7 @@
                                             </div>
                                             <div class="flex">
                                                 <div class="grow">
-                                                    {{ $comment->comment }}
+                                                    {!! nl2br($comment->comment) !!}
                                                 </div>
                                             </div>
                                         </div>
