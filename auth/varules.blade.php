@@ -1,4 +1,5 @@
 <div class="grid grid-cols-12 gap-4">
+    @if(isset($page->content) && is_array($page->content))
     @foreach($page->content as $panel)
         @php
             $ranks = $panel['data']['ranks'] ?? null;
@@ -59,4 +60,5 @@
         @endif
 
     @endforeach
+    @endif
 </div>
