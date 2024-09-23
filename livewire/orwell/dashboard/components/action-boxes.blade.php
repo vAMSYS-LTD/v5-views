@@ -22,7 +22,7 @@ transferReview: {{ $transferReview }} }"
                 @endif
 
                 @if($pirepReview > 0)
-                    <a href="{{ route('orwell.pireps.review') }}" class="w-full cursor-pointer btn btn-warning relative inline-flex"><span>PIREP Review</span>
+                    <a href="{{ route('orwell.pireps.review') }}" wire:navigate class="w-full cursor-pointer btn btn-warning relative inline-flex"><span>PIREP Review</span>
                         <span class="absolute top-0 end-0 inline-flex items-center py-0.5 px-1.5 rounded-full text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-rose-500 text-white">
                            {{ $pirepReview }}
                         </span>
@@ -33,13 +33,14 @@ transferReview: {{ $transferReview }} }"
 
                 @if($this->airline->enable_claims_system)
                     @if($claimReview > 0)
-                        <a class="w-full cursor-pointer btn btn-warning relative inline-flex"><span>Claim Review</span>
+                        <a href="{{ route('orwell.claims.list') }}" wire:navigate class="w-full cursor-pointer btn btn-warning relative inline-flex">
+                            <span>Claim Review</span>
                             <span class="absolute top-0 end-0 inline-flex items-center py-0.5 px-1.5 rounded-full text-xs font-medium transform -translate-y-1/2 translate-x-1/2 bg-rose-500 text-white">
                                {{ $claimReview }}
                             </span>
                         </a>
                     @else
-                        <a class="w-full cursor-pointer btn btn-success"><span>Claim Review</span>
+                            <a href="{{ route('orwell.claims.list') }}" wire:navigate class="w-full cursor-pointer btn btn-success"><span>Claim Review</span>
                         </a>
                     @endif
                 @endif
