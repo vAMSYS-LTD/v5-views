@@ -541,10 +541,9 @@
                             @endif
                             @if($airlineStaff->can_see_livery_review || $airlineStaff->vamsys_staff)
                                 <li class="menu-item">
-                                    {{-- TODO [Launch] Enable Link --}}
-{{--                                    <a href="{{ route('orwell.pireps.liveryReview') }}" class="menu-link" wire:navigate>--}}
+                                    <a href="{{ route('orwell.pireps.liveryReview') }}" class="menu-link" wire:navigate>
                                         <span class="menu-text">Livery Review</span>
-{{--                                    </a>--}}
+                                    </a>
                                 </li>
                             @endif
                             @if($airlineStaff->can_see_livery_table || $airlineStaff->vamsys_staff)
@@ -556,10 +555,9 @@
                             @endif
                             @if($airlineStaff->can_see_pirep_review || $airlineStaff->vamsys_staff)
                                 <li class="menu-item">
-                                    {{-- TODO [Launch] Enable Link --}}
-{{--                                    <a href="{{ route('orwell.pireps.liveryReview') }}" class="menu-link" wire:navigate>--}}
+                                    <a href="{{ route('orwell.pireps.liveryReview') }}" class="menu-link" wire:navigate>
                                         <span class="menu-text">PIREP Review</span>
-{{--                                    </a>--}}
+                                    </a>
                                 </li>
                             @endif
                             @if($airlineStaff->can_see_pirep_table || $airlineStaff->vamsys_staff)
@@ -661,13 +659,13 @@
                                     </a>
                                 </li>
                             @endif
-{{--                            @if($airlineStaff->can_see_score_settings || $airlineStaff->vamsys_staff)--}}
-{{--                                <li class="menu-item">--}}
-{{--                                    <a href="{{ route('orwell.settings.pirep-reject') }}" class="menu-link" wire:navigate>--}}
-{{--                                        <span class="menu-text">AutoReject</span>--}}
-{{--                                    </a>--}}
-{{--                                </li>--}}
-{{--                            @endif--}}
+                            @if($airlineStaff->can_see_score_settings || $airlineStaff->vamsys_staff)
+                                <li class="menu-item">
+                                    <a href="{{ route('orwell.settings.pirep-reject') }}" class="menu-link" wire:navigate>
+                                        <span class="menu-text">AutoReject</span>
+                                    </a>
+                                </li>
+                            @endif
                             @if($airlineStaff->can_see_acars_settings || $airlineStaff->vamsys_staff)
                                 <li class="menu-item">
                                     <a href="{{ route('orwell.settings.acars') }}" class="menu-link" wire:navigate>

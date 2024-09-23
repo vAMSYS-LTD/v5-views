@@ -5,9 +5,13 @@
         @if($migration)
             @if(!$migration->summary->week1_complete && !$migration->summary->week2_complete && !$migration->summary->week3_complete && !$migration->summary->week4_complete)
                 <a href="https://docs.vamsys.dev/migration/checklist" target="_blank">
-                    <x-alerts.danger class="mb-4" title="You have not completed v5 Migration" content="As announced and displayed on your Orwell dashboard since 26th August, v5 vAMSYS launched on the 26th September and v3 is no longer accessible. You can still set up your VA for V5 by following this guide."/>
+                    <x-alerts.danger class="mb-4" title="You have not completed v5 Migration" content="As announced and displayed on your Orwell dashboard since 26th August, v5 vAMSYS launched on the 26th September and V3 is no longer accessible. You can see which areas of the set up are outstanding for your VA here, and continue the V5 migration by following this guide."/>
                 </a>
-            @endunless
+            @elseif(!$migration->summary->week1_complete || !$migration->summary->week2_complete || !$migration->summary->week3_complete || !$migration->summary->week4_complete)
+                <a href="{{ route('migration-scorecard', ['slug' => $this->airline->identifier]) }}" target="_blank">
+                    <x-alerts.danger class="mb-4" title="v5 Migration Partially Completed" content="As announced and displayed on your Orwell dashboard since 26th August, v5 vAMSYS launched on the 26th September and V3 is no longer accessible. You can see which areas of the set up are outstanding for your VA here."/>
+                </a>
+            @endif
         @endif
 
         <livewire:orwell.dashboard.components.statistic-boxes />
