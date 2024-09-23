@@ -62,7 +62,7 @@
                                      @mouseenter="$popovers('{{ $firstBooking->route->arrivalAirportAll->name }}')"
                                      data-trigger="mouseenter">
                                     @if($firstBooking->departure_stand_id)
-                                        {{ $firstBooking->route->arrivalAirportAll->icao }} - {{ $firstBooking->arrivalStand->name }}
+                                        {{ $firstBooking->route->arrivalAirportAll->icao }} - {{ $firstBooking->arrivalStand?->name }}
                                     @else
                                         {{ $firstBooking->route->arrivalAirportAll->icao }}
                                     @endif
