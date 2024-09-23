@@ -5,7 +5,7 @@
 
     <div class="px-6 py-2 space-y-2">
         <div class="flex flex-row justify-start">
-            @if($pirep->pirep_data)
+            @if(isset($pirep->pirep_data->scores))
                 <div class="my-auto text-base font-semibold tracking-wide">
                     @foreach($pirep->pirep_data->scores as $score)
                         @if($score->points > 0)
