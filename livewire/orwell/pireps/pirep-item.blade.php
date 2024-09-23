@@ -25,7 +25,7 @@
                         <div class="card-header flex justify-between items-center">
                             <h4 class="card-title">PIREP Comments</h4>
                             <div>
-                                @if(isset($pirep->pirep_data->autoreject) && isset($pirep->pirep_data->diversions) && collect($pirep->pirep_data->autoreject)->where('diversion', '=', true)->count() > 0)
+                                @if(isset($pirep->pirep_data->autoreject) && isset($pirep->pirep_data->diversions) && collect($pirep->pirep_data->autoreject)->where('diversion', '=', true)->count() > 0  && !isset($pirep->pirep_data->diversion_handled))
                                     {{ $this->addDiversionAction }}
                                 @else
                                     {{ $this->addCommentAction }}

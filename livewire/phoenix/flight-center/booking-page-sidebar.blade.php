@@ -38,6 +38,9 @@
                     Make Additional Booking
                 </div>
             </a>
+            @if($this->booking->simbrief_ofp_id == null)
+                {{ $this->simbriefAction }}
+            @endif
 
             <div wire:loading.attr="disabled" wire:click="mountAction('simbriefImport')"
                  class="btn btn-sm btn-info-outline w-full cursor-pointer">
@@ -59,7 +62,9 @@
             @endif
 
             {{ $this->cancelBookingAction }}
-            {{ $this->cancelAndRebookAction }}
+            @if($this->booking->redispatchable)
+                {{ $this->cancelAndRebookAction }}
+            @endif
         </div>
     </div>
     @if($ofpData)
@@ -85,5 +90,20 @@
             </div>
         </div>
     @endif
+    @include('livewire.phoenix.flight-center.components.sbapiform')
+
     <x-filament-actions::modals />
 </div>
+@push('scripts')
+    <script src="/assets/simbrief/simbrief.js"></script>
+    @script
+    <script>
+        $wire.on('send_to_sb', (event) => {
+            let bookingId = event.bookingId;
+            simbriefsubmit('/phoenix/flight-center/booking/' + bookingId);
+        });
+    </script>
+    @endscript
+@endpush
+
+
