@@ -152,13 +152,17 @@
                         <div class="col-span-1 mb-2">
                             <p class="text-gray-400">Route Departure</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->booking->route->departure_time?$this->pirep->booking->route->departure_time->format('H:i'):$this->pirep->booking->departure_time->format('H:i') }}</h5>
+                                @if($this->pirep->booking->route->departure_time || $this->pirep->booking->departure_time)
+                                    <h5 class="font-medium">{{ $this->pirep->booking->route->departure_time?$this->pirep->booking->route->departure_time->format('H:i'):$this->pirep->booking->departure_time->format('H:i') }}</h5>
+                                @endif
                             </div>
                         </div>
                         <div class="col-span-1 mb-2">
                             <p class="text-gray-400">Route Arrival</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->booking->route->arrival_time?$this->pirep->booking->route->departure_time->format('H:i'):$this->pirep->booking->arrival_time->format('H:i') }}</h5>
+                                @if($this->pirep->booking->route->arrival_time || $this->pirep->booking->arrival_time)
+                                    <h5 class="font-medium">{{ $this->pirep->booking->route->arrival_time?$this->pirep->booking->route->departure_time->format('H:i'):$this->pirep->booking->arrival_time->format('H:i') }}</h5>
+                                @endif
                             </div>
                         </div>
                         <div class="col-span-1">
@@ -173,13 +177,13 @@
                         <div class="col-span-1 sm:text-center mb-2">
                             <p class="text-gray-400">Booked Departure</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->booking->departure_time->format('H:i') }}</h5>
+                                <h5 class="font-medium">{{ $this->pirep->booking->departure_time?->format('H:i') }}</h5>
                             </div>
                         </div>
                         <div class="col-span-1 sm:text-center mb-2">
                             <p class="text-gray-400">Booked Arrival</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->booking->arrival_time->format('H:i') }}</h5>
+                                <h5 class="font-medium">{{ $this->pirep->booking->arrival_time?->format('H:i') }}</h5>
                             </div>
                         </div>
                         <div class="col-span-1 sm:text-center">
