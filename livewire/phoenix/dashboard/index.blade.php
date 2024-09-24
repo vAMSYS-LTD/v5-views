@@ -1,5 +1,12 @@
 <div class="space-y-2">
     <livewire:global.system.system-alerts/>
+
+    @if($this->pilot->under_activity_grace)
+        <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $pilot->airline->identifier, 'pilotUsername' => $pilot->username]) }}">
+            <x-alerts.danger class="mb-4" title="Not Meeting Activity Requirements" content="Your Pilot Account does not meet our activity requirements. Please check Your Profile for details."/>
+        </a>
+    @endif
+
     @livewire('global.system.pirep-alerts')
 
     @foreach($layout as $row)

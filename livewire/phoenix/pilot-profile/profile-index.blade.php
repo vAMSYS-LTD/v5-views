@@ -6,6 +6,9 @@
     <div class="grid grid-cols-5 gap-4">
         <div class="flex flex-col space-y-4 col-span-4">
             <livewire:phoenix.pilot-profile.components.stats-component :$profilePilotId />
+            @if(isset($this->airline->activitySettings) && $this->airline->activitySettings->enable_activity)
+                <livewire:phoenix.pilot-profile.components.activity-component :$profilePilotId />
+            @endif
 {{--            <livewire:phoenix.dashboard.components.statistic-boxes :$profilePilotId componentWidth="w-full" select-tab="allTime"/>--}}
             <livewire:phoenix.pilot-profile.components.pirep-and-booking-component :$profilePilotId />
         </div>
