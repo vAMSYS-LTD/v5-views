@@ -64,7 +64,7 @@
                                                                     @foreach($rule->rules['thresholds'] as $threshold)
                                                                         <tr>
                                                                             <td>{{ $threshold['name'] }}</td>
-                                                                            <td>{{ abs($threshold['lightest']) == 9999 ?'-∞':$threshold['lightest'] }}</td>
+                                                                            <td>{{ abs($threshold['lightest']) == 9999 ?'- ∞':$threshold['lightest'] }}</td>
                                                                             <td>{{ abs($threshold['heaviest']) == 9999 ?'∞':$threshold['heaviest']  }}</td>
                                                                             <td class="text-right">{{ $threshold['points'] }}</td>
                                                                         </tr>
