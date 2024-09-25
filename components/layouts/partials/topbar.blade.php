@@ -49,6 +49,10 @@
         </div>
     @endif
 
+        <div class="relative ms-auto">
+            <div class="alert alert-secondary"><strong>Welcome to v5</strong> please note that PIREPs are still being updated.</div>
+        </div>
+
     @if(!Request::routeIs('general.select') && !Request::routeIs('aeolus*'))
         @if(isset($airline) && $airline->onTrial())
             <div class="relative ms-auto">
