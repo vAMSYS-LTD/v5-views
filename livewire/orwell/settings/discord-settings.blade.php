@@ -1,15 +1,13 @@
 <div class="flex flex-col space-y-4">
     <div class="card">
-        <div class="card-header flex justify-between items-center">
-            <h4 class="card-title">What is vAMSYS Discord Bot and what does it do?</h4>
-        </div>
-        <div class="px-6 py-2 space-y-2">
-            Work In Progress; Documentation to follow soon.
-        </div>
+        <a href="https://docs.vamsys.dev/settings/discord" target="_blank">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">What is vAMSYS Discord Bot and what does it do? Click me to find out</h4>
+            </div>
+        </a>
     </div>
 
-    <x-alerts.danger title="Not Ready For Use" content="You are welcome to invite the Discord Bot to your server - but it is too early to start using it for role assignment. You can, however, set up notifications - they will not work fully until after v5 launch."/>
-
+{{--    <x-alerts.danger title="Not Ready For Use" content="You are welcome to invite the Discord Bot to your server - but it is too early to start using it for role assignment. You can, however, set up notifications - they will not work fully until after v5 launch."/>--}}
 
     @if(!$this->botPresent)
         <div class="card">
