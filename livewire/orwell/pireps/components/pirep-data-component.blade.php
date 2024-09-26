@@ -189,11 +189,7 @@
                         <div class="col-span-1 sm:text-center">
                             <p class="text-gray-400">Credited Flight Time</p>
                             <div class="gap-3">
-                                @if($airline->include_taxi_time)
-                                    <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->block_length / 3600), ($this->pirep->block_length / 60 % 60)) }}</h5>
-                                @else
-                                    <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->flight_length / 3600), ($this->pirep->flight_length / 60 % 60)) }}</h5>
-                                @endif
+                                <h5 class="font-medium">{{ sprintf('%02d:%02d', ($this->pirep->credited_time / 3600), ($this->pirep->credited_time / 60 % 60)) }}</h5>
                             </div>
                         </div>
                     </div>
