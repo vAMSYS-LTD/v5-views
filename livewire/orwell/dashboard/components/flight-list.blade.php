@@ -48,8 +48,7 @@
                                     class="@if($selectedFlight == $flight->bookingId) font-bold @endif">
                                     <td class=""
                                         @mouseenter="$popovers('{{ $flight->pilot->username }} - {{ $flight->pilot->rank->name }}')"
-                                        data-trigger="mouseenter">{{ $flight->user->name }}
-                                        , {{ $flight->pilot->rank->abbreviation }}</td>
+                                        data-trigger="mouseenter">{{ $flight->user->name }}, {{ $flight->pilot->rank->abbreviation }}</td>
                                     <td class="hidden  sm:table-cell"
                                         @mouseenter="$popovers('{{ $flight->booking->flightNumber }}')"
                                         data-trigger="mouseenter">{{ $flight->booking->callsign }}
@@ -62,8 +61,7 @@
                                         @mouseenter="$popovers('{{ addslashes($flight->arrivalAirport->name) }}')"
                                         data-trigger="mouseenter">{{ $flight->arrivalAirport->icao?:$flight->arrivalAirport->iata }}
                                     </td>
-                                    <td class="hidden xl:table-cell">{{ $flight->aircraft->name }}
-                                        - {{ $flight->aircraft->registration }}</td>
+                                    <td class="hidden xl:table-cell">{{ $flight->aircraft->name }} - {{ $flight->aircraft->registration }}</td>
                                     @if($flight->phase < 4)
                                         <td class="hidden lg:table-cell"
                                             @mouseenter="$popovers('Scheduled Departure Time')" data-trigger="mouseenter">
