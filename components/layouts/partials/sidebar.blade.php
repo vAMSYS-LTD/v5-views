@@ -555,7 +555,7 @@
                             @endif
                             @if($airlineStaff->can_see_pirep_review || $airlineStaff->vamsys_staff)
                                 <li class="menu-item">
-                                    <a href="{{ route('orwell.pireps.liveryReview') }}" class="menu-link" wire:navigate>
+                                    <a href="{{ route('orwell.pireps.review') }}" class="menu-link" wire:navigate>
                                         <span class="menu-text">PIREP Review</span>
                                     </a>
                                 </li>
