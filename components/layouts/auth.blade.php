@@ -11,7 +11,7 @@
             window.dispatchEvent(new CustomEvent('theme-changed')); // Dispatch event when darkMode changes
         });
       ">
-
+<script defer data-domain="vamsys.io" src="https://plausible.vamsys.dev/js/script.js"></script>
 <head>
     <meta charset='utf-8' />
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
