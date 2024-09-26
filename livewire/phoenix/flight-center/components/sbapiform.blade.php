@@ -135,7 +135,7 @@
     <input type="hidden" name="route" value="{{ $data['route'] }}">
     <input type="hidden" name="find_sidstar" value="R">
 
-    <input type="hidden" name="altn_count" value="4">
+{{--    <input type="hidden" name="altn_count" value="4">--}}
     {{--            <input type="hidden" name="toaltn" value="AUTO">--}}
     {{--            <input type="hidden" name="eualtn" value="AUTO">--}}
 
