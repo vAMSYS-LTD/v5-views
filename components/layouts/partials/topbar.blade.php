@@ -50,7 +50,7 @@
     @endif
 
         <div class="relative ms-auto">
-            <div class="alert alert-secondary"><strong>Welcome to v5</strong> please note that PIREPs are still being updated.</div>
+            <div class="alert alert-secondary"><strong>Welcome to v5</strong> Please note that Statistics and PIREPs prior to September are still being updated.</div>
         </div>
 
     @if(!Request::routeIs('general.select') && !Request::routeIs('aeolus*'))
