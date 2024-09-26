@@ -114,6 +114,7 @@
                 <h4 class="card-title">Event {{ \Illuminate\Support\Str::plural('Route', $eventRoutes->count()) }}</h4>
             @endif
         </div>
+     
         <div class="px-6 py-2 space-y-2">
             <div class="grid sm:grid-cols-2 gap-2">
                 @if($event->type == 1 && $eventAirports)
@@ -122,7 +123,7 @@
 
                         <div class="flex flex-col justify-end">
                             @foreach($eventAirports as $airport)
-                                @if(in_array($airport->id, $arrivals))
+                                @if(in_array($airport->id, $departures))
                                     <div class="flex justify-start">
                                         <x-dynamic-component class="h-5 w-5 ml-2 my-auto"
                                                              component="flag-country-{{ strtolower($airport->worldAirport->country->code) }}" />
