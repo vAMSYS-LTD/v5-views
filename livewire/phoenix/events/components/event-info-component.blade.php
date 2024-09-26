@@ -113,8 +113,14 @@
             @if($eventRoutes)
                 <h4 class="card-title">Event {{ \Illuminate\Support\Str::plural('Route', $eventRoutes->count()) }}</h4>
             @endif
+            @if($legsAirport)
+                <h4 class="card-title">Tour {{ \Illuminate\Support\Str::plural('Airport', $legsAirport->count()) }}</h4>
+            @endif
+            @if($legsRoute)
+                <h4 class="card-title">Tour {{ \Illuminate\Support\Str::plural('Route', $legsRoute->count()) }}</h4>
+            @endif
         </div>
-     
+
         <div class="px-6 py-2 space-y-2">
             <div class="grid sm:grid-cols-2 gap-2">
                 @if($event->type == 1 && $eventAirports)
@@ -236,6 +242,48 @@
                         @endif
                     @endforeach
                 @endif
+
+                @if($event->type == 1 && $legsRoute)
+                        @foreach($legsRoute as $leg)
+                            <div class="col-span-2">
+                                <p class="text-gray-400">Leg</p>
+                                <div class="gap-3">
+                                    <h5 class="font-medium">{{ $loop->iteration }}</h5>
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <p class="text-gray-400">Departure</p>
+                                <div class="gap-3">
+                                    <h5 class="font-medium flex" @mouseenter="$popovers('{{ addslashes($leg->departureAirportAll->identifiers) }}')"
+                                        data-trigger="mouseenter">
+                                        <x-dynamic-component class="h-5 w-5 mr-2 my-auto"
+                                                             component="flag-country-{{ strtolower($leg->departureAirportAll->worldAirport->country->code) }}" />
+                                        {{ $leg->departureAirportAll->name }}
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-span-1">
+                                <p class="text-gray-400 text-right">Arrival</p>
+                                <div class="gap-3 text-right">
+                                    <h5 class="font-medium flex justify-end" @mouseenter="$popovers('{{ addslashes($leg->arrivalAirportAll->identifiers) }}')"
+                                        data-trigger="mouseenter">
+                                        {{$leg->arrivalAirportAll->name }}
+                                        <x-dynamic-component class="h-5 w-5 ml-2 my-auto"
+                                                             component="flag-country-{{ strtolower($leg->arrivalAirportAll->worldAirport->country->code) }}" />
+                                    </h5>
+                                </div>
+                            </div>
+                        <div class="col-span-2 flex justify-between">
+                            <div>{{ $leg->callsign }}</div>
+                            <div>{{ $leg->flight_number }}</div>
+                            <div>{{ $leg->flight_length->toTimeString('minute') }}</div>
+                        </div>
+
+                            @if(!$loop->last)
+                                <hr class="divider" />
+                            @endif
+                        @endforeach
+                    @endif
 
                 @if($event->type != 1)
                     @foreach($eventAirports as $airport)
