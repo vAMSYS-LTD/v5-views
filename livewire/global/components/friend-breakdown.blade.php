@@ -7,7 +7,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-4">
         @foreach($friendAirlines as $airline)
             <div class="card group hover:bg-gray-200 dark:hover:bg-gray-700 mb-4">
-                <div wire:click="login({{ $airline['id'] }}, 'phoenix')" class="cursor-pointer pt-5 pr-5 pl-5">
+                <div wire:click="redirectRegister({{ $airline['id'] }}, 'phoenix')" class="cursor-pointer pt-5 pr-5 pl-5">
                     <div class="">
                         <img class="w-full aspect-[9/2]" x-show="!darkMode" src="{{ $airline['logo_bright'] }}">
                         <img class="w-full aspect-[9/2]" x-show="darkMode" src="{{ $airline['logo_dark'] }}">
