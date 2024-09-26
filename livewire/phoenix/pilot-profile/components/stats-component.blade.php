@@ -77,16 +77,16 @@
                                 :subtitle="'~' . number_format(divnum($data->transport->$tabKey->passengers, $data->pireps->$tabKey->accepted + $data->pireps->$tabKey->rejected)).' / ' . number_format(divnum($data->transport->$tabKey->cargo, $data->pireps->$tabKey->accepted + $data->pireps->$tabKey->rejected)) . ' per flight'"
                                 :values="[
                             ['value' => number_format($data->transport->$tabKey->passengers), 'class' => 'text-primary', 'popover' => ''],
-                            ['value' => number_format(convertWeightValue($data->transport->$tabKey->cargo, auth()->user())->value).' '.convertWeightValue($data->transport->$tabKey->cargo, auth()->user())->measure, 'class' => 'text-primary', 'popover' => ''],
+                            ['value' => number_format(convertWeightValue($data->transport->$tabKey->cargo, $this->pilot)->value).' '.convertWeightValue($data->transport->$tabKey->cargo, $this->pilot)->measure, 'class' => 'text-primary', 'popover' => ''],
                         ]"
                             />
 
                             <livewire:orwell.dashboard.components.partials.statistics-card
                                 :title="'Fuel Used'"
                                 :popover="''"
-                                :subtitle="'~' . number_format(divnum(convertWeightValue($data->pireps->$tabKey->fuelUsed, auth()->user())->value, $data->pireps->$tabKey->accepted + $data->pireps->$tabKey->rejected)) . ' per flight'"
+                                :subtitle="'~' . number_format(divnum(convertWeightValue($data->pireps->$tabKey->fuelUsed, $this->pilot)->value, $data->pireps->$tabKey->accepted + $data->pireps->$tabKey->rejected)) . ' per flight'"
                                 :values="[
-                            ['value' => number_format(convertWeightValue($data->pireps->$tabKey->fuelUsed, auth()->user())->value) . ' ' . convertWeightValue($data->pireps->$tabKey->fuelUsed, auth()->user())->measure, 'class' => 'text-primary', 'popover' => ''],
+                            ['value' => number_format(convertWeightValue($data->pireps->$tabKey->fuelUsed, $this->pilot)->value) . ' ' . convertWeightValue($data->pireps->$tabKey->fuelUsed, $this->pilot)->measure, 'class' => 'text-primary', 'popover' => ''],
                         ]"
                             />
 
