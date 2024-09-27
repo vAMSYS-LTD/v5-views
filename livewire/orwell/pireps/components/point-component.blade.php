@@ -4,24 +4,24 @@
     </div>
 
     <div class="px-6 py-2 space-y-2">
-        <div class="flex flex-row justify-start">
+        <div class="flex flex-col justify-start">
             @if(isset($pirep->pirep_data->scores))
-                <div class="my-auto text-base font-semibold tracking-wide">
-                    @foreach($pirep->pirep_data->scores as $score)
+                @foreach($pirep->pirep_data->scores as $score)
+                    <div class="grid grid-cols-6 text-base">
                         @if($score->points > 0)
-                            <div class="text-success">+ {{ $score->points }}</div>
+                            <div class="font-semibold tracking-wide text-success">+ {{ $score->points }}</div>
                         @elseif($score->points == 0)
-                            <div class="">{{ $score->points }}</div>
+                            <div class="font-semibold tracking-wide">{{ $score->points }}</div>
                         @else
-                            <div class="text-danger">{{ $score->points }}</div>
+                            <div class="font-semibold tracking-wide text-danger">{{ $score->points }}</div>
                         @endif
-                    @endforeach
-                </div>
-                <div class="my-auto text-base ml-4">
-                    @foreach($pirep->pirep_data->scores as $score)
-                        <div>{{ $score->name }}</div>
-                    @endforeach
-                </div>
+
+                        <div class="col-span-5">
+                            {{ $score->name }}
+                        </div>
+                    </div>
+
+                @endforeach
             @endif
         </div>
         <div class="font-semibold mt-2">
