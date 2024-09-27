@@ -52,7 +52,7 @@
                 ]) }}' />
     @endif
 
-    @if($airline->planformat_user_override == true && $ofpFormat = \App\Models\General\SimbriefData::where('id', '=', $pilot->simbrief_ofp_id)->first())
+    @if($airline->planformat_user_override == true && $ofpFormat = \App\Models\General\SimBriefOFP::where('id', '=', $pilot->simbrief_ofp_id)->first())
         <input type="hidden" name="planformat"
                value="{{ $ofpFormat->value }}">
     @else
