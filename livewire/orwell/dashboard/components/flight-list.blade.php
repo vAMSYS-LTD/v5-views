@@ -87,7 +87,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="10" class="p-0">
+                                    <td colspan="10" class="!p-0">
                                         <div class="w-full h-1 bg-[#ebedf2] dark:bg-dark/40 rounded-full flex">
                                             <div class="h-1 text-xs text-center text-white bg-success"
                                                  style="width: {{ 100 - (divnum($flight->progress->distanceRemaining, $flight->progress->routeDistance)) * 100 }}%"></div>
