@@ -49,10 +49,10 @@
                 "per" => $aircraft?->performance ?? $aircraft?->type->performance,
                 "paxwgt" => $aircraft?->paxwgt ?? $aircraft?->type->paxwgt ?? 175,
                 "bagwgt" => $bagWeight
-                ]) }}'/>
+                ]) }}' />
     @endif
 
-    @if($airline->planformat_user_override == true && $ofpFormat = \App\Models\General\SimBriefOFP::where('id', '=', $pilot->simbrief_ofp_id)->first())
+    @if($airline->planformat_user_override == true && $ofpFormat = \App\Models\General\SimbriefData::where('id', '=', $pilot->simbrief_ofp_id)->first())
         <input type="hidden" name="planformat"
                value="{{ $ofpFormat->value }}">
     @else
@@ -135,7 +135,7 @@
     <input type="hidden" name="route" value="{{ $data['route'] }}">
     <input type="hidden" name="find_sidstar" value="R">
 
-{{--    <input type="hidden" name="altn_count" value="4">--}}
+    {{--    <input type="hidden" name="altn_count" value="4">--}}
     {{--            <input type="hidden" name="toaltn" value="AUTO">--}}
     {{--            <input type="hidden" name="eualtn" value="AUTO">--}}
 
