@@ -20,7 +20,7 @@
                 @if(isset($pirep->pirep_data->autoreject))
                     <livewire:orwell.pireps.components.reject-component :$pirep />
                 @endif
-                @if($pilotView)
+                @if($pilotView && $pilot->id == $pirep->pilot_id)
                     <div class="card">
                         <div class="card-header flex justify-between items-center">
                             <h4 class="card-title">PIREP Comments</h4>
