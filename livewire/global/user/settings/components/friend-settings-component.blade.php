@@ -37,7 +37,6 @@
     <div class="card border border-[#ebedf2] dark:border-[#191e3a] rounded-md mb-4 shadow-lg">
         <h6 class="text-lg pt-4 px-4 font-bold mb-5">Incoming Requests</h6>
         <div class="flex flex-wrap justify-around my-4 gap-4">
-
             @foreach($incomingFriends as $friend)
                 <div class="max-w-[20rem] w-full bg-[#3b3f5c] shadow-[4px_6px_10px_-3px_#bfc9d4] rounded border border-[#e0e6ed] dark:border-[#1b2e4b] dark:bg-[#191e3a] dark:shadow-none">
                     <div class="pt-7 mb-4 px-6">
