@@ -132,17 +132,17 @@
                                     </div>
                                     <div class="w-full justify-around grid grid-cols-3 text-center mt-2 dashboard-card-content">
                                         <div class="cursor-pointer"
-                                             @mouseenter="$popovers('{{ $pirep->booking->route->departureAirportAll->name }}')"
+                                             @mouseenter="$popovers('{{ $pirep->route?->departureAirportAll->name }}')"
                                              data-trigger="mouseenter">
-                                            {{ $pirep->booking->route->departureAirportAll->icao }}
+                                            {{ $pirep->route?->departureAirportAll->icao }}
                                         </div>
                                         <div>
                                             <i class="fa-duotone fa-right"></i>
                                         </div>
                                         <div class="cursor-pointer"
-                                             @mouseenter="$popovers('{{ $pirep->booking->route->arrivalAirportAll->name }}')"
+                                             @mouseenter="$popovers('{{ $pirep->route?->arrivalAirportAll->name }}')"
                                              data-trigger="mouseenter">
-                                            {{ $pirep->booking->route->arrivalAirportAll->icao }}
+                                            {{ $pirep->route?->arrivalAirportAll->icao }}
                                         </div>
 
                                         <div class="cursor-pointer" @mouseenter="$popovers('Flight Length')" data-trigger="mouseenter">
