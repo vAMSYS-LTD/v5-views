@@ -11,7 +11,7 @@
         'yearToDate' => 'This Year',
         'lastYear' => 'Last Year',
         'allTime' => 'All Time',
-        'yourDetails' => 'Your Details'
+        'yourDetails' => 'Details/Settings'
     ];
 
     $activeTab = $selectTab; // Default active tab

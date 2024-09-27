@@ -238,15 +238,23 @@
                 @endif
             </button>
 
-            <div class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-44 z-50 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+            <div class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-64 z-50 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
                 <!-- item-->
                 {{--            <h6 class="flex items-center py-2 px-3 text-xs text-gray-800 dark:text-gray-400">Welcome !</h6>--}}
 
                 <!-- item-->
+                @if(isset($pilot))
+                    <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $pilot->airline->identifier, 'pilotUsername' => $pilot->username, 'edit' => true]) }}" wire:navigate target="_blank" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
+                        <i class="ri-account-circle-line text-lg align-middle"></i>
+                        <span>My {{ $pilot->username }} Settings</span>
+                    </a>
+                @endif
                 <a href="{{ route('global.user.settings') }}" target="_blank" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
                     <i class="ri-account-circle-line text-lg align-middle"></i>
-                    <span>My User Account</span>
+                    <span>My vAMSYS Account</span>
                 </a>
+
+
 
                 {{--            <!-- item-->--}}
                 {{--            <a href="pages-profile.html" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">--}}

@@ -1,7 +1,7 @@
 @php
     use Carbon\Carbon;
     use Illuminate\Support\Str;
-    $tabs = ['today', 'last24', 'yesterday', 'thirty', 'yearToDate', 'lastYear', 'allTime'];
+    $tabs = ['today', 'last24', 'yesterday', 'thirty', 'yearToDate', 'lastYear', 'allTime', 'other'];
 
     $tabNames = [
         'today' => Carbon::now()->format('jS M'),
@@ -11,9 +11,14 @@
         'yearToDate' => 'This Year',
         'lastYear' => 'Last Year',
         'allTime' => 'All Time',
+        'other' => 'Details/Settings'
     ];
+    if(isset($_GET['edit'])) {
+        $activeTab = 'other'; // Default active tab
+    } else {
+        $activeTab = 'allTime'; // Default active tab
+    }
 
-    $activeTab = 'allTime'; // Default active tab
 @endphp
 
 <div class="w-full">
@@ -38,7 +43,89 @@
             @foreach ($tabs as $index => $tabKey)
                 <div id="{{ $tabKey }}" class="@if($tabKey !== $activeTab) hidden @endif" role="tabpanel" aria-labelledby="bar-with-underline-item-{{ $index + 1 }}">
                     <div class="grid lg:grid-cols-3 sm:grid-cols-2 gap-x-2 gap-y-2">
+                        @if($tabKey == 'other')
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Username
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ $username }}
+                                    </h3>
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
 
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Registration
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ fullFriendlyDateTimeYear($createdat) }}
+                                    </h3>
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Rank
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ $rank->name  }}
+                                    </h3>
+                                    <img class="max-h-10 -m-2" src="{{ $rank->display_image }}" alt="{{ $rank->name }}">
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Airports Visited
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <h3 class="text-lg">
+                                        {{ number_format($uniqueAirports)  }}
+                                    </h3>
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+
+                            <x-filament::section :compact="true" style="height: 100% !important">
+                                <x-slot name="heading">
+                                    Location / Hub
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    @if($hubAirport)
+                                        <h3 class="text-lg" @mouseenter="$popovers('{{ $hubAirport->name }}')"
+                                            data-trigger="mouseenter">
+                                            {{ $hubAirport->identifier  }}
+                                        </h3>
+                                    @else
+                                        <h3 class="text-lg">
+                                            None
+                                        </h3>
+                                    @endif
+                                        @if($profilePilotId == $this->pilot->id)
+                                            <livewire:global.pilot.set-hub-action/>
+                                        @endif
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+                            @if($profilePilotId == $this->pilot->id)
+                            <x-filament::section :compact="true">
+                                <x-slot name="heading">
+                                    Settings / Preferences
+                                </x-slot>
+                                <div class="flex w-full justify-around gap-2">
+                                    <livewire:phoenix.dashboard.components.settings-action-component :data="$data" :menu="true" />
+                                </div>
+                                {{-- Content --}}
+                            </x-filament::section>
+                            @endif
+                        @else
                             <livewire:orwell.dashboard.components.partials.statistics-card
                                 :title="'PIREPs'"
                                 :popover="''"
@@ -98,6 +185,7 @@
                             ['value' => $username, 'class' => '', 'popover' => ''],
                         ]"
                             />
+                        @endif
                     </div>
                 </div>
             @endforeach
