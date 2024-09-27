@@ -11,7 +11,7 @@
             <div class="space-y-2 pb-6">
                 @foreach($this->pirep->log as $line)
                     <div class="flex flex-row">
-                        @if($line->type == "landing_report_item" || $line->type == "landing_report_title")
+                        @if(isset($line->type)&& ($line->type == "landing_report_item" || $line->type == "landing_report_title"))
                             <div class="text-justify">
                                 {{ $line->message }}
                             </div>
