@@ -81,9 +81,9 @@
                         Open OFP
                     </div>
                 </a>
-                <a href="https://dispatch.simbrief.com/briefing/{{ $ofpData->params->request_id }}" target="_blank">
+                <a href="https://dispatch.simbrief.com/options/{{ $ofpData->params->request_id }}" target="_blank">
                     <div class="btn btn-sm btn-info-outline w-full">
-                        Open In SimBrief
+                        Edit SimBrief OFP
                     </div>
                 </a>
                 <livewire:phoenix.flight-center.components.sim-brief-downloads-component :$ofpData lazy />
