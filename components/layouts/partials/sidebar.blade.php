@@ -245,6 +245,17 @@
                     </ul>
                 </li>
 
+                @if($airline->support_url)
+                    <li class="menu-item">
+                        <a href="{{ $airline->support_url }}" target="_blank" class="menu-link">
+                            <span class="menu-icon">
+                                <x-icon name="light.message-medical"/>
+                            </span>
+                            <span class="menu-text"> Pilot Support </span>
+                        </a>
+                    </li>
+                @endif
+
                 @foreach($standalonePages as $standalonePage)
                     @if($standalonePage->external_url)
                         <li class="menu-item">
