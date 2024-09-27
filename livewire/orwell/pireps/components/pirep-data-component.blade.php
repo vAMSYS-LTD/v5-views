@@ -12,7 +12,12 @@
                 <div class="col-span-1">
                     <p class="text-gray-400">Pilot</p>
                     <div class="gap-3 mt-1">
-                        <h5 class="font-medium">{{ $this->pirep->pilot->username }} {{ $this->pirep->pilot->user->full_name }}</h5>
+                        @if($pilot->id == $pirep->pilot_id || Request::routeIs('orwell.*'))
+                            <h5 class="font-medium">{{ $this->pirep->pilot->username }} {{ $this->pirep->pilot->user->full_name }}</h5>
+                        @else
+                            <h5 class="font-medium">{{ $this->pirep->pilot->username }} {{ $this->pirep->pilot->user->public_name }}</h5>
+                        @endif
+
                     </div>
                 </div>
 
