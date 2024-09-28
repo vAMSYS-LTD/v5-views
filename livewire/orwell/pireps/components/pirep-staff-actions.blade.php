@@ -52,25 +52,27 @@
                         </div>
                     @endif
                 @else
-                    <div class="flex w-full">
-                            <textarea wire:model.live="internalNote" rows="3" class="form-textarea"
-                                      placeholder="You may leave an optional internal PIREP note for other staff to see with the action you are about to take."></textarea>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <div>
-                            {{ $this->acceptPirepAction }}
+                    @if($pirep->need_reply == false)
+                        <div class="flex w-full">
+                                <textarea wire:model.live="internalNote" rows="3" class="form-textarea"
+                                          placeholder="You may leave an optional internal PIREP note for other staff to see with the action you are about to take."></textarea>
                         </div>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <div>
-                            {{ $this->rejectPirepAction }}
+                        <div class="flex flex-col text-center">
+                            <div>
+                                {{ $this->acceptPirepAction }}
+                            </div>
                         </div>
-                    </div>
-                    <div class="flex flex-col text-center">
-                        <div>
-                            {{ $this->invalidatePirepAction }}
+                        <div class="flex flex-col text-center">
+                            <div>
+                                {{ $this->rejectPirepAction }}
+                            </div>
                         </div>
-                    </div>
+                        <div class="flex flex-col text-center">
+                            <div>
+                                {{ $this->invalidatePirepAction }}
+                            </div>
+                        </div>
+                    @endif
                     <div class="flex flex-col text-center">
                         <div>
                             {{ $this->replyNeededPirepAction }}
