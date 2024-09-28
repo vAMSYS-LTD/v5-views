@@ -14,7 +14,7 @@
     @if($user = auth()->user())
         @if(\App\Models\Airline\AirlineStaff::whereUserId($user->id)->exists())
             <div class="text-sm">
-                <a href="https://vision.vamsys.dev/bugs?action=create" target="_blank">Please click on me and log it in Vision</a>
+                <a href="https://vamsys.vision/bugs?action=create" target="_blank">Please click on me and log it in Vision</a>
             </div>
         @else
             <div class="text-sm">
