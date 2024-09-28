@@ -224,17 +224,17 @@
         <span class="md:flex flex-col gap-0.5 text-start hidden">
             <h5 class="text-sm">{{ $user->name }}</h5>
             @if(!Request::routeIs('general.select') && !Request::routeIs('aeolus*'))
-                <span class="text-xs">{{ $pilot->username }} {{ $pilot->preferredRank->name }}</span>
+                <span class="text-xs">{{ $pilot?->username }} {{ $pilot?->preferredRank->name }}</span>
             @endif
         </span>
                 <span class="flex-col gap-0.5 text-start md:hidden">
             <h5 class="text-sm">{{ $user->first_name }}</h5>
              @if(!Request::routeIs('general.select') && !Request::routeIs('aeolus*'))
-                        <span class="text-xs">{{ $pilot->username }}</span>
+                        <span class="text-xs">{{ $pilot?->username }}</span>
                     @endif
         </span>
                 @if(!Request::routeIs('general.select') && !Request::routeIs('aeolus*'))
-                    <img src="{{ $pilot->preferredRank->display_image }}" alt="{{ $pilot->preferredRank->name }}" class="h-8 md:flex hidden">
+                    <img src="{{ $pilot?->preferredRank->display_image }}" alt="{{ $pilot?->preferredRank->name }}" class="h-8 md:flex hidden">
                 @endif
             </button>
 
