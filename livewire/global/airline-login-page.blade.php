@@ -1,7 +1,9 @@
 <div>
+    @if($image)
     <div class="absolute inset-0 h-screen w-screen">
         <img src="{{ $image }}" alt="image" class="h-full w-full object-cover" />
     </div>
+    @endif
 
     <div class="relative flex flex-col items-center justify-center h-screen">
         <div class="flex justify-center">
