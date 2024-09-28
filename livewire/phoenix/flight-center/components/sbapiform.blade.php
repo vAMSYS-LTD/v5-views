@@ -26,12 +26,13 @@
         <input type="hidden" name="descent"
                value="{{ $aircraft?->descent_profile ?? $aircraft?->type->descent_profile }}">
         <input type="hidden" name="cruise" value="{{ $aircraft?->cruise_profile ?? $aircraft?->type->cruise_profile }}">
-    @if($aircraft?->cruise_profile ?? $aircraft?->type->cruise_profile)
+        @if(($aircraft?->civalue || $aircraft?->type->civalue) != null && $this->route->cost_index == 'AUTO')
+            <input type="hidden" name="civalue" value="{{ $aircraft?->civalue ?? $aircraft?->type->civalue }}">
+        @elseif($aircraft?->sb_airframe_id || $aircraft?->type->sb_airframe_id)
             <input type="hidden" name="civalue" value="">
-    @else
+        @else
             <input type="hidden" name="civalue" value="{{ $this->route->cost_index }}">
-    @endif
-        <input type="hidden" name="civalue" value="{{ $this->route->cost_index }}">
+        @endif
         <input type="hidden" name="fuelfactor"
                value="{{ $aircraft?->fuel_factor ?? $aircraft?->type->fuel_factor }}">
         <input type="hidden" name="callsign" value="{{ $callsignPrefix.$data['callsign'] }}">
