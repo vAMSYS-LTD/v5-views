@@ -37,7 +37,7 @@
     @livewireStyles
     @filamentStyles
     @vite(['resources/assets/scss/app.scss', 'resources/assets/scss/icons.scss'])
-
+    @stack('styles')
 </head>
 
 <body>
