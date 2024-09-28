@@ -25,7 +25,12 @@
                value="{{ $aircraft?->climb_profile ?? $aircraft?->type->climb_profile }}">
         <input type="hidden" name="descent"
                value="{{ $aircraft?->descent_profile ?? $aircraft?->type->descent_profile }}">
-        <input type="hidden" name="cruise" value="CI">
+        <input type="hidden" name="cruise" value="{{ $aircraft?->cruise_profile ?? $aircraft?->type->cruise_profile }}">
+    @if($aircraft?->cruise_profile ?? $aircraft?->type->cruise_profile)
+            <input type="hidden" name="civalue" value="">
+    @else
+            <input type="hidden" name="civalue" value="{{ $this->route->cost_index }}">
+    @endif
         <input type="hidden" name="civalue" value="{{ $this->route->cost_index }}">
         <input type="hidden" name="fuelfactor"
                value="{{ $aircraft?->fuel_factor ?? $aircraft?->type->fuel_factor }}">
