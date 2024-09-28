@@ -437,7 +437,7 @@
                         </li>
                         <li class="menu-item">
                             <a href="{{ route('orwell.pilots.bans') }}" class="menu-link" wire:navigate>
-                                <span class="menu-text">Bans</span>
+                                <span class="menu-text">Removed Pilots / Bans</span>
                             </a>
                         </li>
                         @if($airline->enable_registration_review)
