@@ -184,7 +184,7 @@
 
                 @if($color['table_odd_light'])
                     .fi-ta-content table tbody tr {
-                background-color: {{ $color['table_odd_light'] }} !important;
+                background-color: {{ $color['table_odd_light'] }};
             }
             .striped-table table tbody tr {
                 background-color: {{ $color['table_odd_light'] }};
@@ -193,7 +193,7 @@
 
                  @if($color['table_even_light'])
                     .fi-ta-content table tbody tr:nth-child(2n) {
-                background-color: {{ $color['table_even_light'] }} !important;
+                background-color: {{ $color['table_even_light'] }};
             }
             .striped-table table tbody tr:nth-child(2n) {
                 background-color: {{ $color['table_even_light'] }};
@@ -202,7 +202,7 @@
 
                 @if($color['table_odd_dark'])
                     .fi-ta-content table tbody tr:is(.dark *) {
-                background-color: {{ $color['table_odd_dark'] }} !important;
+                background-color: {{ $color['table_odd_dark'] }};
             }
             .striped-table table tbody tr:is(.dark *) {
                 background-color: {{ $color['table_odd_dark'] }};
@@ -211,7 +211,7 @@
 
                  @if($color['table_even_dark'])
                     .fi-ta-content table tbody tr:nth-child(2n):is(.dark *) {
-                background-color: {{ $color['table_even_dark'] }} !important;
+                background-color: {{ $color['table_even_dark'] }};
             }
             .striped-table table tbody tr:nth-child(2n):is(.dark *) {
                 background-color: {{ $color['table_even_dark'] }};
