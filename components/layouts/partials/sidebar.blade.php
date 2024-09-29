@@ -940,7 +940,7 @@
                                 @endif
                             </a>
                         </li>
-                        @if($airline->enable_hangar)
+                        @if($airline->enable_hangar || isset($airlineStaff))
                             <li class="menu-item">
                                 <a href="https://hangar.to/{{ $airline->identifier }}" target="_blank" class="menu-link">
                         <span class="menu-icon">
