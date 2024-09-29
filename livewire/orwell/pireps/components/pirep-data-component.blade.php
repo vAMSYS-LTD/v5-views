@@ -312,10 +312,18 @@
                     </div>
                     <div>
                         <div class="col-span-1 mb-2 sm:text-right">
-                            <p class="text-gray-400">Paused Time</p>
-                            <div class="gap-3">
-                                <h5 class="font-medium">{{ sprintf('%02d:%02d:%02d', ($this->pirep->paused_time?:0 / 3600), ($this->pirep->paused_time?:0 / 60 % 60), $this->pirep->paused_time?:0 % 60) }}</h5>
-                            </div>
+                            @if($airline->include_taxi_time)
+                                <p class="text-gray-400">Paused Block Time</p>
+                                <div class="gap-3">
+                                    <h5 class="font-medium">{{ sprintf('%02d:%02d:%02d', ($this->pirep->paused_blocks_time / 3600), ($this->pirep->paused_blocks_time / 60 % 60), $this->pirep->paused_blocks_time % 60) }}</h5>
+                                </div>
+                            @else
+                                <p class="text-gray-400">Paused Flight Time</p>
+                                <div class="gap-3">
+                                    <h5 class="font-medium">{{ sprintf('%02d:%02d:%02d', ($this->pirep->paused_air_time / 3600), ($this->pirep->paused_air_time / 60 % 60), $this->pirep->paused_air_time % 60) }}</h5>
+                                </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
