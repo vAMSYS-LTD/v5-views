@@ -98,7 +98,7 @@
                                                             </thead>
                                                             <tbody>
                                                             @foreach($rules as $rule)
-                                                                @if($rule->scoring_rule_id == 16)
+                                                                @if($rule->scoring_rule_id == 16 || $rule->scoring_rule_id == 46)
                                                                     @foreach($rule->rules['thresholds'] as $threshold)
                                                                         <tr>
                                                                             <td>{{ $threshold['name'] }}</td>
@@ -112,6 +112,19 @@
                                                                             <td class="text-right">{{ $threshold['points'] }}</td>
                                                                         </tr>
                                                                     @endforeach
+                                                                @elseif($rule->scoring_rule_id == 17)
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                        <span class="text-xs">Between {{ $rule->rules['moreThan'] }} and {{ $rule->rules['lessThan'] }}</span></td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
+                                                                @elseif($rule->scoring_rule_id == 4)
+                                                                    {{ dd($rule) }}
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                            <span class="text-xs">Between {{ $rule->rules['moreThan'] }} and {{ $rule->rules['lessThan'] }}</span></td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
                                                                 @else
                                                                     <tr>
                                                                         <td>{{ $rule->friendly_name }}</td>
