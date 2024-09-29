@@ -17,7 +17,9 @@
                 </div>
             @endif
         </form>
-        @include('livewire.phoenix.flight-center.components.sbapiform')
+        @if($sbDispatch)
+            @include('livewire.phoenix.flight-center.components.sbapiform')
+        @endif
     @endif
 
     <x-filament-actions::modals/>
@@ -26,7 +28,23 @@
 <script>
     $wire.on('simbrief-dispatched', (event) => {
         let bookingId = event.bookingId;
-        simbriefsubmit('/phoenix/flight-center/booking/' + bookingId);
+
+        // Define a function to check if the input exists
+        function checkInputExists() {
+            const input = document.querySelector('form#sbapiform input[name="fltnum"]');
+
+            if (input) {
+                // If the input exists, call simbriefsubmit
+                simbriefsubmit('/phoenix/flight-center/booking/' + bookingId);
+            } else {
+                // If the input does not exist, wait for 500ms and check again
+                setTimeout(checkInputExists, 100);
+            }
+        }
+
+        // Start checking if the input exists
+        checkInputExists();
     });
 </script>
 @endscript
+
