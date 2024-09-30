@@ -49,7 +49,7 @@
                                 <div class="cursor-pointer"
                                      @mouseenter="$popovers('{{ $firstBooking->route->departureAirportAll->name }}')"
                                      data-trigger="mouseenter">
-                                    @if($firstBooking->departure_stand_id)
+                                    @if($firstBooking->departure_stand_id && !$this->airline->disable_stands)
                                         {{ $firstBooking->route->departureAirportAll->icao }} - {{ $firstBooking->departureStand->name }}
                                     @else
                                         {{ $firstBooking->route->departureAirportAll->icao }}
@@ -61,7 +61,7 @@
                                 <div class="cursor-pointer"
                                      @mouseenter="$popovers('{{ $firstBooking->route->arrivalAirportAll->name }}')"
                                      data-trigger="mouseenter">
-                                    @if($firstBooking->departure_stand_id)
+                                    @if($firstBooking->departure_stand_id && !$this->airline->disable_stands)
                                         {{ $firstBooking->route->arrivalAirportAll->icao }} - {{ $firstBooking->arrivalStand?->name }}
                                     @else
                                         {{ $firstBooking->route->arrivalAirportAll->icao }}
