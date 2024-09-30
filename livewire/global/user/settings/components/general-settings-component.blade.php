@@ -16,16 +16,29 @@
 
     <div class="flex px-4 mb-5 flex-col sm:flex-row">
         <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5">
-            <div>
-                <label for="firstName">First Name</label>
-                <input wire:model.live="firstName" id="firstName" type="text" class="form-input" />
-                @error('firstName')<p class="text-danger mt-1">{{ $message }}</p>@enderror
-            </div>
-            <div>
-                <label for="lastName">Last Name</label>
-                <input wire:model.live="lastName" id="lastName" type="text" class="form-input" />
-                @error('lastName')<p class="text-danger mt-1">{{ $message }}</p>@enderror
-            </div>
+            @if($user->name_accepted == false)
+                <div>
+                    <label for="firstName">First Name</label>
+                    <input wire:model.live="firstName" id="firstName" type="text" class="form-input"/>
+                    @error('firstName')<p class="text-danger mt-1">{{ $message }}</p>@enderror
+                </div>
+                <div>
+                    <label for="lastName">Last Name</label>
+                    <input wire:model.live="lastName" id="lastName" type="text" class="form-input"/>
+                    @error('lastName')<p class="text-danger mt-1">{{ $message }}</p>@enderror
+                </div>
+            @else
+                <div>
+                    <label for="firstName">First Name</label>
+                    <input wire:model.live="firstName" id="firstName" type="text" class="form-input" disabled/>
+                    @error('firstName')<p class="text-danger mt-1">{{ $message }}</p>@enderror
+                </div>
+                <div>
+                    <label for="lastName">Last Name</label>
+                    <input wire:model.live="lastName" id="lastName" type="text" class="form-input" disabled/>
+                    @error('lastName')<p class="text-danger mt-1">{{ $message }}</p>@enderror
+                </div>
+            @endif
             <div>
                 <label for="email">Email</label>
                 <input wire:model.live="email" id="email" type="email" class="form-input" />
