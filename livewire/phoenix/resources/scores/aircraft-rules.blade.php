@@ -118,14 +118,58 @@
                                                                         <span class="text-xs">Between {{ $rule->rules['moreThan'] }} and {{ $rule->rules['lessThan'] }}</span></td>
                                                                         <td class="text-right">{{ $rule->points }}</td>
                                                                     </tr>
-                                                                @elseif($rule->scoring_rule_id == 4)
-                                                                    {{ dd($rule) }}
+                                                                @elseif($rule->parentRule->category == 'Engines')
                                                                     <tr>
                                                                         <td>{{ $rule->friendly_name }}<br/>
-                                                                            <span class="text-xs">Between {{ $rule->rules['moreThan'] }} and {{ $rule->rules['lessThan'] }}</span></td>
+                                                                            @if(is_array($rule->rules)) <span class="text-xs">Time Between Engine Starts {{ $rule->rules['engineTime'] }}</span>@endif
+                                                                        </td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
+
+                                                                @elseif($rule->scoring_rule_id == 26)
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                            <span class="text-xs">Engine Off: {{ $rule->rules['engines'] }}; Time Between Engines: {{ $rule->rules['engineTime'] }}</span>
+                                                                        </td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
+                                                                @elseif($rule->scoring_rule_id == 27)
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                            <span class="text-xs">Engines On: {{ $rule->rules['engines'] }}; Time Between Engines: {{ $rule->rules['engineTime'] }}</span>
+                                                                        </td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
+                                                                @elseif(in_array($rule->scoring_rule_id, [28,29,44,45]))
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                            <span class="text-xs">Time: {{ $rule->rules['engineMinsRequired'] }}</span>
+                                                                        </td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
+                                                                @elseif(in_array($rule->scoring_rule_id, [15,23]))
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                            <span class="text-xs">Min Level: {{ $rule->rules['simLevel'] }}</span>
+                                                                        </td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
+                                                                @elseif(in_array($rule->scoring_rule_id, [30, 32]))
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                            <span class="text-xs">More Than: {{ number_format($rule->rules['moreFuelThan']) }} kg.</span>
+                                                                        </td>
+                                                                        <td class="text-right">{{ $rule->points }}</td>
+                                                                    </tr>
+                                                                @elseif(in_array($rule->scoring_rule_id, [31, 33]))
+                                                                    <tr>
+                                                                        <td>{{ $rule->friendly_name }}<br/>
+                                                                            <span class="text-xs">Less Than: {{ number_format($rule->rules['lessFuelThan']) }} kg.</span>
+                                                                        </td>
                                                                         <td class="text-right">{{ $rule->points }}</td>
                                                                     </tr>
                                                                 @else
+
                                                                     <tr>
                                                                         <td>{{ $rule->friendly_name }}</td>
                                                                         <td class="text-right">{{ $rule->points }}</td>
