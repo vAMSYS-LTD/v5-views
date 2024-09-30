@@ -98,33 +98,52 @@
             </div>
 
             <div class="card w-full overflow-auto">
-                <div class="px-6 pb-6 pt-2 h-[356px]">
+                <div class="pt-2 h-[356px]">
                     <div class="space-y-2 divide-y pb-6">
                         @foreach($notes as $note)
-                            <div class="flex flex-col">
-                                <div class="flex w-full justify-between text-xs mt-2">
-                                    <div>
-                                        {{ $note->created_by }}
-                                    </div>
-                                    @if($note->type == 'Pilot Note')
+                            @if($note->type == 'Pilot Note')
+                                <div class="flex px-6 py-2 flex-col notam-unread">
+                                    <div class="flex w-full justify-between text-xs mt-2">
+                                        <div>
+                                            {{ $note->created_by }}
+                                        </div>
                                         <div wire:click="deletePilotNote({{ $note->id }})"
                                              class="ml-2 hover:underline cursor-pointer">
                                             Delete Note
                                         </div>
-                                    @endif
-                                    <div>
-                                        {{ $note->created_at->format('jS M y H:i\z') }}
+                                        <div>
+                                            {{ $note->created_at->format('jS M y H:i\z') }}
+                                        </div>
+                                    </div>
+                                    <div class="flex">
+                                        <div class="flex-none font-semibold pr-2">
+                                            {{ $note->type }}
+                                        </div>
+                                        <div class="grow">
+                                            {!! nl2br($note->message) !!}
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="flex">
-                                    <div class="flex-none font-semibold pr-2">
-                                        {{ $note->type }}
+                            @else
+                                <div class="flex px-6 py-2 flex-col">
+                                    <div class="flex w-full justify-between text-xs mt-2">
+                                        <div>
+                                            {{ $note->created_by }}
+                                        </div>
+                                        <div>
+                                            {{ $note->created_at->format('jS M y H:i\z') }}
+                                        </div>
                                     </div>
-                                    <div class="grow">
-                                        {!! nl2br($note->message) !!}
+                                    <div class="flex">
+                                        <div class="flex-none font-semibold pr-2">
+                                            {{ $note->type }}
+                                        </div>
+                                        <div class="grow">
+                                            {!! nl2br($note->message) !!}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
