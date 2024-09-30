@@ -577,6 +577,9 @@
                                 <li class="menu-item">
                                     <a href="{{ route('orwell.pireps.liveryReview') }}" class="menu-link" wire:navigate>
                                         <span class="menu-text">Livery Review</span>
+                                        @if($liveryReview > 0)
+                                            <span class="badge bg-danger rounded-full">{{ $liveryReview }}</span>
+                                        @endif
                                     </a>
                                 </li>
                             @endif
@@ -584,9 +587,6 @@
                                 <li class="menu-item">
                                     <a href="{{ route('orwell.pireps.liveryList') }}" class="menu-link" wire:navigate>
                                         <span class="menu-text">Livery List</span>
-                                        @if($liveryReview > 0)
-                                            <span class="badge bg-danger rounded-full">{{ $liveryReview }}</span>
-                                        @endif
                                     </a>
                                 </li>
                             @endif
