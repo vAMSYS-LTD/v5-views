@@ -1,6 +1,6 @@
 <div class="space-y-2">
     <livewire:global.system.system-alerts/>
-    <x-alerts.danger title="Unmet Activity Requirement" />
+{{--    <x-alerts.danger title="Unmet Activity Requirement" />--}}
 
     @if($this->pilot->under_activity_grace)
         <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $pilot->airline->identifier, 'pilotUsername' => $pilot->username]) }}">
