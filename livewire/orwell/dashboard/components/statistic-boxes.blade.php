@@ -44,6 +44,7 @@
                         :popover="'Statistics are updated hourly.'"
                         :subtitle="'All data updated ' . Carbon::parse($data->generatedAt)->format('H:i') . 'z'"
                         :values="[
+                            ['value' => number_format($data->pilots->allTime->total), 'class' => 'text-primary', 'popover' => 'Total'],
                             ['value' => number_format($data->pilots->$tabKey->new), 'class' => 'text-success', 'popover' => 'Registrations'],
                             ['value' => number_format(-$data->pilots->$tabKey->deleted), 'class' => 'text-danger', 'popover' => 'Deletions'],
                         ]"
