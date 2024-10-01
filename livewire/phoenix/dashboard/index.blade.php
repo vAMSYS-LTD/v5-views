@@ -1,6 +1,5 @@
 <div class="space-y-2">
     <livewire:global.system.system-alerts/>
-{{--    <x-alerts.danger title="Unmet Activity Requirement" />--}}
 
     @if($this->pilot->under_activity_grace)
         <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $pilot->airline->identifier, 'pilotUsername' => $pilot->username]) }}">
@@ -16,7 +15,7 @@
                 @switch($block['type'])
                     @case('block_full')
                         <div class="lg:col-span-6">
-                            <div class="flex flex-wrap w-full space-y-2">
+                            <div class="flex h-full flex-wrap w-full space-y-2">
                                 @foreach($block['data']['block_content'] as $component)
                                     @include('livewire.phoenix.dashboard.components.component-renderer', ['component' => $component])
                                 @endforeach
@@ -26,7 +25,7 @@
                         @break
                     @case('block_half')
                         <div class="lg:col-span-3">
-                            <div class="flex flex-wrap w-full space-y-2">
+                            <div class="flex h-full flex-wrap w-full space-y-2">
                                 @foreach($block['data']['block_content'] as $component)
                                     @include('livewire.phoenix.dashboard.components.component-renderer', ['component' => $component])
                                 @endforeach
@@ -43,7 +42,7 @@
                         @break
                     @case('block_two_thirds')
                         <div class="lg:col-span-4">
-                            <div class="flex flex-wrap w-full space-y-2">
+                            <div class="flex h-full flex-wrap w-full space-y-2">
                                 @foreach($block['data']['block_content'] as $component)
                                     @include('livewire.phoenix.dashboard.components.component-renderer', ['component' => $component])
                                 @endforeach
