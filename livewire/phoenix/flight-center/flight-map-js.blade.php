@@ -3,13 +3,15 @@
         <div class="flex items-center justify-center h-screen">
             <div class="relative">
                 <div class="h-24 w-24 rounded-full border-t-8 border-b-8 border-gray-200"></div>
-                <div class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin">
+                <div
+                    class="absolute top-0 left-0 h-24 w-24 rounded-full border-t-8 border-b-8 border-blue-500 animate-spin">
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="map" class="{{ $class }}" style="{{ $minHeight?'min-height: '.$minHeight.'px':'' }}{{ $dashboard?'':'height: 100%' }}"></div>
+    <div id="map" class="{{ $class }}"
+         style="{{ $minHeight?'min-height: '.$minHeight.'px':'' }}{{ $dashboard?'':'height: 100%' }}"></div>
 
     <div id="sidebar" class="absolute top-5 left-5 card shadow-md z-40 hidden w-[32rem]">
         <div id="sidebarTopBackground" class="min-h-[150px] bg-gradient-to-r from-[#4361ee] to-[#160f6b] p-6">
@@ -120,7 +122,6 @@
     </div>
 
 </div>
-
 @push('scripts')
     <script>
         function initializeMap() {
@@ -128,6 +129,8 @@
             if (mapElement) {
                 window.mapController = new window.MapController('map', {
                     flightmap: true,
+                    markerLight: @js($lightIcon),
+                    markerDark: @js($darkIcon),
                     dashboard: {{ $dashboard }}
                 });
             }

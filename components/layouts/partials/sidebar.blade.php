@@ -43,30 +43,30 @@
                     <ul class="sub-menu hidden text-gray-500">
                         @if($bookingCount > 0)
                             <li class="menu-item">
-                                <a href="{{ route('phoenix.flight-centre.booking') }}" class="menu-link" wire:navigate>
+                                <a href="{{ route('phoenix.flight-centre.booking') }}" class="menu-link">
                                     <span class="menu-text">View Booking</span>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('phoenix.flight-centre.book') }}" class="menu-link" wire:navigate>
+                                <a href="{{ route('phoenix.flight-centre.book') }}" class="menu-link">
                                     <span class="menu-text">Book Additional Flight</span>
                                 </a>
                             </li>
                         @else
                             <li class="menu-item">
-                                <a href="{{ route('phoenix.flight-centre.book') }}" class="menu-link" wire:navigate>
+                                <a href="{{ route('phoenix.flight-centre.book') }}" class="menu-link">
                                     <span class="menu-text">Book Flight</span>
                                 </a>
                             </li>
                         @endif
                         <li class="menu-item">
-                            <a href="{{ route('phoenix.flight-centre.map') }}" class="menu-link" wire:navigate>
+                            <a href="{{ route('phoenix.flight-centre.map') }}" class="menu-link">
                                 <span class="menu-text">Flight Map</span>
                             </a>
                         </li>
 
                         <li class="menu-item">
-                            <a href="{{ route('phoenix.flight-centre.destinations') }}" class="menu-link" wire:navigate>
+                            <a href="{{ route('phoenix.flight-centre.destinations') }}" class="menu-link">
                                 <span class="menu-text">Destinations</span>
                             </a>
                         </li>
