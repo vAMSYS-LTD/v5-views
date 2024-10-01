@@ -37,7 +37,7 @@
                     <span class="menu-icon">
                         <x-icon name="light.globe" />
                     </span>
-                        <span class="menu-text"> Flight Center </span>
+                        <span class="menu-text"> Flight Centre </span>
                         <span class="menu-arrow"></span>
                     </a>
                     <ul class="sub-menu hidden text-gray-500">
@@ -517,7 +517,7 @@
                                 <li class="menu-item">
                                     <a href="{{ route('orwell.pilots.online') }}" class="menu-link"
                                        wire:navigate>
-                                        <span class="menu-text">Online Center</span>
+                                        <span class="menu-text">Online Centre</span>
                                     </a>
                                 </li>
                             @endif
