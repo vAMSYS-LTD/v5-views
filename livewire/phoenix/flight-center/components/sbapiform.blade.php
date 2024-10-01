@@ -25,9 +25,9 @@
                value="{{ $aircraft?->climb_profile ?? $aircraft?->type->climb_profile }}">
         <input type="hidden" name="descent"
                value="{{ $aircraft?->descent_profile ?? $aircraft?->type->descent_profile }}">
-        <input type="hidden" name="cruise" value="{{ $aircraft?->cruise_profile ?? $aircraft?->type->cruise_profile }}">
-        @if(($aircraft?->civalue != null || $aircraft?->type->civalue != null) && $this->route->cost_index == 'AUTO')
-            <input type="hidden" name="civalue" value="{{ $aircraft?->civalue ?? $aircraft?->type->civalue }}">
+        <input type="hidden" name="cruise" value="{{ $aircraft?->cruise_profile ?? $aircraft?->type->cruise_profile ?? 'CI' }}">
+        @if(($aircraft->civalue != null || $aircraft->type->civalue != null) && $this->route->cost_index == 'AUTO')
+            <input type="hidden" name="civalue" value="{{ $aircraft->civalue ?? $aircraft->type->civalue }}">
         @else
             <input type="hidden" name="civalue" value="{{ $this->route->cost_index }}">
         @endif
