@@ -513,6 +513,14 @@
                                     </a>
                                 </li>
                             @endif
+                            @if($airlineStaff->can_see_online_center || $airlineStaff->vamsys_staff)
+                                <li class="menu-item">
+                                    <a href="{{ route('orwell.pilots.online') }}" class="menu-link"
+                                       wire:navigate>
+                                        <span class="menu-text">Online Center</span>
+                                    </a>
+                                </li>
+                            @endif
                         @endif
                     </ul>
                 </li>
