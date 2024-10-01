@@ -1,15 +1,16 @@
-<div class="col-span-2">
+<div>
+    @if($this->showForm)
+        <div class="col-span-2">
+            {{ $this->form }}
+            <div class="mt-2">
+                {{ $this->downloadAction }}
+            </div>
 
-{{--    <form wire:submit="create">--}}
-        {{ $this->form }}
-
-        <div class="mt-2">
-            {{ $this->downloadAction }}
+            <x-filament-actions::modals />
         </div>
-{{--    </form>--}}
-
-    <x-filament-actions::modals />
+    @endif
 </div>
+
 @script
 <script>
     $wire.on('open-url', (event) => {

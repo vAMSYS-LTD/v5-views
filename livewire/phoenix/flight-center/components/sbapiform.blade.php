@@ -69,17 +69,18 @@
     @endif
 
     <input type="hidden" name="units" value="{{ $this->pilot->use_imperial_units?'LBS':'KGS' }}">
-    <input type="hidden" name="maps" value="detail">
+    <input type="hidden" name="maps" value="{{ $data['sbsettings']['maps'] }}">
     <input type="hidden" name="taxiout" value="{{ round($this->route->departureAirport->avg_taxi_out/60) }}">
     <input type="hidden" name="taxiin" value="{{ round($this->route->arrivalAirport->avg_taxi_in/60) }}">
     <input type="hidden" name="flightrules" value="{{ $this->route->flightrules }}">
     <input type="hidden" name="flighttype" value="{{ $this->route->flighttype }}">
-    <input type="hidden" name="navlog" value="1">
-    <input type="hidden" name="etops" value="1">
-    <input type="hidden" name="stepclimbs" value="1">
-    <input type="hidden" name="tlr" value="1">
-    <input type="hidden" name="notams" value="1">
-    <input type="hidden" name="firnot" value="1">
+
+    <input type="hidden" name="navlog" value="{{ (int)$data['sbsettings']['navlog'] }}">
+    <input type="hidden" name="etops" value="{{ (int)$data['sbsettings']['etops'] }}">
+    <input type="hidden" name="stepclimbs" value="{{ (int)$data['sbsettings']['stepclimbs'] }}">
+    <input type="hidden" name="tlr" value="{{ (int)$data['sbsettings']['tlr'] }}">
+    <input type="hidden" name="notams" value="{{ (int)$data['sbsettings']['notams'] }}">
+    <input type="hidden" name="firnot" value="{{ (int)$data['sbsettings']['firnot'] }}">
 
     <input type="hidden" name="steh" value="{{ \Carbon\Carbon::parse($this->route->flight_length)->format('G') }}">
     <input type="hidden" name="stem" value="{{ \Carbon\Carbon::parse($this->route->flight_length)->format('i') }}">

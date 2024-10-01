@@ -62,6 +62,7 @@
             <div>
                 <label for="simbriefUsername">SimBrief Alias (Username)</label>
                 <input wire:model.live="sbUsername" id="simbriefUsername" type="text" class="form-input" />
+                <p class="mt-1 text-sm">Retrieved from SimBrief <a href="https://dispatch.simbrief.com/account" target="_blank">Here</a></p>
                 @error('sbUsername')<p class="text-danger mt-1">{{ $message }}</p>@enderror
             </div>
             <div>

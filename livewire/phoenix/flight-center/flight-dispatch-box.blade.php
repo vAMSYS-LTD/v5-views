@@ -4,17 +4,29 @@
         <form wire:submit="makeBooking">
             {{ $this->form }}
             @if($aircraft)
-                <div class="grid grid-cols-3 mt-2 mb-5 gap-2">
-                    <div>
-                        {{ $this->cancelAction }}
+                @if($this->user->simbrief_username)
+                    <div class="grid grid-cols-3 mt-2 mb-5 gap-2">
+                        <div>
+                            {{ $this->cancelAction }}
+                        </div>
+                        <div>
+                            {{ $this->submitAction }}
+                        </div>
+                        <div>
+                            {{ $this->simbriefAction }}
+                        </div>
                     </div>
-                    <div>
-                        {{ $this->submitAction }}
+                @else
+                    <div class="grid grid-cols-2 mt-2 mb-5 gap-2">
+                        <div>
+                            {{ $this->cancelAction }}
+                        </div>
+                        <div>
+                            {{ $this->submitAction }}
+                        </div>
                     </div>
-                    <div>
-                        {{ $this->simbriefAction }}
-                    </div>
-                </div>
+                @endif
+
             @endif
         </form>
         @if($sbDispatch)
