@@ -88,6 +88,10 @@
                         £10
                     @elseif($airline->subscribedToPrice('price_1I5sh2F9Ym5ZDQAIKRJ4kW7y'))
                         £120
+                    @elseif($airline->subscribedToPrice('price_1Q5SbeF9Ym5ZDQAIsgTsipdO'))
+                        £25
+                    @elseif($airline->subscribedToPrice('price_1Q5SbeF9Ym5ZDQAIcOPGCbnu'))
+                        £250
                     @endif
                     <span class="text-2xl ml-2 font-medium">
                         @if($airline->subscribedToPrice('price_1I0UuFF9Ym5ZDQAIN8KpjFHE') || $airline->subscribedToPrice('price_1GyLNoF9Ym5ZDQAIcWcYqfMy'))
@@ -134,7 +138,7 @@
                     <span class="badge bg-primary/10 text-primary py-1.5 dark:bg-primary dark:text-white">MONTHLY SUBSCRIPTION</span>
                 </div>
                 <div class="flex items-baseline justify-start -space-x-3 rtl:space-x-reverse mb-5 text-6xl font-extrabold">
-                    £20<span class="text-2xl font-medium">/month</span>
+                    £25<span class="text-2xl font-medium">/month</span>
                 </div>
                 <div class="text-justify">
                     <div class="w-full">
@@ -153,7 +157,7 @@
                     <span class="badge bg-primary/10 text-primary py-1.5 dark:bg-primary dark:text-white">YEARLY SUBSCRIPTION</span>
                 </div>
                 <div class="flex items-baseline justify-start -space-x-3 rtl:space-x-reverse mb-5 text-6xl font-extrabold">
-                    £240<span class="text-2xl font-medium">/year</span>
+                    £250<span class="text-2xl font-medium">/year</span>
                 </div>
                 <div class="text-justify">
                     <div class="w-full">
