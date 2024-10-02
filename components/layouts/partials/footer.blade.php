@@ -6,7 +6,7 @@
         </div>
         <div class="md:flex hidden gap-4 item-center md:justify-end">
             <span class="text-sm leading-5 text-zinc-600 dark:text-zinc-400">
-                Served by: {{ gethostname() }}
+                Served By: {{ gethostname() }}
             </span>
             <a href="https://vamsys.dev" target="_blank" class="class=text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
                 v5.0.9
