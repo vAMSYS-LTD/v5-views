@@ -6,17 +6,18 @@
       data-menu-color="light"
       data-sidenav-view="default"
       data-sidenav-open="true"
-      x-data="{ darkMode: false }" x-bind:class="{'dark' : darkMode === true}"
+      x-data="{ darkMode: false }"
+      :class="darkMode ? 'dark' : ''"
       x-init="
         if (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            localStorage.setItem('darkMode', JSON.stringify(true));
+        localStorage.setItem('darkMode', JSON.stringify(true));
         }
         darkMode = JSON.parse(localStorage.getItem('darkMode'));
         $watch('darkMode', value => {
-            localStorage.setItem('darkMode', JSON.stringify(value));
-            window.dispatchEvent(new CustomEvent('theme-changed')); // Dispatch event when darkMode changes
+        localStorage.setItem('darkMode', JSON.stringify(value));
+        window.dispatchEvent(new CustomEvent('theme-changed')); // Dispatch event when darkMode changes
         });
-      "
+        "
 >
 <script defer data-domain="vamsys.io" src="https://plausible.vamsys.dev/js/script.js"></script>
 <head>
@@ -49,170 +50,198 @@
         <style>
             html[data-menu-color=light] {
                 @if($color['menu_bg_light'])
---tw-menu-bg: {{ $color['menu_bg_light'] }};
+ --tw-menu-bg: {{ $color['menu_bg_light'] }};
                 @endif
                 @if($color['menu_item_light'])
---tw-menu-item-color: {{ $color['menu_item_light'] }};
+ --tw-menu-item-color: {{ $color['menu_item_light'] }};
                 @endif
                 @if($color['menu_active_light'])
---tw-menu-item-active-color: {{ $color['menu_active_light'] }};
+ --tw-menu-item-active-color: {{ $color['menu_active_light'] }};
                 @endif
                 @if($color['menu_hover_light'])
---tw-menu-item-hover-color: {{ $color['menu_hover_light'] }};
+ --tw-menu-item-hover-color: {{ $color['menu_hover_light'] }};
             @endif
-}
+
+            }
 
             html:is(.dark[data-menu-color=dark], .dark[data-menu-color=light]) {
                 @if($color['menu_bg_dark'])
---tw-menu-bg: {{ $color['menu_bg_dark'] }};
+ --tw-menu-bg: {{ $color['menu_bg_dark'] }};
                 @endif
                 @if($color['menu_item_dark'])
---tw-menu-item-color: {{ $color['menu_item_dark'] }};
+ --tw-menu-item-color: {{ $color['menu_item_dark'] }};
                 @endif
                 @if($color['menu_active_dark'])
---tw-menu-item-active-color: {{ $color['menu_active_dark'] }};
+ --tw-menu-item-active-color: {{ $color['menu_active_dark'] }};
                 @endif
                 @if($color['menu_hover_dark'])
---tw-menu-item-hover-color: {{ $color['menu_hover_dark'] }};
+ --tw-menu-item-hover-color: {{ $color['menu_hover_dark'] }};
             @endif
-}
+
+            }
 
             html[data-topbar-color=light] {
                 @if($color['topbar_bg_light'])
---tw-topbar-bg: {{ $color['topbar_bg_light'] }};
+ --tw-topbar-bg: {{ $color['topbar_bg_light'] }};
                 @endif
                 @if($color['menu_item_light'])
---tw-topbar-item-color: {{ $color['menu_item_light'] }};
+ --tw-topbar-item-color: {{ $color['menu_item_light'] }};
                 @endif
                 @if($color['menu_active_light'])
---tw-topbar-item-active-color: {{ $color['menu_active_light'] }};
+ --tw-topbar-item-active-color: {{ $color['menu_active_light'] }};
                 @endif
                 @if($color['menu_hover_light'])
---tw-topbar-item-hover-color: {{ $color['menu_hover_light'] }};
+ --tw-topbar-item-hover-color: {{ $color['menu_hover_light'] }};
             @endif
-}
+
+            }
+
             html:is(.dark[data-topbar-color=light], [data-topbar-color=dark]) {
                 @if($color['topbar_bg_dark'])
---tw-topbar-bg: {{ $color['topbar_bg_dark'] }};
+ --tw-topbar-bg: {{ $color['topbar_bg_dark'] }};
                 @endif
                 @if($color['menu_item_dark'])
---tw-topbar-item-color: {{ $color['menu_item_dark'] }};
+ --tw-topbar-item-color: {{ $color['menu_item_dark'] }};
                 @endif
                 @if($color['menu_active_dark'])
---tw-topbar-item-active-color: {{ $color['menu_active_dark'] }};
+ --tw-topbar-item-active-color: {{ $color['menu_active_dark'] }};
                 @endif
                 @if($color['menu_hover_dark'])
---tw-topbar-item-hover-color: {{ $color['menu_hover_dark'] }};
+ --tw-topbar-item-hover-color: {{ $color['menu_hover_dark'] }};
             @endif
-}
+
+            }
 
             @if($color['menu_item_light'])
-                .light-theme{
+                .light-theme {
                 color: {{ $color['menu_item_light'] }};
             }
+
             @endif
 
                 @if($color['menu_item_dark'])
-                .light-theme:is(.dark *){
+                .light-theme:is(.dark *) {
                 color: {{ $color['menu_item_dark'] }};
             }
+
             @endif
 
                 @if($color['body_bg_light'] || $color['body_color_light'])
                 :root {
                 @if($color['body_bg_light'])
---tw-body-bg: {{ $color['body_bg_light'] }};
+ --tw-body-bg: {{ $color['body_bg_light'] }};
                 @endif
                 @if($color['body_color_light'])
---tw-body-color: {{ $color['body_color_light'] }};
+ --tw-body-color: {{ $color['body_color_light'] }};
             @endif
-}
+
+            }
+
             @endif
 
                 @if($color['body_bg_dark'] || $color['body_color_dark'])
                 :root:is(.dark) {
                 @if($color['body_bg_dark'])
---tw-body-bg: {{ $color['body_bg_dark'] }};
+ --tw-body-bg: {{ $color['body_bg_dark'] }};
                 @endif
                 @if($color['body_color_dark'])
---tw-body-color: {{ $color['body_color_dark'] }};
+ --tw-body-color: {{ $color['body_color_dark'] }};
             @endif
-}
+
+            }
+
             @endif
 
                 @if($color['card_bg_light'])
                     .card {
                 background-color: {{ $color['card_bg_light'] }};
             }
+
             .striped-table table thead {
                 --tw-bg-opacity: 1;
                 background-color: {{ $color['card_bg_light'] }};
             }
+
             .fi-ta-content table thead tr {
-                background-color: {{ $color['card_bg_light'] }} !important;
+                background-color: {{ $color['card_bg_light'] }}  !important;
             }
+
             .fi-pagination {
-                background-color: {{ $color['card_bg_light'] }} !important;
+                background-color: {{ $color['card_bg_light'] }}  !important;
             }
+
             @endif
 
                 @if($color['card_bg_dark'])
                     .card:is(.dark *) {
                 background-color: {{ $color['card_bg_dark'] }};
             }
+
             .striped-table table thead:is(.dark *) {
                 background-color: {{ $color['card_bg_dark'] }};
             }
+
             .fi-ta-content table thead tr:is(.dark *) {
-                background-color: {{ $color['card_bg_dark'] }} !important;
+                background-color: {{ $color['card_bg_dark'] }}  !important;
             }
+
             .fi-pagination {
-                background-color: {{ $color['card_bg_dark'] }} !important;
+                background-color: {{ $color['card_bg_dark'] }}  !important;
             }
+
             @endif
 
                 @if($color['card_title_light'])
                 .card-title {
                 color: {{ $color['card_title_light'] }};
             }
+
             @endif
                 @if($color['card_title_dark'])
                 .card-title:is(.dark *) {
                 color: {{ $color['card_title_dark'] }};
             }
+
             @endif
 
                 @if($color['table_odd_light'])
                     .fi-ta-content table tbody tr {
                 background-color: {{ $color['table_odd_light'] }};
             }
+
             .striped-table table tbody tr {
                 background-color: {{ $color['table_odd_light'] }};
             }
+
             @endif
 
                  @if($color['table_even_light'])
                     .fi-ta-content table tbody tr:nth-child(2n) {
                 background-color: {{ $color['table_even_light'] }};
             }
+
             .striped-table table tbody tr:nth-child(2n) {
                 background-color: {{ $color['table_even_light'] }};
             }
+
             @endif
 
                 @if($color['table_odd_dark'])
                     .fi-ta-content table tbody tr:is(.dark *) {
                 background-color: {{ $color['table_odd_dark'] }};
             }
+
             .striped-table table tbody tr:is(.dark *) {
                 background-color: {{ $color['table_odd_dark'] }};
             }
+
             @endif
 
                  @if($color['table_even_dark'])
                     .fi-ta-content table tbody tr:nth-child(2n):is(.dark *) {
                 background-color: {{ $color['table_even_dark'] }};
             }
+
             .striped-table table tbody tr:nth-child(2n):is(.dark *) {
                 background-color: {{ $color['table_even_dark'] }};
             }
@@ -225,9 +254,9 @@
         <style id="custom-va-style"></style>
         <script>
             var xhtp = new XMLHttpRequest();
-            xhtp.open("GET", '{{ Storage::disk('do_spaces')->url($airline->design->stylesheet) }}');
-            xhtp.setRequestHeader("Content-Type","text/plain");
-            xhtp.onload = function(){
+            xhtp.open('GET', '{{ Storage::disk('do_spaces')->url($airline->design->stylesheet) }}');
+            xhtp.setRequestHeader('Content-Type', 'text/plain');
+            xhtp.onload = function() {
                 let styleTag = document.getElementById('custom-va-style');
                 if (styleTag) {
                     styleTag.textContent += this.responseText;
@@ -257,7 +286,7 @@
 <livewire:global.socket-actions />
 
 @if(Request::routeIs('phoenix*'))
-<livewire:global.pilot.set-hub-standalone-action />
+    <livewire:global.pilot.set-hub-standalone-action />
 @endif
 
 @include('components.layouts.partials.scripts')
