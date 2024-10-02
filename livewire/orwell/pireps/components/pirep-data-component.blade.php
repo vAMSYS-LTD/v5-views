@@ -166,7 +166,7 @@
                             <p class="text-gray-400">Route Arrival</p>
                             <div class="gap-3">
                                 @if($this->pirep->booking->route->arrival_time || $this->pirep->booking->arrival_time)
-                                    <h5 class="font-medium">{{ $this->pirep->booking->route->arrival_time?$this->pirep->booking->route->departure_time->format('H:i'):$this->pirep->booking->arrival_time->format('H:i') }}</h5>
+                                    <h5 class="font-medium">{{ $this->pirep->booking->route->arrival_time?$this->pirep->booking->route->arrival_time->format('H:i'):$this->pirep->booking->arrival_time->format('H:i') }}</h5>
                                 @endif
                             </div>
                         </div>
