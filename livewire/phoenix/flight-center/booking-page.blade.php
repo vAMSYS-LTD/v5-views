@@ -311,7 +311,7 @@
                             <div class="col-span-1 sm:text-center">
                                 <p class="text-gray-400">Route Arrival</p>
                                 <div class="gap-3">
-                                    <h5 class="font-medium">{{ $booking->route->arrival_time?$booking->route->departure_time->format('H:i'):$booking->arrival_time->format('H:i') }}</h5>
+                                    <h5 class="font-medium">{{ $booking->route->arrival_time?$booking->route->arrival_time->format('H:i'):$booking->arrival_time->format('H:i') }}</h5>
                                 </div>
                             </div>
                         </div>
