@@ -565,7 +565,7 @@
                         </span>
                             <span class="menu-text">Liveries & PIREPs</span>
                             @if($staffActionCount > 0)
-                                <span class="badge bg-danger rounded-full">{{ $staffActionCount }}</span>
+                                <span class="badge bg-danger rounded-full">{{ $pirepActionCount }}</span>
                             @endif
                             <span class="menu-arrow"></span>
                         </a>
