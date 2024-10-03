@@ -769,6 +769,7 @@
                     </li>
                 @endif
                 @if($airlineStaff->can_see_export || $airlineStaff->can_see_import ||$airlineStaff->vamsys_staff)
+                    @if($airline->created_at->lte(now()->subdays(3)))
                     <li class="menu-item">
                         <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                         <span class="menu-icon">
@@ -795,7 +796,7 @@
                             @endif
                         </ul>
                     </li>
-
+                    @endif
                 @endif
                 @if($airlineStaff->can_see_design_settings ||$airlineStaff->vamsys_staff)
                     <li class="menu-item">
