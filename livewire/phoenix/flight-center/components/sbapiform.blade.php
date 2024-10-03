@@ -70,8 +70,8 @@
 
     <input type="hidden" name="units" value="{{ $this->pilot->use_imperial_units?'LBS':'KGS' }}">
     <input type="hidden" name="maps" value="{{ $data['sbsettings']['maps'] }}">
-    <input type="hidden" name="taxiout" value="{{ round($this->route->departureAirport->avg_taxi_out/60) }}">
-    <input type="hidden" name="taxiin" value="{{ round($this->route->arrivalAirport->avg_taxi_in/60) }}">
+    <input type="hidden" name="taxiout" value="{{ $data['taxiOut'] ?? round($this->route->departureAirport->avg_taxi_out/60) }}">
+    <input type="hidden" name="taxiin" value="{{ $data['taxiIn'] ?? round($this->route->arrivalAirport->avg_taxi_in/60) }}">
     <input type="hidden" name="flightrules" value="{{ $this->route->flightrules }}">
     <input type="hidden" name="flighttype" value="{{ $this->route->flighttype }}">
 
@@ -109,27 +109,27 @@
     <input type="hidden" name="minfod"
            value="{{ $this->route->minfod ?? $aircraft?->minfod ?? $aircraft?->type->minfod }}">
     <input type="hidden" name="melfuel"
-           value="{{ $this->route->melfuel ?? $aircraft?->melfuel ?? $aircraft?->type->melfuel }}">
+           value="{{ $data['melfuel'] ?? $this->route->melfuel ?? $aircraft?->melfuel ?? $aircraft?->type->melfuel }}">
     <input type="hidden" name="atcfuel"
-           value="{{ $this->route->atcfuel }}">
+           value="{{ $data['atcfuel'] ?? $this->route->atcfuel }}">
     <input type="hidden" name="wxxfuel"
-           value="{{ $this->route->wxxfuel }}">
+           value="{{ $data['wxxfuel'] ?? $this->route->wxxfuel }}">
     <input type="hidden" name="addedfuel" value="{{ $data['extraFuel'] }}">
     <input type="hidden" name="tankering"
-           value="{{ $this->route->tankering }}">
+           value="{{ $data['tankering'] ?? $this->route->tankering }}">
     <input type="hidden" name="minfob_units"
            value="{{ $this->route->minfob_units ?? $aircraft?->minfob_units ?? $aircraft?->type->minfob_units }}">
     <input type="hidden" name="minfod_units"
            value="{{ $this->route->minfod_units ?? $aircraft?->minfod_units ?? $aircraft?->type->minfod_units }}">
     <input type="hidden" name="melfuel_units"
-           value="{{ $this->route->melfuel_units ?? $aircraft?->melfuel_units ?? $aircraft?->type->melfuel_units }}">
+           value="{{ $data['melfuel_units'] ?? $this->route->melfuel_units ?? $aircraft?->melfuel_units ?? $aircraft?->type->melfuel_units }}">
     <input type="hidden" name="atcfuel_units"
-           value="{{ $this->route->atcfuel_units }}">
+           value="{{ $data['atcfuel_units'] ?? $this->route->atcfuel_units }}">
     <input type="hidden" name="wxxfuel_units"
-           value="{{ $this->route->wxxfuel_units }}">
+           value="{{ $data['wxxfuel_units'] ?? $this->route->wxxfuel_units }}">
     <input type="hidden" name="addedfuel_units" value="min">
     <input type="hidden" name="tankering_units"
-           value="{{ $this->route->tankering_units }}">
+           value="{{ $data['tankering_units'] ?? $this->route->tankering_units }}">
     <input type="hidden" name="addedfuel_label"
            value="{{ $this->route->addedfuel_label }}">
 
