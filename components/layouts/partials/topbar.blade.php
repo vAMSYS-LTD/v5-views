@@ -14,7 +14,7 @@
         @include('components.layouts.partials.logo')
     @endif
 
-    @if(Request::routeIs('general.select') | Request::routeIs('apply*') || Request::routeIs('legal*') || Request::routeIs('aeolus*'))
+    @if(Request::routeIs('general.*') || Request::routeIs('global.*') || Request::routeIs('apply*') || Request::routeIs('legal*') || Request::routeIs('aeolus*'))
         <div class="logo-box logo-box-select">
             <div class="logo-light">
                 <img src="{{ asset('/assets/images/logo/vAMSYS-white-logo.png') }}" class="logo-lg max-h-[60px]" alt="Light logo">
