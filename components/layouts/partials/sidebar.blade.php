@@ -858,7 +858,7 @@
                             <span class="menu-icon">
                                 <x-icon name="light.message-medical" />
                             </span>
-                        <span class="menu-text"> VA Support </span>
+                        <span class="menu-text"> vAMSYS Support </span>
                     </a>
                 </li>
             @endif
