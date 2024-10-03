@@ -362,7 +362,8 @@
                         </ul>
                     </li>
                 @endif
-                @if(($airlineStaff->can_manage_routes || $airlineStaff->can_manage_all_routes) || $airlineStaff->vamsys_staff )
+                @if(($airlineStaff->can_manage_routes || $airlineStaff->can_manage_all_routes) || $airlineStaff->vamsys_staff)
+                    @if($airline->created_at->lte(now()->subdays(3)))
                     <li class="menu-item">
                         <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                             <span class="menu-icon">
@@ -384,6 +385,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
                 @endif
                 @if(($airlineStaff->can_manage_routes || $airlineStaff->can_manage_all_routes) || $airlineStaff->vamsys_staff )
                     <li class="menu-item">
