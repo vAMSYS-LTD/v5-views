@@ -36,7 +36,7 @@
                 <img src="{{ $airline->design->logo_bright_image }}" class="logo-lg max-h-[60px]" alt="Dark logo">
             </div>
         </div>
-    @else
+    @elseif(isset($airline))
         <div class="logo-box logo-box-select">
             <div class="logo-light">
                 <img src="{{ $airline->design->logo_select_dark_image }}" class="logo-lg max-h-[60px]" alt="Light logo">
