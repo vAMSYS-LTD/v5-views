@@ -16,7 +16,7 @@
                     </span>
                 </button>
                 <li class="menu-item">
-                    <a href="{{ route('phoenix.dashboard') }}" wire:navigate class="menu-link">
+                    <a href="{{ route('phoenix.dashboard') }}" class="menu-link">
                         <span class="menu-icon">
                             <x-icon name="light.house" />
                         </span>
@@ -980,7 +980,7 @@
 
                     <ul class="sub-menu hidden text-gray-500">
                         <li class="menu-item">
-                            <a href="{{ route('phoenix.dashboard') }}" wire:navigate class="menu-link">
+                            <a href="{{ route('phoenix.dashboard') }}" class="menu-link">
                     <span class="menu-icon">
                         <x-icon name="light.house" />
                     </span>
@@ -1063,7 +1063,7 @@
                 </li>
             @else
                 <li class="menu-item">
-                    <a href="{{ route('phoenix.dashboard') }}" wire:navigate class="menu-link">
+                    <a href="{{ route('phoenix.dashboard') }}" class="menu-link">
                     <span class="menu-icon">
                         <x-icon name="light.house" />
                     </span>
