@@ -53,6 +53,9 @@
                     </div>
                 </div>
             @endif
+            @if($this->showFriend())
+                <button type="button" wire:click="addFriend" wire:loading.attr="disabled" class="btn btn-lg w-full bg-success text-white">Add Friend</button>
+            @endif
 
             <livewire:phoenix.pilot-profile.components.badge-component :$profilePilotId />
             <livewire:phoenix.pilot-profile.components.popular-airports-table :$profilePilotId/>

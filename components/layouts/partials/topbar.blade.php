@@ -245,13 +245,19 @@
                 <!-- item-->
                 @if(isset($pilot))
                     <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $pilot->airline->identifier, 'pilotUsername' => $pilot->username, 'edit' => true]) }}" wire:navigate target="_blank" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                        <i class="ri-account-circle-line text-lg align-middle"></i>
+{{--                        <i class="ri-account-circle-line text-lg align-middle"></i>--}}
                         <span>My {{ $pilot->username }} Settings</span>
                     </a>
                 @endif
-                <a href="{{ route('global.user.settings') }}" target="_blank" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                    <i class="ri-account-circle-line text-lg align-middle"></i>
+                @php
+                    $incomingFriendCount = $user->getFriendRequests()->count();
+                @endphp
+                <a href="{{ route('global.user.settings') }}" target="_blank" class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300 justify-between">
+{{--                    <i class="ri-account-circle-line text-lg align-middle"></i>--}}
                     <span>My vAMSYS Account</span>
+                    @if($incomingFriendCount > 0)
+                        <span class="badge bg-danger text-white rounded-full">{{ $incomingFriendCount }}</span>
+                    @endif
                 </a>
 
 
@@ -270,14 +276,14 @@
 
                 <!-- item-->
                 <a href="{{ route('general.select') }}" wire:navigate class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                    <i class="ri-lock-password-line text-lg align-middle"></i>
+{{--                    <i class="ri-lock-password-line text-lg align-middle"></i>--}}
                     <span>Select Virtual Airline</span>
                 </a>
 
                 <a href="{{ route('logout') }}"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                    class="flex items-center gap-2 py-1.5 px-4 text-sm text-gray-800 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-300">
-                    <i class="ri-logout-box-line text-lg align-middle"></i>
+{{--                    <i class="ri-logout-box-line text-lg align-middle"></i>--}}
                     <span>Logout</span>
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST">

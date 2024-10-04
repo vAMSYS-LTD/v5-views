@@ -55,16 +55,16 @@
                       class="bg-[#ebedf2] dark:bg-dark block h-full rounded-full before:absolute before:left-1 before:bg-white  dark:before:bg-white-dark dark:peer-checked:before:bg-white before:bottom-1 before:w-4 before:h-4 before:rounded-full peer-checked:before:left-7 peer-checked:bg-primary before:transition-all before:duration-300"></span>
             </label>
         </div>
-        <div class="card  p-6 space-y-5">
-            <h5 class="font-semibold text-lg mb-4">Receive email on PIREP needing Reply</h5>
-            <p>Would you like us to send out an <span class="text-primary">email</span> when your PIREP needs a reply in order to be processed</p>
-            <label class="w-12 h-6 relative">
-                <input type="checkbox" wire:model.live="privacy_enable_pireps_reply_email"
-                       class="custom_switch absolute w-full h-full opacity-0 z-10 cursor-pointer peer"
-                       id="custom_switch_checkbox5" />
-                <span for="custom_switch_checkbox5"
-                      class="bg-[#ebedf2] dark:bg-dark block h-full rounded-full before:absolute before:left-1 before:bg-white  dark:before:bg-white-dark dark:peer-checked:before:bg-white before:bottom-1 before:w-4 before:h-4 before:rounded-full peer-checked:before:left-7 peer-checked:bg-primary before:transition-all before:duration-300"></span>
-            </label>
-        </div>
+{{--        <div class="card  p-6 space-y-5">--}}
+{{--            <h5 class="font-semibold text-lg mb-4">Receive email on PIREP needing Reply</h5>--}}
+{{--            <p>Would you like us to send out an <span class="text-primary">email</span> when your PIREP needs a reply in order to be processed</p>--}}
+{{--            <label class="w-12 h-6 relative">--}}
+{{--                <input type="checkbox" wire:model.live="privacy_enable_pireps_reply_email"--}}
+{{--                       class="custom_switch absolute w-full h-full opacity-0 z-10 cursor-pointer peer"--}}
+{{--                       id="custom_switch_checkbox5" />--}}
+{{--                <span for="custom_switch_checkbox5"--}}
+{{--                      class="bg-[#ebedf2] dark:bg-dark block h-full rounded-full before:absolute before:left-1 before:bg-white  dark:before:bg-white-dark dark:peer-checked:before:bg-white before:bottom-1 before:w-4 before:h-4 before:rounded-full peer-checked:before:left-7 peer-checked:bg-primary before:transition-all before:duration-300"></span>--}}
+{{--            </label>--}}
+{{--        </div>--}}
     </div>
 </div>

@@ -8,7 +8,9 @@
                 Preferences
             </button>
             <button type="button" class="fc-tab-active:bg-primary fc-tab-active:text-white flex-auto py-2 px-4 inline-flex justify-center items-center gap-2 bg-transparent text-center text-sm font-semibold text-gray-500 hover:text-primary dark:hover:text-gray-400 first:rounded-s-md last:rounded-e-md" data-fc-target="#fill-and-justify-3" aria-controls="fill-and-justify-3" role="tab">
-                Friends
+                Friends @if($this->pendingFriends > 0)
+                    <span class="badge bg-danger text-white rounded-full">{{ $this->pendingFriends }}</span>
+                @endif
             </button>
             <button type="button" class="fc-tab-active:bg-primary fc-tab-active:text-white flex-auto py-2 px-4 inline-flex justify-center items-center gap-2 bg-transparent text-center text-sm font-semibold text-gray-500 hover:text-primary dark:hover:text-gray-400 first:rounded-s-md last:rounded-e-md" data-fc-target="#fill-and-justify-4" aria-controls="fill-and-justify-4" role="tab">
                 Danger Zone
