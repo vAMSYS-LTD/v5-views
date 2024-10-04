@@ -892,7 +892,14 @@
                         <span class="menu-text"> Airlines </span>
                     </a>
                 </li>
-
+                    <li class="menu-item">
+                        <a href="{{ route('aeolus.parameters') }}" wire:navigate class="menu-link">
+                        <span class="menu-icon">
+                            <x-icon name="light.list" />
+                        </span>
+                            <span class="menu-text"> CS Parameters </span>
+                        </a>
+                    </li>
                 <li class="menu-item">
                     <a href="javascript:void(0)" data-fc-type="collapse" class="menu-link">
                     <span class="menu-icon">
@@ -948,14 +955,7 @@
                         <span class="menu-text"> Pilots </span>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="{{ route('aeolus.datajobs') }}" wire:navigate class="menu-link">
-                    <span class="menu-icon">
-                        <x-icon name="light.list" />
-                    </span>
-                        <span class="menu-text"> DataJobs v3</span>
-                    </a>
-                </li>
+
                 <li class="menu-item">
                     <a href="{{ route('aeolus.admin.airac') }}" wire:navigate class="menu-link">
                     <span class="menu-icon">
