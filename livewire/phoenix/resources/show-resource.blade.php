@@ -17,7 +17,7 @@
                         </div>
                     @endif
                     <div
-                        class="tiptap-editor grid grid-cols-12 py-2 {{ $panel['type'] == 'panel'?'px-6 gap-4':'gap-y-4' }}">
+                        class="tiptap-editor grid grid-cols-12 py-2 {{ $panel['type'] == 'panel'?'px-6 gap-4':'gap-4' }}">
                         @foreach($panel['data']['component'] as $component)
                             @php
                                 $ranks = $component['data']['ranks'] ?? null;
