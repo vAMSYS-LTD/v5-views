@@ -1,4 +1,7 @@
 <div class="space-y-2">
+    @if($airline->design->stylesheet && $this->user->id == 2)
+        <x-alerts.danger class="mb-4" title="Custom CSS In Use" content=""/>
+    @endif
     <livewire:global.system.system-alerts/>
 
     @if($this->pilot->under_activity_grace)
