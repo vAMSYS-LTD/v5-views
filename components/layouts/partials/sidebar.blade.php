@@ -744,26 +744,28 @@
                                     </a>
                                 </li>
                             @endif
-                            @if($airlineStaff->can_see_discord_settings || $airlineStaff->vamsys_staff)
-                                <li class="menu-item">
-                                    <a href="{{ route('orwell.settings.discord') }}" class="menu-link" wire:navigate>
-                                        <span class="menu-text">Discord</span>
-                                    </a>
-                                </li>
-                            @endif
-                            @if($airlineStaff->can_see_share_agreements || $airlineStaff->vamsys_staff)
-                                <li class="menu-item">
-                                    <a href="{{ route('orwell.settings.share') }}" class="menu-link" wire:navigate>
-                                        <span class="menu-text">Share Agreements</span>
-                                    </a>
-                                </li>
-                            @endif
-                            @if($airlineStaff->can_see_api_settings || $airlineStaff->vamsys_staff)
-                                <li class="menu-item">
-                                    <a href="{{ route('orwell.settings.api') }}" class="menu-link" wire:navigate>
-                                        <span class="menu-text">API</span>
-                                    </a>
-                                </li>
+                            @if(!$airline->onTrial())
+                                @if($airlineStaff->can_see_discord_settings || $airlineStaff->vamsys_staff)
+                                    <li class="menu-item">
+                                        <a href="{{ route('orwell.settings.discord') }}" class="menu-link" wire:navigate>
+                                            <span class="menu-text">Discord</span>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if($airlineStaff->can_see_share_agreements || $airlineStaff->vamsys_staff)
+                                    <li class="menu-item">
+                                        <a href="{{ route('orwell.settings.share') }}" class="menu-link" wire:navigate>
+                                            <span class="menu-text">Share Agreements</span>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if($airlineStaff->can_see_api_settings || $airlineStaff->vamsys_staff)
+                                    <li class="menu-item">
+                                        <a href="{{ route('orwell.settings.api') }}" class="menu-link" wire:navigate>
+                                            <span class="menu-text">API</span>
+                                        </a>
+                                    </li>
+                                @endif
                             @endif
                         </ul>
                     </li>
