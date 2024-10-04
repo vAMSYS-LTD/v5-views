@@ -280,7 +280,6 @@
                         <div class="col-span-1">
                             <p class="text-gray-400">Company Average</p>
                             <div class="gap-3">
-{{--                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[0]->value }}</h5>--}}
                                 <h5 class="font-medium">{{ sprintf('%02d:%02d:%02d', ($this->taxiOutAvg / 3600 ), ($this->taxiOutAvg / 60 % 60), $this->taxiOutAvg % 60) }}</h5>
                             </div>
                         </div>
@@ -296,20 +295,19 @@
                         <div class="col-span-1 sm:text-center">
                             <p class="text-gray-400">Company Average</p>
                             <div class="gap-3">
-{{--                                <h5 class="font-medium">{{ $this->pirep->pirep_data?->taxiInfo[1]->value }}</h5>--}}
                                 <h5 class="font-medium">{{ sprintf('%02d:%02d:%02d', ($this->taxiInAvg / 3600 ), ($this->taxiInAvg / 60 % 60), $this->taxiInAvg % 60) }}</h5>
                             </div>
                         </div>
                     </div>
 
                     <div>
-                        <div class="col-span-1 mb-2 sm:text-right">
+                        <div class="col-span-1 mb-2 sm:text-center">
                             <p class="text-gray-400">Distance</p>
                             <div class="gap-3">
                                 <h5 class="font-medium">{{ number_format($this->pirep->booking->route->flight_distance) }} NM</h5>
                             </div>
                         </div>
-                        <div class="col-span-1 sm:text-right">
+                        <div class="col-span-1 sm:text-center">
                             <p class="text-gray-400">Fuel Used</p>
                             <div class="gap-3">
                                 <h5 class="font-medium">{{ number_format(convertWeightValue($this->pirep->fuel_used, $pilot)->value) }} {{ convertWeightValue($this->pirep->fuel_used, $pilot)->measure }}</h5>
@@ -333,6 +331,36 @@
                         </div>
                     </div>
                 </div>
+
+                @if(!$this->airline->disable_stands)
+                    <hr class="divider"/>
+                    <div class="grid sm:grid-cols-4 gap-3">
+                        <div class="col-span-1 mb-2">
+                            <p class="text-gray-400">Booked Departure Stand</p>
+                            <div class="gap-3">
+                                <h5 class="font-medium">{{ $this->pirep->booking->departureStand->name }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-span-1 mb-2 sm:text-center">
+                            <p class="text-gray-400">Departure Stand</p>
+                            <div class="gap-3">
+                                <h5 class="font-medium">{{ isset($this->pirep->pirep_data->departure_gate)?collect($this->pirep->pirep_data->departure_gate)->last()->name:'' }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-span-1 mb-2 sm:text-center">
+                            <p class="text-gray-400">Booked Arrival Stand</p>
+                            <div class="gap-3">
+                                <h5 class="font-medium">{{ $this->pirep->booking->arrivalStand->name }}</h5>
+                            </div>
+                        </div>
+                        <div class="col-span-1 mb-2 sm:text-right">
+                            <p class="text-gray-400">Arrival Stand</p>
+                            <div class="gap-3">
+                                <h5 class="font-medium">{{ isset($this->pirep->pirep_data->arrival_gate)?collect($this->pirep->pirep_data->arrival_gate)->last()->name:'' }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
     @endif
