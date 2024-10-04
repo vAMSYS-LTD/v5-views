@@ -105,6 +105,79 @@
         </div>
     </div>
 
+    @if($networks || $fleet || $ranks || $callsigns)
+        <div class="card">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">Event Restrictions</h4>
+            </div>
+            <div class="px-6 py-2 flex flex-col space-y-2">
+                @if($networks)
+                    <div class="flex justify-between">
+                        <p class="text-gray-400">Network Restriction</p>
+                        <div class="flex flex-col text-right justify-end">
+                            @foreach($networks as $network)
+                                <h5 class="font-medium">
+                                    @switch($network)
+                                        @case('offline')
+                                            Offline
+                                            @break
+                                        @case('vatsim')
+                                            VATSIM
+                                            @break
+                                        @case('ivao')
+                                            IVAO
+                                            @break
+                                        @case('poscon')
+                                            POSCON
+                                            @break
+                                        @case('pilotedge')
+                                            PilotEdge
+                                            @break
+                                        @default
+                                            Network Name Not Found.
+                                    @endswitch
+                                </h5>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if($fleet)
+                    <div class="flex justify-between">
+                        <p class="text-gray-400">Fleet Restriction</p>
+                        <div class="flex flex-col text-right justify-end">
+                            @foreach($fleet as $type)
+                                <h5 class="font-medium">{{ $type->name }} | {{ $type->code }}</h5>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if($ranks)
+                    <div class="flex justify-between">
+                        <p class="text-gray-400">Rank Restriction</p>
+                        <div class="flex flex-col text-right justify-end">
+                            @foreach($ranks as $rank)
+                                <h5 class="font-medium">{{ $rank->name }}</h5>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                @if($callsigns)
+                    <div class="flex justify-between">
+                        <p class="text-gray-400">Callsign Restriction</p>
+                        <div class="flex flex-col text-right justify-end">
+                            @foreach($callsigns as $callsign)
+                                <h5 class="font-medium">{{ $callsign->icao_code }} | {{ $callsign->iata_code }}</h5>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+
     <div class="card">
         <div class="card-header flex justify-between items-center">
             @if($eventAirports)
@@ -334,79 +407,6 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
-        </div>
-    @endif
-
-    @if($networks || $fleet || $ranks || $callsigns)
-        <div class="card">
-            <div class="card-header flex justify-between items-center">
-                <h4 class="card-title">Event Restrictions</h4>
-            </div>
-            <div class="px-6 py-2 flex flex-col space-y-2">
-                @if($networks)
-                    <div class="flex justify-between">
-                        <p class="text-gray-400">Network Restriction</p>
-                        <div class="flex flex-col text-right justify-end">
-                            @foreach($networks as $network)
-                                <h5 class="font-medium">
-                                    @switch($network)
-                                        @case('offline')
-                                            Offline
-                                            @break
-                                        @case('vatsim')
-                                            VATSIM
-                                            @break
-                                        @case('ivao')
-                                            IVAO
-                                            @break
-                                        @case('poscon')
-                                            POSCON
-                                            @break
-                                        @case('pilotedge')
-                                            PilotEdge
-                                            @break
-                                        @default
-                                            Network Name Not Found.
-                                    @endswitch
-                                </h5>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-
-                @if($fleet)
-                    <div class="flex justify-between">
-                        <p class="text-gray-400">Fleet Restriction</p>
-                        <div class="flex flex-col text-right justify-end">
-                            @foreach($fleet as $type)
-                                <h5 class="font-medium">{{ $type->name }} | {{ $type->code }}</h5>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-
-                @if($ranks)
-                    <div class="flex justify-between">
-                        <p class="text-gray-400">Rank Restriction</p>
-                        <div class="flex flex-col text-right justify-end">
-                            @foreach($ranks as $rank)
-                                <h5 class="font-medium">{{ $rank->name }}</h5>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
-
-                @if($callsigns)
-                    <div class="flex justify-between">
-                        <p class="text-gray-400">Callsign Restriction</p>
-                        <div class="flex flex-col text-right justify-end">
-                            @foreach($callsigns as $callsign)
-                                <h5 class="font-medium">{{ $callsign->icao_code }} | {{ $callsign->iata_code }}</h5>
-                            @endforeach
-                        </div>
-                    </div>
-                @endif
             </div>
         </div>
     @endif
