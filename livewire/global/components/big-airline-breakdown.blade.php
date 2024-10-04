@@ -21,22 +21,33 @@
                             {{ $airline['prefix'].$airline['id'] }}
                         </div>
                     @endif
-                    <div class="grid grid-cols-4 text-center h-full gap-4 content-evenly">
-                        <div>
-                            <div class="text-xl font-bold">{{ number_format($airline['statistics']->data->pireps->allTime->count ) }}</div>
-                            <div class="text-md font-semibold">PIREPs</div>
+
+                    @if($airline['pilot_holiday'])
+                        <div class="grid grid-cols-1 text-center h-full gap-4 content-evenly">
+                            <div class="text-xl font-bold">On Holidays until {{ \Carbon\Carbon::parse($airline['pilot_holiday_end'])->format('jS M y') }}</div>
                         </div>
-                        <div class="col-span-2">
-                            <div
-                                class="text-xl font-bold">{{ $airline['statistics']->data->flightTime->allTime->formatted }}</div>
-                            <div class="text-md font-semibold">Time</div>
+                    @elseif($airline['pilot_frozen'])
+                        <div class="grid grid-cols-1 text-center h-full gap-4 content-evenly">
+                            <div class="text-xl font-bold">Pilot Account Frozen</div>
                         </div>
-                        <div>
-                            <div
-                                class="text-xl font-bold">{{ number_format($airline['statistics']->data->points->allTime->sum) }}</div>
-                            <div class="text-md font-semibold">Points</div>
+                    @else
+                        <div class="grid grid-cols-4 text-center h-full gap-4 content-evenly">
+                            <div>
+                                <div class="text-xl font-bold">{{ number_format($airline['statistics']->data->pireps->allTime->count ) }}</div>
+                                <div class="text-md font-semibold">PIREPs</div>
+                            </div>
+                            <div class="col-span-2">
+                                <div
+                                    class="text-xl font-bold">{{ $airline['statistics']->data->flightTime->allTime->formatted }}</div>
+                                <div class="text-md font-semibold">Time</div>
+                            </div>
+                            <div>
+                                <div
+                                    class="text-xl font-bold">{{ number_format($airline['statistics']->data->points->allTime->sum) }}</div>
+                                <div class="text-md font-semibold">Points</div>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
 

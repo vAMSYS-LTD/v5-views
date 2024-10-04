@@ -7,10 +7,14 @@
                     <img class="w-full aspect-[9/2]" x-show="darkMode" src="{{ $airline['logo_dark'] }}">
                 </div>
                 <div class="text-center">
-                    @if($airline['slogan'])
-                        {{ $airline['slogan'] }}
+                    @if($airline['pilot_frozen'])
+                        <span class="font-bold text-red-700">Pilot Account Frozen</span>
                     @else
-                        &nbsp;
+                        @if($airline['slogan'])
+                            {{ $airline['slogan'] }}
+                        @else
+                            &nbsp;
+                        @endif
                     @endif
                 </div>
             </div>
