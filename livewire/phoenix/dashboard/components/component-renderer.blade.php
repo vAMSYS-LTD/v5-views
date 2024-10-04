@@ -45,6 +45,6 @@
                                                               class="flex flex-grow h-full rounded z-0 shadow relative card" dashboard="true"/>
         @break
     @case('flight_list_component')
-        <livewire:orwell.dashboard.components.flight-list componentWidth="{{ $width }}"/>
+        <livewire:phoenix.dashboard.components.flight-list componentWidth="{{ $width }}"/>
         @break
 @endswitch

@@ -81,9 +81,11 @@
                                         <a href="{{ route('phoenix.flight-centre.map', ['booking' => $flight->bookingId]) }}"
                                            target="_blank" class="" @mouseenter="$popovers('View on Map')"
                                            data-trigger="mouseenter"><i class="fa-duotone fa-map-location"></i></a>
-                                        <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $flight->pilot->airline, 'pilotUsername' => $flight->pilot->username]) }}"
-                                           target="_blank" class="" @mouseenter="$popovers('View Profile')"
-                                           data-trigger="mouseenter"><i class="fa-duotone fa-user"></i></a>
+                                        @if($flight->pilot->username != 'Anonymous')
+                                            <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $flight->pilot->airline, 'pilotUsername' => $flight->pilot->username]) }}"
+                                               target="_blank" class="" @mouseenter="$popovers('View Profile')"
+                                               data-trigger="mouseenter"><i class="fa-duotone fa-user"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>
