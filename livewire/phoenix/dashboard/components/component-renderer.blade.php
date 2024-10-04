@@ -1,6 +1,7 @@
 @php
     $width = match($component['data']['width']) {
         'full' => 'w-full',
+        '25' => 'w-full md:w-1/4',
         '33' => 'w-full md:w-1/3',
         '50' => 'w-full md:w-1/2',
         '66' => 'w-full md:w-2/3'
