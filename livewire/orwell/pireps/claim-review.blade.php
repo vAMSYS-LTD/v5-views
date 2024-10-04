@@ -1,88 +1,129 @@
-<div>
-    <div class="grid grid-cols-2 gap-4">
-        <div class="panel p-2">
-            <div
-                class="mb-2 flex items-start justify-between border-b border-[#e0e6ed] p-2 pt-0 dark:border-[#1b2e4b] dark:text-white-light">
-                <h5 class="text-lg font-semibold">Claim Information</h5>
-                <div class="dropdown mt-1">
-                    Claim #{{ $claim->id }};
+<div class="flex flex-col space-y-4">
+    <div class="card">
+        <div class="card-header flex justify-between items-center">
+            <h4 class="card-title">Claim #{{ $this->claim->id }} Details</h4>
+        </div>
+
+        <div class="px-6 py-2 space-y-2">
+            <div class="grid sm:grid-cols-3 gap-3">
+                <div class="col-span-1">
+                    <p class="text-gray-400">Pilot</p>
+                    <div class="gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->pilot->username }} {{ $this->claim->pilot->user->full_name }}</h5>
+                    </div>
                 </div>
-            </div>
-            <div class="px-2">
-                <div class="space-y-2 divide-y divide-[#e0e6ed] dark:divide-[#1b2e4b]">
-                    <div class="grid grid-cols-2">
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-base font-semibold tracking-wide">{{ $claim->departureAirport->name }}
-                                | {{ $claim->departureAirport->identifiers }}</div>
-                            <div class="text-sm">Departure Airport</div>
-                        </div>
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-right text-base font-semibold tracking-wide">{{ $claim->departure_time->format('jS \o\f F, Y, H:i') }}</div>
-                            <div class="text-sm text-right">Departure Time</div>
-                        </div>
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-base font-semibold tracking-wide">{{ $claim->arrivalAirport->name }}
-                                | {{ $claim->arrivalAirport->identifiers }}</div>
-                            <div class="text-sm">Arrival Airport</div>
-                        </div>
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-right text-base font-semibold tracking-wide">{{ $claim->arrival_time->format('jS \o\f F, Y, H:i') }}</div>
-                            <div class="text-sm text-right">Arrival Time</div>
-                        </div>
+
+                <div class="col-span-1 sm:text-center">
+                    <p class="text-gray-400">Rank</p>
+                    <div class=" gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->pilot->preferredRank->name }}</h5>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:text-right">
+                    <p class="text-gray-400">Registration</p>
+                    <div class="gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->pilot->created_at->format('jS \o\f F, y') }}</h5>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel p-2">
-            <div
-                class="mb-2 flex items-start justify-between border-b border-[#e0e6ed] p-2 pt-0 dark:border-[#1b2e4b] dark:text-white-light">
-                <h5 class="text-lg font-semibold">Claimant Information</h5>
-                <div class="dropdown mt-1">
 
+            <hr class="divider"/>
+
+            <div class="grid sm:grid-cols-3 gap-3">
+                <div class="col-span-1">
+                    <p class="text-gray-400">Departure</p>
+                    <div class="gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->booking->route->departureAirportAll->name }}</h5>
+                        <h5 class="font-medium">{{ $this->claim->booking->route->departureAirportAll->identifiers }}</h5>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:text-center">
+                    <p class="text-gray-400">Arrival</p>
+                    <div class=" gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->booking->route->arrivalAirportAll->name }}</h5>
+                        <h5 class="font-medium">{{ $this->claim->booking->route->arrivalAirportAll->identifiers }}</h5>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:text-right">
+                    <p class="text-gray-400">Callsign & Flight Number</p>
+                    <div class="gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->booking->callsign }}</h5>
+                        <h5 class="font-medium">{{ $this->claim->booking->flight_number }}</h5>
+                    </div>
                 </div>
             </div>
-            <div class="px-2">
-                <div class="space-y-2 divide-y divide-[#e0e6ed] dark:divide-[#1b2e4b]">
-                    <div class="grid grid-cols-2">
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-base font-semibold tracking-wide">{{ $claim->pilot->user->full_name }}</div>
-                            <div class="text-sm">Pilot Name</div>
-                        </div>
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-right text-base font-semibold tracking-wide">{{ $claim->pilot->username }}</div>
-                            <div class="text-sm text-right">Pilot Username</div>
-                        </div>
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-base font-semibold tracking-wide">{{ $claim->pilot->preferredRank->name }}</div>
-                            <div class="text-sm">Rank</div>
-                        </div>
-                        <div class="flex flex-col align-content-center">
-                            <div
-                                class="my-auto text-right text-base font-semibold tracking-wide">{{ $claim->pilot->created_at->format('jS \o\f F, y') }}</div>
-                            <div class="text-sm text-right">Pilot Registration Date</div>
-                        </div>
+
+            <hr class="divider"/>
+
+            <div class="grid sm:grid-cols-4 gap-3">
+                <div class="col-span-1">
+                    <p class="text-gray-400">Aircraft</p>
+                    <div class="gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->booking->aircraft->registration }} | {{ $this->claim->booking->aircraft->name }}</h5>
+                        <h5 class="font-medium">{{ $this->claim->booking->aircraft->type->name }} | {{ $this->claim->booking->aircraft->type->code }}</h5>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:text-center">
+                    <p class="text-gray-400">Booking</p>
+                    <div class=" gap-3 mt-1">
+                        <h5 class="font-medium">{{ ucfirst($this->claim->booking->type) }}</h5>
+                        <h5 class="font-medium">{{ $this->claim->booking->network }}</h5>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:text-center">
+                    <p class="text-gray-400">Level and Cost Index</p>
+                    <div class=" gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->booking->altitude/100 }}</h5>
+                        <h5 class="font-medium">{{ $this->claim->booking->cost_index }}</h5>
+                    </div>
+                </div>
+
+                <div class="col-span-1 sm:text-right">
+                    <p class="text-gray-400">Passengers & Freight</p>
+                    <div class="gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->claim->booking->passengers }}</h5>
+                        <h5 class="font-medium">{{ number_format(convertWeightValue($this->claim->booking->cargo, $pilot)->value) }} {{ convertWeightValue($this->claim->booking->cargo, $pilot)->measure }}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-3 gap-3">
+                <div class="col-span-1 mb-2">
+                    <p class="text-gray-400">Route Departure</p>
+                    <div class="gap-3">
+                        @if($this->claim->booking->route->departure_time || $this->claim->booking->departure_time)
+                            <h5 class="font-medium">{{ $this->claim->booking->route->departure_time?$this->claim->booking->route->departure_time->format('H:i'):$this->claim->booking->departure_time->format('H:i') }}</h5>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-span-1 mb-2 sm:text-center">
+                    <p class="text-gray-400">Route Arrival</p>
+                    <div class="gap-3">
+                        @if($this->claim->booking->route->arrival_time || $this->claim->booking->arrival_time)
+                            <h5 class="font-medium">{{ $this->claim->booking->route->arrival_time?$this->claim->booking->route->arrival_time->format('H:i'):$this->claim->booking->arrival_time->format('H:i') }}</h5>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-span-1 sm:text-right">
+                    <p class="text-gray-400">Scheduled Time</p>
+                    <div class="gap-3">
+                        <h5 class="font-medium">{{ $this->claim->booking->route->flight_length->format('H:i') }}</h5>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="panel p-2 mt-4">
-        <div
-            class="mb-2 flex items-start justify-between border-b border-[#e0e6ed] p-2 pt-0 dark:border-[#1b2e4b] dark:text-white-light">
-            <h5 class="text-lg font-semibold">Submitted Proof</h5>
-            <div class="dropdown mt-1">
 
-            </div>
+    <div class="card">
+        <div class="card-header flex justify-between items-center">
+            <h4 class="card-title">Submitted Proof of Flight</h4>
         </div>
-        <div class="px-2">
-            <div class="space-y-2 divide-y divide-[#e0e6ed] dark:divide-[#1b2e4b]">
+        <div class="px-6 py-2 space-y-2">
+            <div class="divide-y divide-[#e0e6ed] dark:divide-[#1b2e4b]">
                 <div class="grid grid-cols-5 gap-2">
                     @foreach($claim->proof as $item)
                         @if($item['type'] == 'image')
@@ -107,34 +148,49 @@
         </div>
     </div>
 
-    @if($claim->message)
-        <div class="panel p-2 mt-4">
-            <div
-                class="mb-2 flex items-start justify-between border-b border-[#e0e6ed] p-2 pt-0 dark:border-[#1b2e4b] dark:text-white-light">
-                <h5 class="text-lg font-semibold">Message</h5>
-                <div class="dropdown mt-1">
 
-                </div>
+    <div class="grid grid-cols-2 gap-4">
+        <div class="card h-full">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">Claim Message</h4>
             </div>
-            <div class="px-2">
+            <div class="px-6 py-2 space-y-2">
                 <div class="flex flex-col align-content-center">
                     <div>{{ $claim->message }}</div>
                 </div>
             </div>
         </div>
-    @endif
-
-    <div class="grid grid-cols-2 gap-4 mt-4">
-        <div class="panel p-2">
-            <div
-                class="mb-2 flex items-start justify-between border-b border-[#e0e6ed] p-2 pt-0 dark:border-[#1b2e4b] dark:text-white-light">
-                <h5 class="text-lg font-semibold">Computed Information</h5>
-                <div class="dropdown mt-1">
-
+        <div class="card h-full">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">10 Previous Claims</h4>
+            </div>
+            <div class="px-6 py-2 space-y-2">
+                <div class="flex w-full justify-around">
+                    @foreach($lastClaims as $previousClaim)
+                        <div>
+                            <a href="{{ route('orwell.claims.claim', ['claim' => $previousClaim->id]) }}" target="_blank">{{ $previousClaim->id  }}</a>
+                        </div>
+                        <div>
+                            {{ $previousClaim->created_at->format('jS M y H:i') }}
+                        </div>
+                        <div>
+                            {{ ucfirst($previousClaim->status) }}
+                        </div>
+                    @endforeach
                 </div>
             </div>
-            <div class="px-2">
-                <div class="space-y-2 divide-y divide-[#e0e6ed] dark:divide-[#1b2e4b]">
+        </div>
+    </div>
+
+
+
+    <div class="grid grid-cols-2 gap-4">
+        <div class="card">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">Computed Information</h4>
+            </div>
+            <div class="px-6 py-2 space-y-2">
+                <div class="divide-y divide-[#e0e6ed] dark:divide-[#1b2e4b]">
                     <div class="grid grid-cols-3">
                         <div class="flex flex-col align-content-center">
                             <div
@@ -186,15 +242,11 @@
                 </div>
             </div>
         </div>
-        <div class="panel p-2">
-            <div
-                class="mb-2 flex items-start justify-between border-b border-[#e0e6ed] p-2 pt-0 dark:border-[#1b2e4b] dark:text-white-light">
-                <h5 class="text-lg font-semibold">Claim Review</h5>
-                <div class="dropdown mt-1">
-
-                </div>
+        <div class="card">
+            <div class="card-header flex justify-between items-center">
+                <h4 class="card-title">Claim Review</h4>
             </div>
-            <div class="px-2">
+            <div class="px-6 py-2 space-y-2">
                 {{ $this->form }}
             </div>
         </div>
