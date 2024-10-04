@@ -70,8 +70,8 @@
 
     <input type="hidden" name="units" value="{{ $this->pilot->use_imperial_units?'LBS':'KGS' }}">
     <input type="hidden" name="maps" value="{{ $data['sbsettings']['maps'] }}">
-    <input type="hidden" name="taxiout" value="{{ $data['taxiOut'] ?? round($this->route->departureAirport->avg_taxi_out/60) }}">
-    <input type="hidden" name="taxiin" value="{{ $data['taxiIn'] ?? round($this->route->arrivalAirport->avg_taxi_in/60) }}">
+    <input type="hidden" name="taxiout" value="{{ $data['taxiOut'] ?? round($this->route->departureAirportAll->avg_taxi_out/60) }}">
+    <input type="hidden" name="taxiin" value="{{ $data['taxiIn'] ?? round($this->route->arrivalAirportAll->avg_taxi_in/60) }}">
     <input type="hidden" name="flightrules" value="{{ $this->route->flightrules }}">
     <input type="hidden" name="flighttype" value="{{ $this->route->flighttype }}">
 
