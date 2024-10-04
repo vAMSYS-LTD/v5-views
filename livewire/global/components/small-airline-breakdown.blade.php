@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
     @foreach($otherAirlines as $airline)
-        <div class="card group hover:bg-gray-200 dark:hover:bg-gray-700 mb-4">
+        <div class="card group hover:bg-gray-200 dark:hover:bg-gray-700 mb-4 @if($airline['pilot_frozen']) opacity-50 @endif">
             <div wire:click="login({{ $airline['id'] }}, 'phoenix')" class="cursor-pointer pt-5 pr-5 pl-5">
                 <div class="">
                     <img class="w-full aspect-[9/2]" x-show="!darkMode" src="{{ $airline['logo_bright'] }}">
