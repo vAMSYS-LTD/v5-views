@@ -133,10 +133,16 @@
             </div>
             <hr class="divider"/>
             <div class="grid sm:grid-cols-4 gap-3">
-                <div class="col-span-4">
+                <div class="col-span-2">
                     <p class="text-gray-400">Livery Used</p>
                     <div class="gap-3 mt-1">
                         <h5 class="font-medium">{{ collect($this->pirep->pirep_data?->aircrafts)->last()?->name }}</h5>
+                    </div>
+                </div>
+                <div class="col-span-2 sm:text-right">
+                    <p class="text-gray-400">Simulator Used</p>
+                    <div class="gap-3 mt-1">
+                        <h5 class="font-medium">{{ $this->pirep->simulator_version }}</h5>
                     </div>
                 </div>
             </div>
