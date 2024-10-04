@@ -22,21 +22,20 @@
                             $replacementText = [];
                             $rules = $rule->rule;
                             $terms = ['heavierThan', 'lighterThan', 'max', 'maxCoefficient'];
-
                             foreach ($terms as $term) {
-                                if (isset($rules->$term)) {
+                                if (isset($rules[$term])) {
                                     switch ($term) {
                                         case 'heavierThan':
-                                            $replacementText[] =  $rule->rule->heavierThan.' FPM';
+                                            $replacementText[] =  $rule->rule['heavierThan'].' FPM';
                                             break;
                                         case 'lighterThan':
-                                            $replacementText[] = $rule->rule->lighterThan.' FPM';
+                                            $replacementText[] = $rule->rule['lighterThan'].' FPM';
                                             break;
                                         case 'max':
-                                            $replacementText[] = $rule->rule->max;
+                                            $replacementText[] = $rule->rule['max'];
                                             break;
                                         case 'maxCoefficient':
-                                            $replacementText[] = 'or ' . $rule->rule->maxCoefficient*100-100 .'%';
+                                            $replacementText[] = 'or ' . $rule->rule['maxCoefficient']*100-100 .'%';
                                             break;
                                         default:
                                             break;
