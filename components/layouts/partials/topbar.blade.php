@@ -238,7 +238,7 @@
                 @endif
             </button>
 
-            <div class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-64 z-50 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800">
+            <div class="fc-dropdown fc-dropdown-open:opacity-100 hidden opacity-0 w-64 transition-all duration-300 bg-white shadow-lg border rounded-lg py-2 border-gray-200 dark:border-gray-700 dark:bg-gray-800 z-10">
                 <!-- item-->
                 {{--            <h6 class="flex items-center py-2 px-3 text-xs text-gray-800 dark:text-gray-400">Welcome !</h6>--}}
 

@@ -33,7 +33,7 @@
         <livewire:orwell.dashboard.components.flight-list/>
 
         @if($this->airlineStaff->can_view_pilot_list || $this->airlineStaff->vamsys_staff)
-            <div class="grid gap-2 xl:grid-cols-2 z-10">
+            <div class="grid gap-2 xl:grid-cols-2">
                 <livewire:orwell.dashboard.components.recent-bookings/>
                 <livewire:orwell.dashboard.components.recent-pilots/>
             </div>
