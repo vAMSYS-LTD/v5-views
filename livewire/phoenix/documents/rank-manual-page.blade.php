@@ -49,6 +49,12 @@
                                             @endif
                                             Bonus Points: {{ number_format($rank->bonus) }}
                                         @endif
+                                        @if($rank->pireps > 0)
+                                            @if($rank->hours > 0 || $rank->points > 0 || $rank->bonus > 0) <!-- Adds the separator if hours or points also exist -->
+                                            |
+                                            @endif
+                                            Accepted PIREPs: {{ number_format($rank->pireps) }}
+                                        @endif
                                     </p>
                                 </div>
                             </div>
