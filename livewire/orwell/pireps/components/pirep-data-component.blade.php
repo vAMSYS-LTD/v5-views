@@ -338,7 +338,7 @@
                         <div class="col-span-1 mb-2">
                             <p class="text-gray-400">Booked Departure Stand</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->booking->departureStand->name }}</h5>
+                                <h5 class="font-medium">{{ $this->pirep->booking->departureStand?->name }}</h5>
                             </div>
                         </div>
                         <div class="col-span-1 mb-2 sm:text-center">
@@ -350,7 +350,7 @@
                         <div class="col-span-1 mb-2 sm:text-center">
                             <p class="text-gray-400">Booked Arrival Stand</p>
                             <div class="gap-3">
-                                <h5 class="font-medium">{{ $this->pirep->booking->arrivalStand->name }}</h5>
+                                <h5 class="font-medium">{{ $this->pirep->booking->arrivalStand?->name }}</h5>
                             </div>
                         </div>
                         <div class="col-span-1 mb-2 sm:text-right">
