@@ -1,8 +1,8 @@
 <form id="sbapiform">
     <input type="hidden" name="airline" value="{{ $this->airline->sb_send_icao_in_airline?$callsignPrefix:$flightNumberPrefix }}">
     <input type="hidden" name="fltnum" value="{{ $data['flight_number'] }}">
-    <input type="hidden" name="orig" value="{{ $this->route->departureAirport->identifier }}">
-    <input type="hidden" name="dest" value="{{ $this->route->arrivalAirport->identifier }}">
+    <input type="hidden" name="orig" value="{{ $this->route->departureAirportAll->identifier }}">
+    <input type="hidden" name="dest" value="{{ $this->route->arrivalAirportAll->identifier }}">
     <input type="hidden" name="altn" value="{{ $data['alternate'] }}">
     <input type="hidden" name="date"
            value="{{ strtoupper(\Carbon\Carbon::parse($data['departureTime'])->format('dMy')) }}">
