@@ -24,7 +24,7 @@
                 </a>
             @endif
             @if($airline->use_radarbox_button)
-                <a href="{{ 'https://www.radarbox.com/data/flights/'. $booking->callsign }}"
+                <a href="{{ 'https://www.radarbox.com/data/flights/'. $booking->flight_number }}"
                    target="_blank">
                     <div class="btn btn-sm btn-info-outline w-full">
                         RadarBox
