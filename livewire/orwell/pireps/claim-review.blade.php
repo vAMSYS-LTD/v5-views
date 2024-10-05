@@ -126,7 +126,7 @@
             <div class="divide-y divide-[#e0e6ed] dark:divide-[#1b2e4b]">
                 <div class="grid grid-cols-5 gap-2">
                     @foreach($claim->proof as $item)
-                        @if($item['type'] == 'image')
+                        @if(array_key_exists('type', $item) && $item['type'] == 'image')
                             <a href="{{ Storage::disk('do_spaces')->url($item['data']['img']) }}" target="_blank"
                                class="flex p-2 flex-col align-content-center w-full border">
                                 <div
@@ -135,7 +135,7 @@
                                 </div>
                             </a>
                         @endif
-                        @if($item['type'] == 'link')
+                        @if(array_key_exists('type', $item) && $item['type'] == 'link')
                             <a href="{{ $item['data']['url'] }}" target="_blank"
                                class="flex flex-col align-content-center w-full border p-2">
                                 <div
