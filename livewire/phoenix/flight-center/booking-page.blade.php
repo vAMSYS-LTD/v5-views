@@ -99,6 +99,17 @@
     <div class="grid xl:grid-cols-4 gap-4">
         <div class="grid xl:col-span-3 xl:grid-cols-2 gap-4">
             <div class="card xl:col-span-2">
+                <div class="px-6 py-2 space-y-2">
+                    @if($bookings->count() > 1 && $bookings->first()->id != $booking->id)
+                        Please start tracking the first Booking in Pegasus before {{ $bookings->first()->valid_to->format('jS M y H:i') }}z.
+                    @else
+                        Please start your flight before {{ $booking->valid_to->format('jS M y H:i') }}z ({{ $booking->valid_to->diffForHumans(parts: 2) }}).
+                    @endif
+
+                </div>
+            </div>
+
+            <div class="card xl:col-span-2">
                 <div class="card-header flex justify-between items-center">
                     <h4 class="card-title">Booking Details</h4>
                     <div>
