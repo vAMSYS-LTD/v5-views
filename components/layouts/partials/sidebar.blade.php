@@ -859,7 +859,7 @@
                     </li>
                 @endif
                 <li class="menu-item">
-                    <a href="{{ route('orwell.support') }}" wire:navigate class="menu-link">
+                    <a href="{{ route('orwell.support') }}" class="menu-link">
                             <span class="menu-icon">
                                 <x-icon name="light.message-medical" />
                             </span>
