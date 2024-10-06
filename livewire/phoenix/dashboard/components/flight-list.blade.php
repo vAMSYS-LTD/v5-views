@@ -108,11 +108,11 @@
                                         data-trigger="mouseenter">{{ $pastFlight->booking->callsign }}
                                     </td>
                                     <td class="hidden  md:table-cell"
-                                        @mouseenter="$popovers('{{ addslashes($pastFlight->route->departureAirportAll->name) }}')"
+                                        @mouseenter="$popovers('{{ addslashes($pastFlight->route?->departureAirportAll->name) }}')"
                                         data-trigger="mouseenter">{{ $pastFlight->route->departureAirportAll->icao?:$pastFlight->route->departureAirportAll->iata }}
                                     </td>
                                     <td class="hidden md:table-cell"
-                                        @mouseenter="$popovers('{{ addslashes($pastFlight->route->arrivalAirportAll->name) }}')"
+                                        @mouseenter="$popovers('{{ addslashes($pastFlight->route?->arrivalAirportAll->name) }}')"
                                         data-trigger="mouseenter">{{ $pastFlight->route->arrivalAirportAll->icao?:$pastFlight->route->arrivalAirportAll->iata }}
                                     </td>
                                     <td class="hidden xl:table-cell">{{ $pastFlight->booking->aircraft->name }} - {{ $pastFlight->booking->aircraft->registration }}</td>
