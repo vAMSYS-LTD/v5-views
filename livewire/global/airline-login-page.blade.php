@@ -17,7 +17,7 @@
                             <p class="text-gray-400 mb-4">{{ $slogan }}</p>
                             <p class="text-gray-400 mb-9">Enter your email address and password to access.</p>
                         </div>
-                        <form class="space-y-5 dark:text-white" action="{{ route('login') }}" method="POST">
+                        <form id="login-form" class="space-y-5 dark:text-white" action="{{ route('login') }}" method="POST">
                             @csrf
                             <input type="hidden" name="airline" value="{{ $airlineId }}">
                             @if($errors->all())
@@ -57,12 +57,18 @@
 
 
                             <div class="text-center mb-6">
-                                <button wire:loading.attr="disabled" class="btn bg-primary text-white" type="submit"> Sign In </button>
+                                <button id="sign-in-button" wire:loading.attr="disabled" class="btn bg-primary text-white" type="submit"> Sign In </button>
                             </div>
 
                             <p class="text-gray-400 mb-4">
                                 <a href="{{ route('general.register', ['slug' => $slug]) }}" class="text-muted text-sm underline-offset-4">Don't have an account? Register Here</a>
                             </p>
+
+                            <script>
+                                document.getElementById('login-form').addEventListener('submit', function () {
+                                    document.getElementById('sign-in-button').setAttribute('disabled', 'true');
+                                });
+                            </script>
 
                         </form>
                     </div>

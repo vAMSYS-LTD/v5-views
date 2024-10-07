@@ -12,7 +12,7 @@
                             <h4 class="text-dark/70 text-center text-lg font-bold dark:text-light/80 mb-2">Pilot Hub</h4>
                             <p class="text-gray-400 mb-9">Enter your email address and password to access.</p>
                         </div>
-                        <form class="space-y-5 dark:text-white" action="{{ route('login') }}" method="POST">
+                        <form id="login-form" wire:submit.prevent="login" class="space-y-5 dark:text-white" action="{{ route('login') }}" method="POST">
                             @csrf
 
                             @if($errors->all())
@@ -50,9 +50,14 @@
                             </div>
 
                             <div class="text-center mb-6">
-                                <button wire:loading.attr="disabled" class="btn bg-primary text-white" type="submit"> Sign In </button>
+                                <button id="sign-in-button" wire:loading.attr="disabled" wire:target="login" class="btn bg-primary text-white" type="submit"> Sign In </button>
                             </div>
 
+                            <script>
+                                document.getElementById('login-form').addEventListener('submit', function () {
+                                    document.getElementById('sign-in-button').setAttribute('disabled', 'true');
+                                });
+                            </script>
                         </form>
                     </div>
                 </div>
