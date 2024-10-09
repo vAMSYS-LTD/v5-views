@@ -226,7 +226,7 @@
                                 </a>
                             </li>
                         @endif
-                        @if($airline->enable_badges)
+                        @if($airline->enable_badges && $airline->enable_badges_public)
                             <li class="menu-item">
                                 <a href="{{ route('phoenix.community.badges') }}" wire:navigate class="menu-link">
                                     <span class="menu-text">{{ $airline->badge_name }}</span>
