@@ -4,7 +4,7 @@
         @php
             $ranks = $panel['data']['ranks'] ?? null;
             $showPanel = false;
-            if(empty($ranks) || in_array($this->pilot->rank_id, $ranks)) {
+            if(empty($ranks) || in_array($this->pilot->rank_id, $ranks) || in_array($this->pilot->honorary_rank_id, $ranks)) {
                 $showPanel = true;
             }
         @endphp
@@ -22,7 +22,7 @@
                             @php
                                 $ranks = $component['data']['ranks'] ?? null;
                                 $showComponent = false;
-                                if(empty($ranks) || in_array($this->pilot->rank_id, $ranks)) {
+                                if(empty($ranks) || in_array($this->pilot->rank_id, $ranks) || in_array($this->pilot->honorary_rank_id, $ranks)) {
                                     $showComponent = true;
                                 }
                             @endphp
