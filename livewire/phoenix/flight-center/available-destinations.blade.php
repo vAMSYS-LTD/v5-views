@@ -15,10 +15,10 @@
             </div>
         </div>
     </div>
+    <!-- End of loader -->
 
-    <div wire:ignore class="flex flex-grow relative">
+    <div id="mapContainer" wire:ignore class="flex flex-grow relative">
         <div id="map" class="flex relative flex-grow z-0"></div>
-
         <div id="sidebar" class="absolute top-5 left-5 card shadow-md z-1 hidden w-[32rem]">
             <div id="sidebarTopBackground" class="min-h-[110px] bg-gradient-to-r from-[#4361ee] to-[#160f6b] p-6">
                 <div class="mb-6 flex items-center justify-between">
@@ -47,14 +47,16 @@
             <div class="-mt-12 grid grid-cols-2 gap-2 px-8">
                 <div id="data-departureAirport"
                      class="flex flex-col rounded-md bg-white justify-between px-4 py-2.5 shadow dark:bg-[#060818]">
-
+                    <!-- Departure airport info -->
                 </div>
                 <div id="data-arrivalAirport"
                      class="flex flex-col rounded-md bg-white justify-between px-4 py-2.5 shadow dark:bg-[#060818]">
+                    <!-- Arrival airport info -->
                 </div>
             </div>
 
-            <div id="sidebar-loadingIndicator" class="pt-3 p-5">
+
+            <div id="sidebar-loadingIndicator" class="pt-3 p-5" style="display: none;">
                 <div class="flex items-center justify-center">
                     <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
                          fill="none" viewBox="0 0 24 24">
@@ -68,7 +70,7 @@
             </div>
 
             <div id="sidebar-content" class="pt-3 p-5">
-                <div id="sidebar-content-data" class="grid grid-cols-2 gap-x-4 mb-4">
+                <div id="sidebar-route-data" class="grid grid-cols-2 gap-x-4 mb-4">
                     <div class="flex text-right flex-col">
                         <p>Aircraft Types</p>
                         <p class="text-sm">
@@ -94,118 +96,82 @@
                         </p>
                     </div>
                 </div>
-                <div x-data="{ loading: false }" class="flex justify-around space-x-4 px-2 text-center">
+                <div id="data-buttons" class="grid grid-cols-2 gap-2 mb-4">
+                    <!-- Reset Map Button -->
                     <button
                         id="reset-map-button"
-                        @click="loading = true; resetMap().then(() => loading = false);"
-                        :class="{'opacity-50': loading}"
-                        :disabled="loading"
                         type="button"
-                        class="btn btn-success w-full">
-                        <span x-show="!loading">Reset Map</span>
-                        <!-- An inline SVG spinner that is shown when loading -->
-                        <div class="flex items-center justify-center" x-show="loading">
-                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
-                                 fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                        stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor"
-                                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Resetting...
-                        </div>
+                        class="btn btn-primary col-span-2">
+                        Reset Map
                     </button>
 
+                    <!-- Origin Airport Info Button -->
                     <button
-                        id="jumpseat-button"
-                        @click="loading = true; doJumpseat().then(() => loading = false);"
-                        :class="{'opacity-50': loading}"
-                        :disabled="loading"
+                        id="origin-airport-button"
                         type="button"
-                        class="btn btn-primary w-full relative">
-                        <span id="sidebar-jumpseat-button-text" x-show="!loading">Jumpseat</span>
-                        <!-- An inline SVG spinner that is shown when loading -->
-                        <div class="flex items-center justify-center" x-show="loading">
-                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
-                                 fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                        stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor"
-                                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Jumpseating...
-                        </div>
+                        class="btn btn-secondary">
+                        <!-- Origin Airport Info -->
                     </button>
-                </div>
-                <div x-data="{ loading: false }" class="flex justify-around space-x-4 mt-4 px-2 text-center">
+                    <!-- Jumpseat to Origin Button -->
                     <button
-                        id="jumpseat-button"
-                        @click="showDepartureData();"
-                        :class="{'opacity-50': loading}"
-                        :disabled="loading"
+                        id="jumpseat-origin-button"
                         type="button"
-                        class="btn btn-primary w-full relative">
-                        <span id="sidebar-departure-button-text" x-show="!loading">Jumpseat</span>
-                        <!-- An inline SVG spinner that is shown when loading -->
-                        <div class="flex items-center justify-center" x-show="loading">
-                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
-                                 fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                        stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor"
-                                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Jumpseating...
-                        </div>
+                        class="btn btn-info">
+                        Jumpseat
                     </button>
-                    <button
-                        id="sidebar-arrival-button"
-                        @click="showArrivalData();"
-                        :class="{'opacity-50': loading}"
-                        :disabled="loading"
-                        type="button"
-                        class="btn btn-primary w-full relative">
-                        <span id="sidebar-arrival-button-text" x-show="!loading">Reset Map</span>
-                        <!-- An inline SVG spinner that is shown when loading -->
-                        <div class="flex items-center justify-center" x-show="loading">
-                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
-                                 fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                        stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor"
-                                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Resetting...
-                        </div>
 
+                    <!-- Destination Airport Info Button -->
+                    <button
+                        id="destination-airport-button"
+                        type="button"
+                        class="btn btn-secondary" style="display: none;">
+                        <!-- Destination Airport Info -->
+                    </button>
+                    <!-- Jumpseat to Destination Button -->
+                    <button
+                        id="jumpseat-destination-button"
+                        type="button"
+                        class="btn btn-info" style="display: none;">
+                        Jumpseat
                     </button>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>
-
 @push('scripts')
-    @script
+    @vite(['resources/assets/js/maps/BaseMapController.js', 'resources/assets/js/maps/DestinationMapController.js'])
     <script>
-        document.addEventListener('livewire:navigated', () => {
-            const mapElement = document.getElementById('map');
-            if (mapElement) {
-                window.mapController = new window.MapController('map', {
-                    bookFlightMap: true
-                });
+        document.addEventListener('DOMContentLoaded', () => {
+            window.destinationMapWire = @this;
+            if (!window.mapController) {
+                const mapElement = document.getElementById('map');
+                if (mapElement) {
+                    window.mapController = new window.DestinationMapController('map', window.destinationMapWire, window.destinationMapWire.__instance.el);
+                }
             }
+        });
 
-            window.mapController.getDestinationMapData($wire);
-            window.mapController.registerButtonActionsForDestinationMap();
-            window.dispatchEvent(new Event('resize'));
-            document.getElementById('sidebar-close').addEventListener('click', () => {
-                window.mapController.closeSidebar()
-                window.resetMap()
-            });
-        }, { once: true });
+        document.addEventListener('livewire:navigated', () => {
+            window.destinationMapWire = @this;
+            if (!window.mapController) {
+                const mapElement = document.getElementById('map');
+                if (mapElement) {
+                    window.mapController = new window.DestinationMapController('map', window.destinationMapWire, window.destinationMapWire.__instance.el);
+                }
+            } else {
+                window.mapController.$wire = window.destinationMapWire;
+                window.mapController.componentEl = window.destinationMapWire.__instance.el;
+                // Update markers if needed
+                window.mapController.addInitialMarkers();
+            }
+        });
+
+        document.addEventListener('livewire:navigate', () => {
+            if (window.mapController) {
+                window.mapController.destroyMap();
+                window.mapController = null;
+            }
+        });
     </script>
-    @endscript
 @endpush

@@ -132,7 +132,7 @@
     </div>
 </div>
 @push('scripts')
-    @vite(['resources/assets/js/maps/book-flight.js'])
+    @vite(['resources/assets/js/maps/BaseMapController.js','resources/assets/js/maps/BookFlightMapController.js'])
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             window.bookFlightMapWire = @this;
