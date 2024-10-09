@@ -1,5 +1,5 @@
 <div class="flex relative flex-col flex-grow -p-4 z-0">
-    @if($this->destinationAirports->count() > 0)
+    @if($this->destinationAirports->count() > 0 || (is_array($this->selectedTag) || $this->selectedTag != null))
         <form wire:submit="create">
             <div class="card rounded-none p-4">
                 {{ $this->form }}
