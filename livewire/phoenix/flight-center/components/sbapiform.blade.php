@@ -127,7 +127,7 @@
            value="{{ $data['atcfuel_units'] ?? $this->route->atcfuel_units }}">
     <input type="hidden" name="wxxfuel_units"
            value="{{ $data['wxxfuel_units'] ?? $this->route->wxxfuel_units }}">
-    <input type="hidden" name="addedfuel_units" value="min">
+    <input type="hidden" name="addedfuel_units" value="{{ $data['extraFuel_units'] }}">
     <input type="hidden" name="tankering_units"
            value="{{ $data['tankering_units'] ?? $this->route->tankering_units }}">
     <input type="hidden" name="addedfuel_label"
