@@ -146,7 +146,7 @@
 
         document.addEventListener('livewire:navigated', () => {
             window.bookFlightMapWire = @this;
-            if (!window.mapController) {
+            if (!window.BookFlightMapController) {
                 const mapElement = document.getElementById('map');
                 if (mapElement) {
                     window.mapController = new window.BookFlightMapController('map', window.bookFlightMapWire, window.bookFlightMapWire.__instance.el);
@@ -159,11 +159,11 @@
             }
         });
 
-        document.addEventListener('livewire:navigate', () => {
-            if (window.mapController) {
-                window.mapController.destroyMap();
-                window.mapController = null;
-            }
-        });
+        // document.addEventListener('livewire:navigate', () => {
+        //     if (window.mapController) {
+        //         window.mapController.destroyMap();
+        //         window.mapController = null;
+        //     }
+        // });
     </script>
 @endpush

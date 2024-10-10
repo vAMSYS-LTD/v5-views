@@ -154,7 +154,7 @@
 
         document.addEventListener('livewire:navigated', () => {
             window.destinationMapWire = @this;
-            if (!window.mapController) {
+            if (!window.DestinationMapController) {
                 const mapElement = document.getElementById('map');
                 if (mapElement) {
                     window.mapController = new window.DestinationMapController('map', window.destinationMapWire, window.destinationMapWire.__instance.el);
@@ -167,11 +167,11 @@
             }
         });
 
-        document.addEventListener('livewire:navigate', () => {
-            if (window.mapController) {
-                window.mapController.destroyMap();
-                window.mapController = null;
-            }
-        });
+        // document.addEventListener('livewire:navigate', () => {
+        //     if (window.mapController) {
+        //         window.mapController.destroyMap();
+        //         window.mapController = null;
+        //     }
+        // });
     </script>
 @endpush
