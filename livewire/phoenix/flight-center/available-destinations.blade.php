@@ -143,35 +143,61 @@
     @vite(['resources/assets/js/maps/BaseMapController.js', 'resources/assets/js/maps/DestinationMapController.js'])
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            window.destinationMapWire = @this;
-            if (!window.mapController) {
-                const mapElement = document.getElementById('map');
-                if (mapElement) {
-                    window.mapController = new window.DestinationMapController('map', window.destinationMapWire, window.destinationMapWire.__instance.el);
-                }
-            }
+            initializeDestinationMapController();
+        });
+
+        // Livewire 3 Lifecycle Hooks
+        document.addEventListener('livewire:load', () => {
+            initializeDestinationMapController();
         });
 
         document.addEventListener('livewire:navigated', () => {
-            window.destinationMapWire = @this;
-            if (!window.mapController) {
-                const mapElement = document.getElementById('map');
-                if (mapElement) {
-                    window.mapController = new window.DestinationMapController('map', window.destinationMapWire, window.destinationMapWire.__instance.el);
-                }
-            } else {
-                window.mapController.$wire = window.destinationMapWire;
-                window.mapController.componentEl = window.destinationMapWire.__instance.el;
-                // Update markers if needed
-                window.mapController.addInitialMarkers();
+            initializeDestinationMapController();
+        });
+
+        document.addEventListener('livewire:navigate', () => {
+            if (window.newMapController) {
+                window.newMapController.destroyMap();
+                window.newMapController = null;
+                console.log('newMapController destroyed');
             }
         });
 
-        // document.addEventListener('livewire:navigate', () => {
-        //     if (window.mapController) {
-        //         window.mapController.destroyMap();
-        //         window.mapController = null;
-        //     }
-        // });
+        function initializeDestinationMapController() {
+            try {
+                // Ensure @this refers to the current Livewire component instance
+                window.destinationMapWire = @this;
+                console.log('Initializing newMapController with');
+
+                if (!window.newMapController) {
+                    const mapElement = document.getElementById('map');
+                    if (mapElement) {
+                        if (typeof window.DestinationMapController !== 'undefined') {
+                            window.newMapController = new window.DestinationMapController('map', window.destinationMapWire, window.destinationMapWire.__instance.el);
+                            console.log('newMapController initialized');
+                            if (typeof window.newMapController.addInitialMarkers === 'function') {
+                                window.newMapController.addInitialMarkers();
+                            } else {
+                                console.error('addInitialMarkers is not a function on newMapController');
+                            }
+                        } else {
+                            console.error('DestinationMapController is not loaded.');
+                        }
+                    }
+                } else {
+                    // Update existing controller with new Livewire instance
+                    window.newMapController.$wire = window.destinationMapWire;
+                    window.newMapController.componentEl = window.destinationMapWire.__instance.el;
+                    console.log('newMapController updated:', window.newMapController);
+                    if (typeof window.newMapController.addInitialMarkers === 'function') {
+                        window.newMapController.addInitialMarkers();
+                    } else {
+                        console.error('addInitialMarkers is not a function on newMapController');
+                    }
+                }
+            } catch (error) {
+                console.error('Error initializing newMapController:', error);
+            }
+        }
     </script>
 @endpush

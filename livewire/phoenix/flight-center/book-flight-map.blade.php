@@ -132,57 +132,63 @@
     </div>
 </div>
 @push('scripts')
-    @vite(['resources/assets/js/maps/BaseMapController.js','resources/assets/js/maps/BookFlightMapController.js'])
+    @vite(['resources/assets/js/maps/BaseMapController.js', 'resources/assets/js/maps/BookFlightMapController.js'])
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeBookFlightMapController();
+        });
+
+        // Livewire 3 Lifecycle Hooks
         document.addEventListener('livewire:load', () => {
-            initializeMapController();
+            initializeBookFlightMapController();
         });
 
         document.addEventListener('livewire:navigated', () => {
-            initializeMapController();
+            initializeBookFlightMapController();
         });
 
         document.addEventListener('livewire:navigate', () => {
-            if (window.mapController) {
-                window.mapController.destroyMap();
-                window.mapController = null;
-                console.log('mapController destroyed');
+            if (window.bookFlightMapController) {
+                window.bookFlightMapController.destroyMap();
+                window.bookFlightMapController = null;
+                console.log('bookFlightMapController destroyed');
             }
         });
 
-        function initializeMapController() {
+        function initializeBookFlightMapController() {
             try {
-                // Assuming `@this` refers to the Livewire component instance
+                // Ensure @this refers to the current Livewire component instance
                 window.bookFlightMapWire = @this;
-                console.log('Initializing mapController with:', window.bookFlightMapWire);
+                console.log('Initializing bookFlightMapController');
 
-                if (!window.mapController) {
+                if (!window.bookFlightMapController) {
                     const mapElement = document.getElementById('map');
                     if (mapElement) {
                         if (typeof window.BookFlightMapController !== 'undefined') {
-                            window.mapController = new window.BookFlightMapController('map', window.bookFlightMapWire, window.bookFlightMapWire.__instance.el);
-                            console.log('mapController initialized:', window.mapController);
-                            if (typeof window.mapController.addMarkersToMap === 'function') {
-                                window.mapController.addMarkersToMap();
+                            window.bookFlightMapController = new window.BookFlightMapController('map', window.bookFlightMapWire, window.bookFlightMapWire.__instance.el);
+                            console.log('bookFlightMapController initialized');
+                            if (typeof window.bookFlightMapController.addMarkersToMap === 'function') {
+                                window.bookFlightMapController.addMarkersToMap();
                             } else {
-                                console.error('addMarkersToMap is not a function on mapController', window.mapController);
+                                console.error('addMarkersToMap is not a function on bookFlightMapController');
                             }
                         } else {
                             console.error('BookFlightMapController is not loaded.');
                         }
                     }
                 } else {
-                    window.mapController.$wire = window.bookFlightMapWire;
-                    window.mapController.componentEl = window.bookFlightMapWire.__instance.el;
-                    console.log('mapController updated:', window.mapController);
-                    if (typeof window.mapController.addMarkersToMap === 'function') {
-                        window.mapController.addMarkersToMap();
+                    // Update existing controller with new Livewire instance
+                    window.bookFlightMapController.$wire = window.bookFlightMapWire;
+                    window.bookFlightMapController.componentEl = window.bookFlightMapWire.__instance.el;
+                    console.log('bookFlightMapController updated:', window.bookFlightMapController);
+                    if (typeof window.bookFlightMapController.addMarkersToMap === 'function') {
+                        window.bookFlightMapController.addMarkersToMap();
                     } else {
-                        console.error('addMarkersToMap is not a function on mapController', window.mapController);
+                        console.error('addMarkersToMap is not a function on bookFlightMapController');
                     }
                 }
             } catch (error) {
-                console.error('Error initializing mapController:', error);
+                console.error('Error initializing bookFlightMapController:', error);
             }
         }
     </script>
