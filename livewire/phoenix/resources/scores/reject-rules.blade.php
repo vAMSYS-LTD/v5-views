@@ -21,7 +21,7 @@
                         @php
                             $replacementText = [];
                             $rules = $rule->rule;
-                            $terms = ['heavierThan', 'lighterThan', 'max', 'maxCoefficient'];
+                            $terms = ['heavierThan', 'lighterThan', 'max', 'maxCoefficient', 'moreThanPercent'];
                             foreach ($terms as $term) {
                                 if (isset($rules[$term])) {
                                     switch ($term) {
@@ -36,6 +36,9 @@
                                             break;
                                         case 'maxCoefficient':
                                             $replacementText[] = 'or ' . $rule->rule['maxCoefficient']*100-100 .'%';
+                                            break;
+                                        case 'moreThanPercent':
+                                            $replacementText[] = $rule->rule['moreThanPercent'] .'%';
                                             break;
                                         default:
                                             break;
@@ -52,13 +55,13 @@
                             @switch($rule->action)
                                 @case('failed')
                                     Sent for Staff Review
-                                @break
+                                    @break
                                 @case('rejected')
                                     Rejected
-                                @break
+                                    @break
                                 @case('invalidated')
                                     Invalidated
-                                @break
+                                    @break
                             @endswitch
                         </td>
                         <td>{{ $rule->reply?'Required':'' }}</td>
