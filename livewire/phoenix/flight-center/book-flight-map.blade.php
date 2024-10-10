@@ -180,7 +180,7 @@
                     // Update existing controller with new Livewire instance
                     window.bookFlightMapController.$wire = window.bookFlightMapWire;
                     window.bookFlightMapController.componentEl = window.bookFlightMapWire.__instance.el;
-                    console.log('bookFlightMapController updated:', window.bookFlightMapController);
+                    console.log('bookFlightMapController updated');
                     if (typeof window.bookFlightMapController.addMarkersToMap === 'function') {
                         window.bookFlightMapController.addMarkersToMap();
                     } else {

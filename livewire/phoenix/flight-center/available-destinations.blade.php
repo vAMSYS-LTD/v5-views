@@ -188,7 +188,7 @@
                     // Update existing controller with new Livewire instance
                     window.newMapController.$wire = window.destinationMapWire;
                     window.newMapController.componentEl = window.destinationMapWire.__instance.el;
-                    console.log('newMapController updated:', window.newMapController);
+                    console.log('newMapController updated');
                     if (typeof window.newMapController.addInitialMarkers === 'function') {
                         window.newMapController.addInitialMarkers();
                     } else {
