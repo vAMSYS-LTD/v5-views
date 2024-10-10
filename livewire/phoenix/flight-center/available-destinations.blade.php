@@ -154,7 +154,7 @@
 
         document.addEventListener('livewire:navigated', () => {
             window.destinationMapWire = @this;
-            if (!window.DestinationMapController) {
+            if (!window.mapController) {
                 const mapElement = document.getElementById('map');
                 if (mapElement) {
                     window.mapController = new window.DestinationMapController('map', window.destinationMapWire, window.destinationMapWire.__instance.el);
@@ -163,7 +163,6 @@
                 window.mapController.$wire = window.destinationMapWire;
                 window.mapController.componentEl = window.destinationMapWire.__instance.el;
                 // Update markers if needed
-
                 window.mapController.addInitialMarkers();
             }
         });

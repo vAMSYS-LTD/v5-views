@@ -134,36 +134,56 @@
 @push('scripts')
     @vite(['resources/assets/js/maps/BaseMapController.js','resources/assets/js/maps/BookFlightMapController.js'])
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            window.bookFlightMapWire = @this;
-            if (!window.mapController) {
-                const mapElement = document.getElementById('map');
-                if (mapElement) {
-                    window.mapController = new window.BookFlightMapController('map', window.bookFlightMapWire, window.bookFlightMapWire.__instance.el);
-                }
-            }
+        document.addEventListener('livewire:load', () => {
+            initializeMapController();
         });
 
         document.addEventListener('livewire:navigated', () => {
-            window.bookFlightMapWire = @this;
-            if (!window.BookFlightMapController) {
-                const mapElement = document.getElementById('map');
-                if (mapElement) {
-                    window.mapController = new window.BookFlightMapController('map', window.bookFlightMapWire, window.bookFlightMapWire.__instance.el);
-                }
-            } else {
-                window.mapController.$wire = window.bookFlightMapWire;
-                window.mapController.componentEl = window.bookFlightMapWire.__instance.el;
-                // Update markers if needed
-                window.mapController.addMarkersToMap();
+            initializeMapController();
+        });
+
+        document.addEventListener('livewire:navigate', () => {
+            if (window.mapController) {
+                window.mapController.destroyMap();
+                window.mapController = null;
+                console.log('mapController destroyed');
             }
         });
 
-        // document.addEventListener('livewire:navigate', () => {
-        //     if (window.mapController) {
-        //         window.mapController.destroyMap();
-        //         window.mapController = null;
-        //     }
-        // });
+        function initializeMapController() {
+            try {
+                // Assuming `@this` refers to the Livewire component instance
+                window.bookFlightMapWire = @this;
+                console.log('Initializing mapController with:', window.bookFlightMapWire);
+
+                if (!window.mapController) {
+                    const mapElement = document.getElementById('map');
+                    if (mapElement) {
+                        if (typeof window.BookFlightMapController !== 'undefined') {
+                            window.mapController = new window.BookFlightMapController('map', window.bookFlightMapWire, window.bookFlightMapWire.__instance.el);
+                            console.log('mapController initialized:', window.mapController);
+                            if (typeof window.mapController.addMarkersToMap === 'function') {
+                                window.mapController.addMarkersToMap();
+                            } else {
+                                console.error('addMarkersToMap is not a function on mapController', window.mapController);
+                            }
+                        } else {
+                            console.error('BookFlightMapController is not loaded.');
+                        }
+                    }
+                } else {
+                    window.mapController.$wire = window.bookFlightMapWire;
+                    window.mapController.componentEl = window.bookFlightMapWire.__instance.el;
+                    console.log('mapController updated:', window.mapController);
+                    if (typeof window.mapController.addMarkersToMap === 'function') {
+                        window.mapController.addMarkersToMap();
+                    } else {
+                        console.error('addMarkersToMap is not a function on mapController', window.mapController);
+                    }
+                }
+            } catch (error) {
+                console.error('Error initializing mapController:', error);
+            }
+        }
     </script>
 @endpush
