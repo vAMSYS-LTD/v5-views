@@ -1,4 +1,24 @@
 <div>
+    <div class="mb-2 bg-primary/10 text-primary border border-primary/20 text-sm rounded-md py-3 px-5 flex justify-between items-center">
+        <div class="flex-grow flex justify-between">
+            <p>
+                <span class="font-bold">Staff on this PIREP:</span>@foreach($this->viewers as $viewer)
+                    {{ $viewer['name'] }}@if(!$loop->last), @endif
+                @endforeach
+            </p>
+            @if($pirepsToReview > 0)
+            <p>
+                <span class="font-bold">PIREPs to Review:</span> {{ $currentSequence }} of {{ $pirepsToReview }}
+            </p>
+            @endif
+        </div>
+        @if($pirepsToReview > 0 && $currentSequence != $pirepsToReview)
+            <button wire:click="showNextPirep" class="text-xl/[0] ml-4" data-fc-dismiss="dismiss-example" type="button">
+                Next PIREP <i class="fa-regular fa-caret-right"></i>
+            </button>
+        @endif
+    </div>
+
     <div class="grid lg:grid-cols-3 grid-cols-1 gap-4 mb-4">
         <div class="card h-full">
             <div class="card-header flex justify-between items-center">
@@ -196,3 +216,20 @@
 
     <x-filament-actions::modals />
 </div>
+@script
+<script>
+    Echo.join(`App.Pireps.` + {{ $this->pirepId }})
+        .here(function (members) {
+            // runs when you join
+            console.table(members);
+        })
+        .joining(function (joiningMember, members) {
+            // runs when another member joins
+            console.table(joiningMember);
+        })
+        .leaving(function (leavingMember, members) {
+            // runs when another member leaves
+            console.table(leavingMember);
+        });
+</script>
+@endscript
