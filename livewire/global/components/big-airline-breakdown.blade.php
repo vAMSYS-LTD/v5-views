@@ -81,8 +81,8 @@
                     </div>
                     <div wire:click="login({{ $airline['id'] }}, 'phoenix')" class="cursor-pointer col-span-3 hidden xl:block md:h-full bg-white dark:bg-gray-800 group-hover:bg-gray-200 dark:group-hover:bg-gray-700 rounded-br-lg">
                         <div class="flex h-full justify-center items-center text-md font-semibold">
-                            @if($airline['pilot_last_pirep_date'])
-                                Last PIREP: {{ $airline['pilot_last_pirep_date'] }}
+                            @if($airline['pilot_last_pirep_date'] && isset($airline['statistics']->data->latestPirep->airport))
+                                Last PIREP: {{ $airline['pilot_last_pirep_date'] }} {{ $airline['statistics']->data->latestPirep->airport->departure->icao }} - {{ $airline['statistics']->data->latestPirep->airport->arrival->icao }}
                             @else
 
                             @endif
