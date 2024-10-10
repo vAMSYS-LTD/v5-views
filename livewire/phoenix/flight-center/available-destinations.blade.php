@@ -163,6 +163,7 @@
                 window.mapController.$wire = window.destinationMapWire;
                 window.mapController.componentEl = window.destinationMapWire.__instance.el;
                 // Update markers if needed
+
                 window.mapController.addInitialMarkers();
             }
         });
