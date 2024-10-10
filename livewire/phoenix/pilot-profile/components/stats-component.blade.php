@@ -174,7 +174,7 @@
                                 :subtitle="'~' . number_format(divnum(convertWeightValue($data->pireps->$tabKey->fuelUsed, $pilot)->value, $data->pireps->$tabKey->accepted + $data->pireps->$tabKey->rejected)) . ' per flight'"
                                 :values="[
                             ['value' => number_format(convertWeightValue($data->pireps->$tabKey->fuelUsed, $pilot)->value) . ' ' . convertWeightValue($data->pireps->$tabKey->fuelUsed, $pilot)->measure, 'class' => 'text-primary', 'popover' => ''],
-                            ['value' => number_format(convertWeightValue($data->pireps->$tabKey->landingRate, $pilot)->value). ' FPM', 'class' => 'text-primary', 'popover' => ''],
+                            ['value' => number_format($data->pireps->$tabKey->landingRate). ' FPM', 'class' => 'text-primary', 'popover' => ''],
                         ]"
                             />
 
