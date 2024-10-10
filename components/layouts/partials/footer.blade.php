@@ -9,7 +9,7 @@
                 Served By: {{ gethostname() }}
             </span>
             <a href="https://vamsys.dev" target="_blank" class="class=text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">
-                v5.0.12
+                v5.0.13
             </a>
 {{--            <a href="javascript: void(0);" class="text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">Support</a>--}}
 {{--            <a href="javascript: void(0);" class="text-sm leading-5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white">Contact Us</a>--}}
