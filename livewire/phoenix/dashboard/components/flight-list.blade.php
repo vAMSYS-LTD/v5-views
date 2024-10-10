@@ -125,7 +125,12 @@
                                     <td class="">Landed {{ $pastFlight->created_at->format('H:i') }}</td>
                                     <td class="">{{ $pastFlight->booking->network }}</td>
                                     <td class="hidden sm:table-cell">
-
+                                        <a href="{{ route('phoenix.flight-centre.pirep', ['pirep' => $pastFlight->id]) }}"
+                                           target="_blank" class="" @mouseenter="$popovers('View PIREP')"
+                                           data-trigger="mouseenter"><i class="fa-duotone fa-eye"></i></a>
+                                        <a href="{{ route('phoenix.profile.pilot', ['airlineIdentifier' => $flight->pilot->airline, 'pilotUsername' => $flight->pilot->username]) }}"
+                                           target="_blank" class="" @mouseenter="$popovers('View Profile')"
+                                           data-trigger="mouseenter"><i class="fa-duotone fa-user"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
