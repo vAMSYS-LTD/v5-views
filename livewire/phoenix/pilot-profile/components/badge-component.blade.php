@@ -1,4 +1,4 @@
-<div style="{{ count($badges) > 0 ? '' : 'display: contents'}}">
+<div {{ count($badges) == 0 ? 'hidden':'' }} style="{{ count($badges) > 0 ? '' : 'display: contents'}}">
     @if($badges->count() > 0)
         <div class="card">
             <div class="card-header flex justify-between items-center !border-b-0 !pb-0">

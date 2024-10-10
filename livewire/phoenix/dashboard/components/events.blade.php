@@ -1,4 +1,4 @@
-<div wire:ignore class="{{ $componentWidth }}" style="{{ $events->count() > 0 ? '' : 'display: contents'}}">
+<div wire:ignore class="{{ $componentWidth }}" {{ $events->count() == 0 ? 'hidden':'' }} style="{{ $events->count() > 0 ? '' : 'display: contents'}}">
 @if($events->count() > 0)
         <div class="relative swiper event-image-swiper rounded w-full shadow">
             <div class="swiper-wrapper">

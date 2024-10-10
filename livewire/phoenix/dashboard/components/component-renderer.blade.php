@@ -9,6 +9,12 @@
 @endphp
 
 @switch($component['type'])
+    @case('text_component')
+        <livewire:phoenix.dashboard.components.text componentWidth="{{ $width }}" :data="$component['data']"/>
+        @break
+    @case('image_component')
+        <livewire:phoenix.dashboard.components.image componentWidth="{{ $width }}" :data="$component['data']"/>
+        @break
     @case('pilot_statistics_component')
         <livewire:phoenix.dashboard.components.statistic-boxes componentWidth="{{ $width }}" :select-tab="$component['data']['selectTab']"/>
         @break

@@ -27,7 +27,9 @@
             ],
         ];
 @endphp
-<div wire:key="dashboard.boxes" class="{{ $componentWidth }}" style="{{ (($firstBooking && $bookingCount >= 0) || ($pireps && (count($pireps) > 0))) ? '' : 'display: contents'}}">
+<div wire:key="dashboard.boxes" class="{{ $componentWidth }}"
+     {{ (($firstBooking && $bookingCount >= 0) || ($pireps && (count($pireps) > 0))) ? '':'hidden' }}
+     style="{{ (($firstBooking && $bookingCount >= 0) || ($pireps && (count($pireps) > 0))) ? '' : 'display: contents'}}">
     <div class="grid gap-2 {{ $widthCount[$block][$width] }}">
         @if($firstBooking && $bookingCount >= 0)
             <div wire:key="booking" wire:click="navigateBooking" class="card card-info dashboard-card-booking cursor-pointer">
