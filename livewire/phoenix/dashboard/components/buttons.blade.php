@@ -1,10 +1,10 @@
 <div class="grid grid-cols-{{ $buttonCount }} gap-2 {{ $componentWidth }}">
     @if($showBooking)
         @if($hasBooking)
-            <a href="{{ route('phoenix.flight-centre.booking') }}" wire:navigate
+            <a href="{{ route('phoenix.flight-centre.booking') }}"
                class="btn grow btn-primary btn-sm shadow">View Your Booking</a>
         @else
-            <a href="{{ route('phoenix.flight-centre.book') }}" wire:navigate class="grow btn btn-primary btn-sm shadow">Make a
+            <a href="{{ route('phoenix.flight-centre.book') }}" class="grow btn btn-primary btn-sm shadow">Make a
                 Booking</a>
         @endif
     @endif
