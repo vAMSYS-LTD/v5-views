@@ -133,10 +133,13 @@
             </div>
             <hr class="divider"/>
             <div class="grid sm:grid-cols-4 gap-3">
+
                 <div class="col-span-2">
                     <p class="text-gray-400">Livery Used</p>
                     <div class="gap-3 mt-1">
+                        @if($pirep->pirep_data)
                         <h5 class="font-medium">{{ collect($this->pirep->pirep_data?->aircrafts)->last()?->name }}</h5>
+                        @endif
                     </div>
                 </div>
                 <div class="col-span-2 sm:text-right">
