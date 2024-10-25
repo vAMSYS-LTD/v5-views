@@ -99,7 +99,7 @@
                             @endforeach
 
                             @foreach($pastFlights as $pastFlight)
-                                <tr id="flight-{{ $pastFlight->bookingId }}">
+                                <tr id="flight-{{ $pastFlight->booking_id }}">
                                     <td class=""
                                         @mouseenter="$popovers('{{ $pastFlight->pilot->username }} - {{ $pastFlight->pilot->rank->name }}')"
                                         data-trigger="mouseenter">{{ $pastFlight->pilot->user->public_name }}, {{ $pastFlight->pilot->rank->abbreviation }}</td>
