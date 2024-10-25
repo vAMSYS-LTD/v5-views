@@ -2,7 +2,7 @@
 {{-- Header --}}
 <x-slot:header>
 <x-mail::header :url="'https://vamsys.io/'">
-<img src="{{ $message->embed(asset('/assets/images/logo/vAMSYS-dark-logo.png')) }}" class="logo" alt="vAMSYS">
+<img src="https://vamsys.io/assets/images/logo/vAMSYS-dark-logo.png" class="logo" alt="vAMSYS">
 </x-mail::header>
 </x-slot:header>
 
